@@ -102,11 +102,6 @@ class BBSSignature2020 extends LinkedDataProof {
       proof.verificationMethod = this.verificationMethod;
     }
 
-    // add any extensions to proof (mostly for legacy support)
-    proof = await this.updateProof({
-      document, proof, purpose,
-      documentLoader, expansionMap, compactProof});
-
     // allow purpose to update the proof; the `proof` is in the
     // SECURITY_CONTEXT_URL `@context` -- therefore the `purpose` must
     // ensure any added fields are also represented in that same `@context`
