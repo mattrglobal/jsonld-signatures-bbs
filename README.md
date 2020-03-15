@@ -5,6 +5,20 @@ using [BLS12-381](https://tools.ietf.org/id/draft-yonezawa-pairing-friendly-curv
 
 Due to the properties of a [BBS+ Signatures](https://eprint.iacr.org/2009/095.pdf) a zero knowledge proof can be derived from the signature, whereby the party generating the proof can elect to selectively disclose statements from the originally signed payload.
 
+## Getting Started
+
+To install
+
+```
+npm install
+```
+
+To run the tests
+
+```
+npm run test
+```
+
 ## URSA Dependency
 
 This library has a dependency on `libzmix` from [hyperledger ursa](https://github.com/hyperledger/ursa) as a source for the cryptographic primatives associated to creating BBS+ signatures and BLS12-381 key pairs. Included in this repository is an un-released version of a built binary of ursa which can be found in `/bin/libzmix.dylib`.
