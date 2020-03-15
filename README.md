@@ -23,6 +23,12 @@ npm run test
 
 This library has a dependency on `libzmix` from [hyperledger ursa](https://github.com/hyperledger/ursa) as a source for the cryptographic primatives associated to creating BBS+ signatures and BLS12-381 key pairs. Included in this repository is an un-released version of a built binary of ursa which can be found in `/bin/libzmix.dylib`.
 
+## Environment Support
+
+Currently this library can only be used in node environments, due to the short-term approach taken to establishing the FFI bridge which involves using the [ffi](https://www.npmjs.com/package/ffi) package.
+
+Support for browser (via WASM) and react-native is targeted in the near future.
+
 ## Sample Credential
 
 The following is an example of a signed JSON-LD document featuring a BBS+ linked data signature.
