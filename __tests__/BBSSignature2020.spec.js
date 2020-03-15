@@ -4,7 +4,7 @@ const { exampleBBSLdKey,
 
 const jsigs = require("jsonld-signatures");
 
-const { BLS12381KeyPair, BBSSignature2020 } = require("../index");
+const { BLS12381KeyPair, BBSSignature2020 } = require("../src/index");
 
 const key = new BLS12381KeyPair(exampleBBSLdKey);
 

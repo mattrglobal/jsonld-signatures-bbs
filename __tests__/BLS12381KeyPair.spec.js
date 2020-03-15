@@ -4,7 +4,7 @@ const { exampleBBSLdKey,
         exampleSingleMessage, 
         exampleSingleMessageSignature } = require("./__fixtures__");
 
-const { BLS12381KeyPair } = require("../index");
+const { BLS12381KeyPair } = require("../src/index");
 
 const key = new BLS12381KeyPair(exampleBBSLdKey);
 const { sign, signMulti } = key.signer();

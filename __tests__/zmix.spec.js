@@ -5,7 +5,7 @@ const { examplePrivateKey,
         exampleSingleMessageSignature,
         exampleMultiMessageSignature } = require("./__fixtures__");
 
-const zmix = require("../zmix");
+const zmix = require("../src/zmix");
 
 describe("zmix", () => {
     it("should generate key", async () => {
