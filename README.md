@@ -79,9 +79,9 @@ Whereby the subject is able to generate a zero knowledge proof, from the signed 
 
 ## References
 
-[BLS12-381 For The Rest Of Us](https://hackmd.io/@benjaminion/bls12-381)
-[Pairing-based cryptography](https://en.wikipedia.org/wiki/Pairing-based_cryptography)
-[Exploring Elliptic Curve Pairings](https://vitalik.ca/general/2017/01/14/exploring_ecp.html)
-[BBS+ Signature Scheme](https://eprint.iacr.org/2009/095.pdf)
-[Anonymous Attestation Using the Strong Diffie Hellman Assumption Revisited](https://www.researchgate.net/publication/306347781_Anonymous_Attestation_Using_the_Strong_Diffie_Hellman_Assumption_Revisited)
-[Pairing Friendly Curves Draft RFC](https://tools.ietf.org/html/draft-irtf-cfrg-pairing-friendly-curves-01)
+- [BLS12-381 For The Rest Of Us](https://hackmd.io/@benjaminion/bls12-381)
+- [Pairing-based cryptography](https://en.wikipedia.org/wiki/Pairing-based_cryptography)
+- [Exploring Elliptic Curve Pairings](https://vitalik.ca/general/2017/01/14/exploring_ecp.html)
+- [BBS+ Signature Scheme](https://eprint.iacr.org/2009/095.pdf)
+- [Anonymous Attestation Using the Strong Diffie Hellman Assumption Revisited](https://www.researchgate.net/publication/306347781_Anonymous_Attestation_Using_the_Strong_Diffie_Hellman_Assumption_Revisited)
+- [Pairing Friendly Curves Draft RFC](https://tools.ietf.org/html/draft-irtf-cfrg-pairing-friendly-curves-01)
