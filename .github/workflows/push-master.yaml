@@ -22,7 +22,7 @@ jobs:
             registry-url: 'https://npm.pkg.github.com'
             scope: '@mattrglobal' # Defaults to the user or organization that owns the workflow file
         - run: yarn
-        - run: yarn install --frozen-lockfile
+        - run: yarn install
         - run: yarn lint
         - run: yarn build
         - run: yarn test
