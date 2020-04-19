@@ -1,0 +1,28 @@
+name: push-master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_test_publish:
+    name: Build, test, and publish unstable release
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          node-version: [10.x]
+    steps:
+        - uses: actions/checkout@v2
+        # Setup .npmrc file to publish to GitHub Packages
+        - uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }}
+            registry-url: 'https://npm.pkg.github.com'
+            scope: '@mattrglobal' # Defaults to the user or organization that owns the workflow file
+        - run: yarn
+        - run: yarn install --frozen-lockfile
+        - run: yarn lint
+        - run: yarn build
+        - run: yarn test
