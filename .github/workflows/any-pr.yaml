@@ -14,7 +14,9 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           node-version: ${{ matrix.node-version }}
+      - run: echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
       - run: yarn install
       - run: yarn lint
       - run: yarn build
