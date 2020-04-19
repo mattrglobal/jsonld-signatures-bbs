@@ -21,7 +21,11 @@
     "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",
     "lint": "eslint . --ext .ts --color --format=table",
     "lint:fix": "yarn lint --fix",
-    "pre-pr": "yarn clean && yarn format && yarn lint:fix && yarn build && yarn test"
+    "pre-pr": "yarn clean && yarn format && yarn lint:fix && yarn build && yarn test",
+    "version:current": "node -pe \"require('./package.json').version\"",
+    "version:current-unstable": "echo \"$(yarn run -s version:current)-unstable.$(git rev-parse --short HEAD)\"",
+    "publish:unstable": "yarn version --no-git-tag-version --patch && yarn publish --no-git-tag-version --new-version \"$(yarn run -s version:current-unstable)\" && git checkout -- package.json",
+    "publish": "yarn publish --minor"
   },
   "devDependencies": {
     "@stablelib/benchmark": "1.0.0",
