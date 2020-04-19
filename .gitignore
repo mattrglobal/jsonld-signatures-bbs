@@ -1,0 +1,62 @@
+######################
+# Project Specific
+######################
+jest_results/
+node_modules/
+lib/
+
+######################
+# Intellij
+######################
+.idea*
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+classes/
+build/
+
+######################
+# Visual Studio Code
+######################
+.vscode/
+
+######################
+# Windows
+######################
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+######################
+# Mac OSX
+######################
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+######################
+# Directories
+######################
+
+######################
+# Logs
+######################
+*.log*
+
+######################
+# Others
+######################
+*.*~
+*~
+.merge_file*
+*.swp
+*.swo
