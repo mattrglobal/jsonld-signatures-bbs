@@ -1,0 +1,6 @@
+{
+    "@context": [ "http://schema.org/",
+                  "https://w3id.org/security/v2" ],
+    "firstName": "Jane",
+    "lastName": "Does"
+}

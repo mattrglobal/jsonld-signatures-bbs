@@ -1,0 +1,19 @@
+{
+  "@context": [
+    "http://schema.org/",
+    "https://w3id.org/security/v2",
+    "https://w3c-ccg.github.io/lds-bbsbls2020/contexts"
+  ],
+  "firstName": "Jane",
+  "lastName": "Does",
+  "jobTitle": "Professor",
+  "telephone": "(425) 123-4567",
+  "email": "jane.doe@example.com",
+  "proof": {
+    "type": "BbsBlsSignature2020",
+    "created": "2020-04-19T08:39:01Z",
+    "verificationMethod": "did:example:489398593#test",
+    "proofPurpose": "assertionMethod",
+    "signature": "BBBiqcghJN0T7DON2FBlWvz5XgJtYrFlKehYOVApZkt4LLPEdQINieFrd5z+i2398Q1EApqDW1xbPWQtHIu8wNx/jT80+Yzg4wti3UlYxDbllcBUnRGxwp4qHGofuEtVMQAAAAAAAAAAAAAAAAAAAABKAt7SLSAdHAPQv4rqzp+X5PSx55YdnOXQts7gw1qDIgAAAAAAAAAAAAAAAAAAAABY3J6BDpEyM+BBmvdI2CoZIFRMKooJ/5WuKArMrv8haA=="
+  }
+}

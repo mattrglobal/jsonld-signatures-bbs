@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2017",
+        "sourceMap": true,
+        "allowJs": false,
+        "moduleResolution": "node",
+        "strict": true,
+        "declaration": true,
+        "downlevelIteration": true,
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "outDir": "./lib",
+        "types": [
+            "jest",
+            "node"
+          ]
+    },
+    "include": ["./src"]
+}
