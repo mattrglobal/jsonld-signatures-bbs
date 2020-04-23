@@ -5,6 +5,7 @@ import testDocument from "./data/test_document.json";
 import testRevealDocument from "./data/test_reveal_document.json";
 import testSignedDocument from "./data/test_signed_document.json";
 import testBadSignedDocument from "./data/test_bad_signed_document.json";
+import testProofDocument from "./data/test_proof_document.json";
 
 const exampleSingleMessage = "someData";
 const exampleSingleMessageSignature =
@@ -28,6 +29,7 @@ export {
   testDocument,
   testRevealDocument,
   testSignedDocument,
+  testProofDocument,
   testBadSignedDocument,
   badSignature,
   badSignatureBadLength,

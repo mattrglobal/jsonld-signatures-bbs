@@ -16,6 +16,7 @@
   },
   "scripts": {
     "test": "jest",
+    "benchmark": "ts-node ./bench/index.ts",
     "build": "tsc --pretty",
     "clean": "rm -rf lib/",
     "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",
@@ -45,7 +46,8 @@
     "typescript": "3.7.5"
   },
   "dependencies": {
-    "@mattrglobal/node-bbs-signatures": "0.1.1-unstable.40fd62a",
+    "@mattrglobal/node-bbs-signatures": "0.1.1-unstable.c7b83c6",
+    "@stablelib/random": "1.0.0",
     "bs58": "4.0.1",
     "jsonld-signatures": "5.0.0"
   }

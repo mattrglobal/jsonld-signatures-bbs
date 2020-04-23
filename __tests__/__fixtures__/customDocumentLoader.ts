@@ -1,17 +1,16 @@
 import jsonld from "jsonld";
+import { extendContextLoader } from "jsonld-signatures";
 import bbsContext from "./contexts/lds-bbsbls2020-v0.0.json";
-import schemaOrg from "./contexts/schema_org.json";
 import exampleDidKey from "./data/did_example_489398593_test.json";
 import exampleDidDoc from "./data/did_example_489398593.json";
 
 export const documents: any = {
   "https://w3c-ccg.github.io/lds-bbsbls2020/contexts": bbsContext,
-  "https://schema.org": schemaOrg,
   "did:example:489398593#test": exampleDidKey,
   "did:example:489398593": exampleDidDoc
 };
 
-export const customLoader = (url: string): any => {
+const customDocLoader = (url: string): any => {
   const context = documents[url];
 
   if (context) {
@@ -24,3 +23,5 @@ export const customLoader = (url: string): any => {
 
   return jsonld.documentLoaders.node()(url);
 };
+
+export const customLoader = extendContextLoader(customDocLoader);

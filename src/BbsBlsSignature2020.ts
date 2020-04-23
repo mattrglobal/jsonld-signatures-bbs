@@ -67,8 +67,8 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    * @returns {Promise<object>} Resolves with the created proof object.
    */
   async createProof(options: CreateProofOptions): Promise<object> {
-    const { purpose, documentLoader, expansionMap, compactProof } = options;
-
+    const { document, purpose, documentLoader, expansionMap, compactProof } = options;
+    
     let proof;
     if (this.proof) {
       // use proof JSON-LD document passed to API
@@ -114,7 +114,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       documentLoader,
       expansionMap
     });
-
+    
     // create data to sign
     const verifyData = await this.createVerifyData({
       document,
@@ -144,6 +144,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
   async verifyProof(options: VerifyProofOptions): Promise<object> {
     const {
       proof,
+      document,
       documentLoader,
       expansionMap,
       compactProof,
@@ -228,21 +229,43 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    * @returns {Promise<{string[]>}.
    */
   async createVerifyData(options: CreateVerifyDataOptions): Promise<string[]> {
-    const { proof, documentLoader, expansionMap } = options;
+    const { proof, document, documentLoader, expansionMap } = options;
+    
+    const proofStatements = await this.createVerifyProofData(proof, { documentLoader, expansionMap });
+    const documentStatements = await this.createVerifyDocumentData(document, { documentLoader, expansionMap });
+
     // concatenate c14n proof options and c14n document
+    return proofStatements.concat(documentStatements);
+  }
+
+  /**
+   * @param proof to canonicalize
+   * @param options to create verify data
+   *
+   * @returns {Promise<{string[]>}.
+   */
+  async createVerifyProofData(proof: any, { documentLoader, expansionMap }: any): Promise<string[]> {
     const c14nProofOptions = await this.canonizeProof(proof, {
       documentLoader,
       expansionMap
     });
+
+    return c14nProofOptions.split("\n").filter(_ => _.length > 0);
+  }
+
+  /**
+   * @param document to canonicalize
+   * @param options to create verify data
+   *
+   * @returns {Promise<{string[]>}.
+   */
+  async createVerifyDocumentData(document: any, { documentLoader, expansionMap }: any): Promise<string[]> {
     const c14nDocument = await this.canonize(document, {
       documentLoader,
       expansionMap
     });
 
-    return c14nProofOptions
-      .split("\n")
-      .concat(c14nDocument.split("\n"))
-      .filter(_ => _.length > 0);
+    return c14nDocument.split("\n").filter(_ => _.length > 0);
   }
 
   /**

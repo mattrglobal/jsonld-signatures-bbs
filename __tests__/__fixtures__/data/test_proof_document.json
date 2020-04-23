@@ -1,0 +1,40 @@
+{
+  "@context": [
+    {
+      "schema": "http://schema.org/",
+      "firstName": "schema:firstName",
+      "lastName": "schema:lastName",
+      "jobTitle": "schema:jobTitle",
+      "telephone": "schema:telephone",
+      "email": "schema:email"
+    },
+    "https://w3id.org/security/v2",
+    "https://w3c-ccg.github.io/lds-bbsbls2020/contexts"
+  ],
+  "id": "urn:bnid:_:c14n0",
+  "email": "jane.doe@example.com",
+  "firstName": "Jane",
+  "jobTitle": "Professor",
+  "lastName": "Does",
+  "telephone": "(425) 123-4567",
+  "proof": {
+    "type": "BbsBlsSignatureProof2020",
+    "@context": "https://w3id.org/security/v2",
+    "created": "2020-04-22T02:44:22Z",
+    "verificationMethod": "did:example:489398593#test",
+    "proofPurpose": "assertionMethod",
+    "proof": "BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQBDwB4GnBIMMOOl/00vC8o9gxHD43PX1ehKnJ6FU3/xnZpZUwJGXD5cmoxiCGiXCgENXwj4aYkQIIcfBEE1zHgpn4dCUd724hjXDCZPfmKm0gV/iwgLo62aRg2jlmWds4EGJ2jsStp7AfGAxa/3UzjiY8soN8KrUJB2Up80ulWX2R0OLB4Z8F+HQ3mwoui+jeEBJM+wecXrAdz2TNDs/82MYWXrtZAAlZFNpeerEOCJfVgbiOMo9XEP5BEIROVarbcAAAAxQQCsznQn/RDP+tHmW3HtSKzDoi8pu2Kw0ew+bQHdMiFR5iKgf1CBfSAAU07oDs8QcELBwXyeCvdaCVlc20z4m1xZF2nEaxq1D4xnmqdj8QHznllVlTNqw1DK/tX2F1X970AAAACAAAAAAAAAAAAAAAAAAAAAB/WlYF52+Iw0Fk8XvkVuwYJARvbNOA62bFyYug74xsWAAAAAAAAAAAAAAAAAAAAADDzS9IXiEIa/DNz3PSUhMFibxonwaDLW3xeUzfmdMdUAAAAxQQBVcZMvUrcc61Usg010/QdiOROuVU0eaFukAoW45fvlM7GiN4f6Y/oUVBjbvsAZAwGiaan9HazK1DRv2/zv8yfn8kEO1aT7TVFP2/VVKVkDuQe4Ja84ZFJlPSjTDQQAz4AAAACAAAAAAAAAAAAAAAAAAAAACAlw7fLYeDkUR27KSKYSyWTHTBsBsEv6qIK4h1FaLnCAAAAAAAAAAAAAAAAAAAAAEP0L5F9Ruk1piPxeuZOu12QSMXJ6LRA5zz21iJ4+XBk",
+    "revealStatements": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "totalStatements": 8,
+    "nonce": "/xfrL6+VRs83oClrQrIUtQ5kmPlB9FZGc8mRy59MpHrpjTU0lYy62jHCpXHO3h+yITU="
+  }
+}

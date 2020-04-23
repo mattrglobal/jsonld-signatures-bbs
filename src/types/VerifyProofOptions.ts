@@ -4,10 +4,6 @@
  */
 export interface VerifyProofOptions {
   /**
-   * Input document to sign
-   */
-  readonly document: any;
-  /**
    * The proof purpose to specify for the generated proof
    */
   readonly purpose: any;
@@ -24,11 +20,11 @@ export interface VerifyProofOptions {
    */
   readonly compactProof: boolean;
   /**
-   * The array of statements to sign
-   */
-  readonly verifyData: string[];
-  /**
    * The proof
    */
   readonly proof: any;
+  /**
+   * The document
+   */
+  readonly document: any;
 }

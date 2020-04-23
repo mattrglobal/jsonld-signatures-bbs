@@ -1,6 +1,6 @@
 import bs58 from "bs58";
 import {
-  generateKeyPair,
+  generateBls12381KeyPair,
   sign,
   verify
 } from "@mattrglobal/node-bbs-signatures";
@@ -130,7 +130,7 @@ export class Bls12381G2KeyPair {
    * @returns {Promise<Bls12381G2KeyPair>} Generates a key pair.
    */
   static async generate(options = {}): Promise<Bls12381G2KeyPair> {
-    const keyPair = generateKeyPair();
+    const keyPair = generateBls12381KeyPair();
     return new Bls12381G2KeyPair({
       ...options,
       privateKeyBase58: bs58.encode(keyPair.secretKey),

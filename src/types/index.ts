@@ -8,3 +8,4 @@ export { CanonizeOptions } from "./CanonizeOptions";
 export { CreateVerifyDataOptions } from "./CreateVerifyDataOptions";
 export { VerifySignatureOptions } from "./VerifySignatureOptions";
 export { SuiteSignOptions } from "./SuiteSignOptions";
+export { DeriveProofOptions } from "./DeriveProofOptions";
