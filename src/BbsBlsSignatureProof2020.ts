@@ -1,9 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import jsonld from "jsonld";
 import { suites, SECURITY_CONTEXT_URL } from "jsonld-signatures";
-import { createProof, verifyProof } from "@mattrglobal/node-bbs-signatures";
-import { DeriveProofOptions, VerifyProofOptions, CreateVerifyDataOptions } from "./types";
+import {
+  blsCreateProof,
+  blsVerifyProof
+} from "@mattrglobal/node-bbs-signatures";
+import {
+  DeriveProofOptions,
+  VerifyProofOptions,
+  CreateVerifyDataOptions
+} from "./types";
 import { BbsBlsSignature2020 } from "./BbsBlsSignature2020";
 import { randomBytes } from "@stablelib/random";
+import { objectIntersection } from "./objectIntersection";
 
 export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
   constructor({ useNativeCanonize, key }: any) {
@@ -15,67 +24,91 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
   /**
    * Derive a proof from a proof and reveal document
-   * 
+   *
    * @param options {object} options for deriving a proof.
    *
    * @returns {Promise<object>} Resolves with the derived proof object.
    */
-  async deriveProof(options: DeriveProofOptions) {
-    const { document, proof, revealDocument, documentLoader, expansionMap, compactProof } = options;
+  async deriveProof(options: DeriveProofOptions): Promise<object> {
+    const {
+      document,
+      proof,
+      revealDocument,
+      documentLoader,
+      expansionMap,
+      compactProof
+    } = options;
     let { nonce } = options;
-    
+
     // Validate that the input proof document has a proof compatible with the suite
     if (proof.type !== "BbsBlsSignature2020") {
-      throw new TypeError('proof document proof incompatible, expected proof type of BbsBlsSignature2020');
+      throw new TypeError(
+        "proof document proof incompatible, expected proof type of BbsBlsSignature2020"
+      );
     }
 
     //Extract the BBS signature from the input proof
-    const signature = Buffer.from(proof.signature);
+    const signature = new Buffer(proof.signature, "base64");
 
     //Initialize the BBS signature suite
     const suite = new BbsBlsSignature2020({ key: this.key });
 
     // Get the input document statements
-    let documentStatements = await suite.createVerifyDocumentData(
-      document,
-    {
+    const documentStatements = await suite.createVerifyDocumentData(document, {
       documentLoader,
       expansionMap,
       compactProof
     });
 
-    // Get the proof statements 
-    let proofStatements = await suite.createVerifyProofData(
-      proof,
-    {
+    // Get the proof statements
+    const proofStatements = await suite.createVerifyProofData(proof, {
       documentLoader,
       expansionMap,
       compactProof
     });
 
     // Transform any blank node identifiers for the input document statements into actual node identifiers
-    const transformedInputDocumentStatements = documentStatements.map(element => {
-      const nodeIdentifier = element.split(' ')[0];
-      if (nodeIdentifier.startsWith('_:c14n')) {
-        return element.replace(nodeIdentifier, `<urn:bnid:${nodeIdentifier}>`);
+    const transformedInputDocumentStatements = documentStatements.map(
+      element => {
+        const nodeIdentifier = element.split(" ")[0];
+        if (nodeIdentifier.startsWith("_:c14n")) {
+          return element.replace(
+            nodeIdentifier,
+            `<urn:bnid:${nodeIdentifier}>`
+          );
+        }
+        return element;
       }
-      return element;
-    });
-    
+    );
+
     //Fetch the required JSON-LD contexts
-    const ctx = jsonld.getValues(document, '@context');
+    const ctx = jsonld.getValues(document, "@context");
 
     // Re-render the transformed input statements into compact jsonld to obtain the allocated node identifiers
-    const compactInputProofDocument = await jsonld.compact(await jsonld.fromRDF(transformedInputDocumentStatements.join("\n")), ctx, { documentLoader });
+    const compactInputProofDocument = await jsonld.compact(
+      await jsonld.fromRDF(transformedInputDocumentStatements.join("\n")),
+      ctx,
+      { documentLoader }
+    );
 
-    // Render the reveal document into jsonld compact form
-    const compactRevealDocument = await jsonld.flatten(revealDocument);
+    delete revealDocument["@context"];
+    delete revealDocument["@type"];
 
-    // TODO this is where we use the objectIntersection function 
-    // and we need to mutate the blank node identifiers
-    const revealDocumentResult = compactInputProofDocument; // also needs to compacted
-    
-    // Canonicalize the result reveal document
+    delete compactInputProofDocument["@context"];
+    delete compactInputProofDocument["@type"];
+
+    //TODO this needs to be replaced with a more efficient method of diffing the two graphs
+    const revealDocumentResult = {
+      "@context": document["@context"],
+      "@type": document["@type"],
+      ...objectIntersection(
+        compactInputProofDocument,
+        revealDocument,
+        new Set<string>(["id"])
+      )
+    };
+
+    // Canonicalize the resulting reveal document
     const revealDocumentStatements = await suite.createVerifyDocumentData(
       revealDocumentResult,
       {
@@ -87,35 +120,42 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     //Get the indicies of the revealed statements from the transformed input document offset
     //by the number of proof statements
     const numberOfProofStatements = proofStatements.length;
-    
+
     //Always reveal all the statements associated to the original proof
     //these are always the first statements in the normalized form
-    const proofRevealIndicies = Array.from(Array(numberOfProofStatements).keys());
-
-    //Reveal the statements indicated from the reveal document
-    const documentRevealIndicies = revealDocumentStatements.map(key =>
-      transformedInputDocumentStatements.indexOf(key) + numberOfProofStatements
+    const proofRevealIndicies = Array.from(
+      Array(numberOfProofStatements).keys()
     );
 
-    const revealIndicies = proofRevealIndicies.concat(documentRevealIndicies);
-    
-    if (!nonce){
-      nonce = Buffer.from(randomBytes(50)).toString('base64');
+    //Reveal the statements indicated from the reveal document
+    const documentRevealIndicies = revealDocumentStatements.map(
+      key =>
+        transformedInputDocumentStatements.indexOf(key) +
+        numberOfProofStatements
+    );
+
+    if (documentRevealIndicies.length !== revealDocumentStatements.length) {
+      throw new Error(
+        "Some statements in the reveal document not found in original proof"
+      );
     }
 
-    //Combine all the input statements that 
+    const revealIndicies = proofRevealIndicies.concat(documentRevealIndicies);
+
+    if (!nonce) {
+      nonce = Buffer.from(randomBytes(50)).toString("base64");
+    }
+
+    //Combine all the input statements that
     //were originally signed to generate the proof
     const allInputStatements = proofStatements.concat(documentStatements);
 
-    console.log(allInputStatements);
-
-    const outputProof = createProof({
-      signature,
-      publicKey: this.key.publicKeyBuffer,
+    const outputProof = blsCreateProof({
+      signature: new Uint8Array(signature),
+      publicKey: new Uint8Array(this.key.publicKeyBuffer),
       messages: allInputStatements,
       nonce: nonce,
-      domainSeparationTag: "BBSSignature2020",
-      revealed: revealIndicies 
+      revealed: revealIndicies
     });
 
     const inputProof = { ...proof };
@@ -128,7 +168,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       proof: {
         type: this.type,
         ...inputProof,
-        proof: Buffer.from(outputProof).toString('base64'),
+        proof: Buffer.from(outputProof).toString("base64"),
         revealStatements: revealIndicies,
         totalStatements: allInputStatements.length,
         nonce
@@ -142,41 +182,39 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    * @returns {Promise<{object}>} Resolves with the verification result.
    */
   async verifyProof(options: VerifyProofOptions): Promise<object> {
-    const {
-      proof,
-      document,
-      documentLoader,
-      expansionMap,
-      compactProof,
-      purpose
-    } = options;
+    const { proof, document, documentLoader, expansionMap, purpose } = options;
 
     try {
-
-      // Get the proof statements 
-      const proofStatements = await this.createVerifyProofData(proof, 
-      {
+      // Get the proof statements
+      const proofStatements = await this.createVerifyProofData(proof, {
         documentLoader,
-        expansionMap,
+        expansionMap
       });
 
-      // Get the document statements 
-      const documentStatements = await this.createVerifyProofData(document, 
-      {
+      // Get the document statements
+      const documentStatements = await this.createVerifyProofData(document, {
         documentLoader,
-        expansionMap,
+        expansionMap
       });
 
-    // Transform the blank node identifier placeholders back into actual blank node identifiers
+      // Transform the blank node identifier placeholders back into actual blank node identifiers
       const transformedDocumentStatements = documentStatements.map(element => {
-        const nodeIdentifier = element.split(' ')[0];
-        if (nodeIdentifier.startsWith('<urn:bnid:_:c14n')) {
-          return element.replace(nodeIdentifier, nodeIdentifier.substring('<urn:bnid:'.length, nodeIdentifier.length - 1));
+        const nodeIdentifier = element.split(" ")[0];
+        if (nodeIdentifier.startsWith("<urn:bnid:_:c14n")) {
+          return element.replace(
+            nodeIdentifier,
+            nodeIdentifier.substring(
+              "<urn:bnid:".length,
+              nodeIdentifier.length - 1
+            )
+          );
         }
         return element;
       });
 
-      const statementsToVerify = proofStatements.concat(transformedDocumentStatements);
+      const statementsToVerify = proofStatements.concat(
+        transformedDocumentStatements
+      );
 
       // fetch verification method
       const verificationMethod = await this.getVerificationMethod({
@@ -185,22 +223,15 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         documentLoader,
         expansionMap
       });
-      
-      console.log(statementsToVerify);
-      console.log(proof.totalStatements);
-      console.log(proof.nonce);
-      console.log(proof.revealStatements);
-      console.log(Buffer.from(proof.proof));
 
-      const verified = verifyProof({
-        proof: Buffer.from(proof.proof),
-        publicKey: this.key.publicKeyBuffer,
+      const verified = blsVerifyProof({
+        proof: new Uint8Array(new Buffer(proof.proof, "base64")),
+        publicKey: new Uint8Array(this.key.publicKeyBuffer),
         messageCount: proof.totalStatements,
         messages: statementsToVerify,
         nonce: proof.nonce,
-        domainSeparationTag: "BBSSignature2020",
         revealed: proof.revealStatements
-      })
+      });
 
       // ensure proof was performed for a valid purpose
       const { valid, error } = await purpose.validate(proof, {
@@ -214,7 +245,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         throw error;
       }
 
-      return { verified };
+      return verified;
     } catch (error) {
       return { verified: false, error };
     }
@@ -239,7 +270,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     { documentLoader, expansionMap }: any
   ): Promise<string> {
     proof = { ...proof };
-    
+
     delete proof.totalStatements;
     delete proof.revealStatements;
     delete proof.nonce;
@@ -259,9 +290,15 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    */
   async createVerifyData(options: CreateVerifyDataOptions): Promise<string[]> {
     const { proof, document, documentLoader, expansionMap } = options;
-    
-    const proofStatements = await this.createVerifyProofData(proof, { documentLoader, expansionMap });
-    const documentStatements = await this.createVerifyDocumentData(document, { documentLoader, expansionMap });
+
+    const proofStatements = await this.createVerifyProofData(proof, {
+      documentLoader,
+      expansionMap
+    });
+    const documentStatements = await this.createVerifyDocumentData(document, {
+      documentLoader,
+      expansionMap
+    });
 
     // concatenate c14n proof options and c14n document
     return proofStatements.concat(documentStatements);
@@ -273,7 +310,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    *
    * @returns {Promise<{string[]>}.
    */
-  async createVerifyProofData(proof: any, { documentLoader, expansionMap }: any): Promise<string[]> {
+  async createVerifyProofData(
+    proof: any,
+    { documentLoader, expansionMap }: any
+  ): Promise<string[]> {
     const c14nProofOptions = await this.canonizeProof(proof, {
       documentLoader,
       expansionMap
@@ -288,7 +328,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    *
    * @returns {Promise<{string[]>}.
    */
-  async createVerifyDocumentData(document: any, { documentLoader, expansionMap }: any): Promise<string[]> {
+  async createVerifyDocumentData(
+    document: any,
+    { documentLoader, expansionMap }: any
+  ): Promise<string[]> {
     const c14nDocument = await this.canonize(document, {
       documentLoader,
       expansionMap
@@ -303,7 +346,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    * @param documentLoader {function}
    * @param expansionMap {function}
    */
-  async getVerificationMethod({ proof, documentLoader }: any) {
+  async getVerificationMethod({ proof, documentLoader }: any): Promise<object> {
     let { verificationMethod } = proof;
 
     if (typeof verificationMethod === "object") {

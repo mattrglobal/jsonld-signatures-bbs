@@ -67,8 +67,14 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    * @returns {Promise<object>} Resolves with the created proof object.
    */
   async createProof(options: CreateProofOptions): Promise<object> {
-    const { document, purpose, documentLoader, expansionMap, compactProof } = options;
-    
+    const {
+      document,
+      purpose,
+      documentLoader,
+      expansionMap,
+      compactProof
+    } = options;
+
     let proof;
     if (this.proof) {
       // use proof JSON-LD document passed to API
@@ -114,7 +120,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       documentLoader,
       expansionMap
     });
-    
+
     // create data to sign
     const verifyData = await this.createVerifyData({
       document,
@@ -230,9 +236,15 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    */
   async createVerifyData(options: CreateVerifyDataOptions): Promise<string[]> {
     const { proof, document, documentLoader, expansionMap } = options;
-    
-    const proofStatements = await this.createVerifyProofData(proof, { documentLoader, expansionMap });
-    const documentStatements = await this.createVerifyDocumentData(document, { documentLoader, expansionMap });
+
+    const proofStatements = await this.createVerifyProofData(proof, {
+      documentLoader,
+      expansionMap
+    });
+    const documentStatements = await this.createVerifyDocumentData(document, {
+      documentLoader,
+      expansionMap
+    });
 
     // concatenate c14n proof options and c14n document
     return proofStatements.concat(documentStatements);
@@ -244,7 +256,10 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    *
    * @returns {Promise<{string[]>}.
    */
-  async createVerifyProofData(proof: any, { documentLoader, expansionMap }: any): Promise<string[]> {
+  async createVerifyProofData(
+    proof: any,
+    { documentLoader, expansionMap }: any
+  ): Promise<string[]> {
     const c14nProofOptions = await this.canonizeProof(proof, {
       documentLoader,
       expansionMap
@@ -259,7 +274,10 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    *
    * @returns {Promise<{string[]>}.
    */
-  async createVerifyDocumentData(document: any, { documentLoader, expansionMap }: any): Promise<string[]> {
+  async createVerifyDocumentData(
+    document: any,
+    { documentLoader, expansionMap }: any
+  ): Promise<string[]> {
     const c14nDocument = await this.canonize(document, {
       documentLoader,
       expansionMap
