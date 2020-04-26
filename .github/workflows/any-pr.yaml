@@ -11,11 +11,13 @@ jobs:
         node-version: [10.x]
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn install
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
       - run: yarn lint
       - run: yarn build
       - run: yarn test --coverage
