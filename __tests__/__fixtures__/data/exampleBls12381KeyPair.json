@@ -1,6 +1,6 @@
 {
     "id": "did:example:489398593#test",
     "controller": "did:example:489398593",
-    "privateKeyBase58": "11111111111111114zZJPj2ePiQTLadRXMwsrDbhxjJvWh6aPQ4BCxUtQiPX",
-    "publicKeyBase58": "5ctMjosGpHc3GTpB5mGUx7dNzm4W7NUf9FNnCXJxLL2xx98vEPgoSFxYzf8cypm3Bvtk7VhX7GEZJ2B65kchGiezqdTvrScc8hfwNnpX9mE21rGMo9XcJ4rHmbKPPUPT3Ghcd1rFnCFCDaFQ7oZ3Y64hFpwXGVmFz4BCxXqvf36eXUBnUFG64mV1keRsttSHNfZU66dGhVx3JMa1N3sn66nqGCujRKBtYqKb29kA4HnfsXj9aSXCJsxa795h6Kcb5un4be"
+    "privateKeyBase58": "Nkb9XiUT4XdrnEB86JXibFWvicdmczrFbWTjzSh879X",
+    "publicKeyBase58": "TXNALMsWD88T9SzbRfLU1GC6VeYVb9f1ivBuAL4mkbLHBTmc3U1T7P8eSDYM9QBLRGk6QDs7XWj62PLvMvBmRKTrcPF9LbLHjN3Jp9vJ8ZfUzTUXMxZ2xNyhRxRZn4uMHv"
 }

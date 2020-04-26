@@ -1,8 +1,8 @@
 import bs58 from "bs58";
 import {
-  generateKeyPair,
-  sign,
-  verify
+  generateBls12381KeyPair,
+  blsVerify,
+  blsSign
 } from "@mattrglobal/node-bbs-signatures";
 import { KeyPairOptions, KeyPairSigner, KeyPairVerifier } from "./types";
 
@@ -29,18 +29,22 @@ const bbsSignerFactory = (key: Bls12381G2KeyPair): KeyPairSigner => {
       //TODO assert data runtime string | string[]
       if (typeof data === "string") {
         return Buffer.from(
-          sign({
-            domainSeparationTag: "BBSSignature2020",
+          blsSign({
             messages: [data],
-            secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array)
+            keyPair: {
+              secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
+              publicKey: new Uint8Array(key.publicKeyBuffer)
+            }
           })
         ).toString("base64");
       }
       return Buffer.from(
-        sign({
-          domainSeparationTag: "BBSSignature2020",
+        blsSign({
           messages: data,
-          secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array)
+          keyPair: {
+            secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
+            publicKey: new Uint8Array(key.publicKeyBuffer)
+          }
         })
       ).toString("base64");
     }
@@ -70,19 +74,17 @@ const bbsVerifierFactory = (key: Bls12381G2KeyPair): KeyPairVerifier => {
     async verify({ data, signature }): Promise<boolean> {
       //TODO assert data
       if (typeof data === "string") {
-        return verify({
-          domainSeparationTag: "BBSSignature2020",
+        return blsVerify({
           messages: [data],
           publicKey: new Uint8Array(key.publicKeyBuffer),
           signature: new Uint8Array(Buffer.from(signature, "base64"))
-        });
+        }).verified;
       }
-      return verify({
-        domainSeparationTag: "BBSSignature2020",
+      return blsVerify({
         messages: data,
         publicKey: new Uint8Array(key.publicKeyBuffer),
         signature: new Uint8Array(Buffer.from(signature, "base64"))
-      });
+      }).verified;
     }
   };
 };
@@ -130,10 +132,10 @@ export class Bls12381G2KeyPair {
    * @returns {Promise<Bls12381G2KeyPair>} Generates a key pair.
    */
   static async generate(options = {}): Promise<Bls12381G2KeyPair> {
-    const keyPair = generateKeyPair();
+    const keyPair = generateBls12381KeyPair();
     return new Bls12381G2KeyPair({
       ...options,
-      privateKeyBase58: bs58.encode(keyPair.secretKey),
+      privateKeyBase58: bs58.encode(keyPair.secretKey as Uint8Array),
       publicKeyBase58: bs58.encode(keyPair.publicKey)
     });
   }

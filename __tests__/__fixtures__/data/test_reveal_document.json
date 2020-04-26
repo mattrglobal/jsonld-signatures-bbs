@@ -1,6 +1,11 @@
 {
-    "@context": [ "http://schema.org/",
+    "@context": [ {
+                    "schema": "http://schema.org/",
+                    "firstName": "schema:firstName",
+                    "lastName": "schema:lastName"
+                  },
                   "https://w3id.org/security/v2" ],
+    "@type": "Person",
     "firstName": "Jane",
     "lastName": "Does"
 }

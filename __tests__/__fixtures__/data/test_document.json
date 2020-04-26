@@ -1,7 +1,15 @@
 {
-    "@context": [ "http://schema.org/",
+    "@context": [{
+                    "schema": "http://schema.org/",
+                    "firstName": "schema:firstName",
+                    "lastName": "schema:lastName",
+                    "jobTitle": "schema:jobTitle",
+                    "telephone": "schema:telephone",
+                    "email": "schema:email"
+                 },
                   "https://w3id.org/security/v2",
                   "https://w3c-ccg.github.io/lds-bbsbls2020/contexts" ],
+    "@type": "Person",
     "firstName": "Jane",
     "lastName": "Does",
     "jobTitle": "Professor",

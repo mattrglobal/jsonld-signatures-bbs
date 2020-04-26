@@ -5,19 +5,21 @@ import testDocument from "./data/test_document.json";
 import testRevealDocument from "./data/test_reveal_document.json";
 import testSignedDocument from "./data/test_signed_document.json";
 import testBadSignedDocument from "./data/test_bad_signed_document.json";
+import testProofDocument from "./data/test_proof_document.json";
+import testPartialProofDocument from "./data/test_partial_proof_document.json";
 
 const exampleSingleMessage = "someData";
 const exampleSingleMessageSignature =
-  "BACD71aTJws8uTbvsSehjOVyhIVSFBHqCbRqbiuPFUO+XC2H9pp8jEVS1HSQxJsdvwhSMr5WuMbgfFc6CG4VtGvrtQWBgMr0lrCvlyAfRB7eyK1fZT19RjpWH7o0f6eh6wAAAAAAAAAAAAAAAAAAAABg52W6/s5jJ8/0CG9QmY1BQl+m/csYSYNWkaytDJ3VHQAAAAAAAAAAAAAAAAAAAAALcczoyyAKR7Wof+v43lnp/x/MfxLNjkkPBtZKo1De3Q==";
+  "BB941wFBFAR0VBaD/Skk3gx5PbxMc4y1IYN0KiAnLH542Orc1gTuxNnAbh0VU3umboXUv/PZgN95UiYg9SJsp8u+IpnCiPKsKnuK3mpSsBMABoc6TBEwQutvUwdHtaSBPFg7VpF8tBdpk1c9AEiXMw==";
 
 const exampleMultiMessage = ["test", "value"];
 const exampleMultiMessageSignature =
-  "BAjpgRKXFa6RSIctsogOh0yXm3yJeAIouMMc/fi3HcRWaBf+AhnFhkAyx154dha/nAcmdYTUlphl6VoN/0DuqdQFiCBgiNmV7md4bTtNhCmJxWOmcgzuq/a5LvtZwgnSbQAAAAAAAAAAAAAAAAAAAAAg+Drbv3nNS2NY/zc0XAVGI2aLxlitdKT47B7PNGs5rAAAAAAAAAAAAAAAAAAAAABTGqgzzZTd9j0Qx19xj5QB/MJEPOjUr9UXmW8gpDkpIg==";
+  "CWcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
 
 const badSignature =
-  "cBUWXMwCBT5EGB1rAMhcpiGFNKXrRFqa7WnRunaN+SJbw94wmfeQaqYErhtGcbzmlxnyPhtR+18OozMut+Av3sfcv2Po8MOD2nro4HsRIa/KpbarmuPq1NrcGeZVckyCawAAAAAAAAAAAAAAAAAAAAAVIspGvLyk0zE4m1Xk+83neYkyycpC1StEUQFL5nKpoAAAAAAAAAAAAAAAAAAAAAA221H8eXipf5ZBAjRjrDYoK074aTBJlckbJzvJmLMxbA==";
+  "AdcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
 const badSignatureBadLength =
-  "ro4HsRIa/KpbarmuPq1NrcGeZVckyCawAAAAAAAAAAAAAAAAAAAAAVIspGvLyk0zE4m1Xk+83neYkyycpC1StEUQFL5nKpoAAAAAAAAAAAAAAAAAAAAAA221H8eXipf5ZBAjRjrDYoK074aTBJlckbJzvJmLMxbA==";
+  "aaaaAdcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
 
 export {
   exampleSingleMessage,
@@ -28,6 +30,8 @@ export {
   testDocument,
   testRevealDocument,
   testSignedDocument,
+  testProofDocument,
+  testPartialProofDocument,
   testBadSignedDocument,
   badSignature,
   badSignatureBadLength,
