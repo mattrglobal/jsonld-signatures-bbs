@@ -1,6 +1,7 @@
 {
   "name": "@mattrglobal/jsonld-signatures-bbs",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "description": "A JSON-LD linked data proof suite for creating and verifying BBS+ signatures and proofs",
   "homepage": "https://github.com/mattrglobal/jsonld-signatures-bbs",
   "main": "lib/index.js",
   "directories": {
@@ -22,15 +23,15 @@
     "lint": "eslint . --ext .ts --color --format=table",
     "lint:fix": "yarn lint --fix",
     "pre-pr": "yarn clean && yarn format && yarn lint:fix && yarn build && yarn test",
-    "version:current": "node -pe \"require('./package.json').version\"",
-    "version:current-unstable": "echo \"$(yarn run -s version:current)-unstable.$(git rev-parse --short HEAD)\"",
-    "publish:unstable": "yarn version --no-git-tag-version --patch && yarn publish --no-git-tag-version --new-version \"$(yarn run -s version:current-unstable)\" && git checkout -- package.json",
-    "publish": "yarn publish --minor --message \"chore(release): publish [skip ci]\""
+    "publish:unstable": "./scripts/publish_unstable.sh",
+    "publish": "./scripts/publish.sh",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "version:release": "yarn version --minor --message \"chore(release): publish [skip ci]\""
   },
   "devDependencies": {
     "@types/lodash": "4.14.150",
     "@types/bs58": "4.0.1",
-    "@types/jest": "24.0.18",
+    "@types/jest": "25.2.1",
     "@types/node": "12.7.2",
     "@typescript-eslint/eslint-plugin": "2.28.0",
     "@typescript-eslint/parser": "2.28.0",
@@ -38,17 +39,17 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.3",
-    "jest": "24.9.0",
+    "jest": "25.4.0",
     "prettier": "1.19.1",
-    "ts-jest": "24.0.2",
+    "ts-jest": "25.4.0",
     "ts-node": "8.4.1",
     "typescript": "3.7.5"
   },
   "dependencies": {
-    "@mattrglobal/node-bbs-signatures": "0.2.1-unstable.7a97202",
+    "@mattrglobal/node-bbs-signatures": "0.0.2-unstable.006c5e9",
     "@stablelib/random": "1.0.0",
     "bs58": "4.0.1",
-    "jsonld-signatures": "5.0.0",
+    "jsonld-signatures": "5.0.1",
     "lodash": "4.17.15"
   }
 }
