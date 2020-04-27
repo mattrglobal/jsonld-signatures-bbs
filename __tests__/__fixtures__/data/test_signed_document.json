@@ -1,13 +1,6 @@
 {
   "@context": [
-    {
-      "schema": "http://schema.org/",
-      "firstName": "schema:firstName",
-      "lastName": "schema:lastName",
-      "jobTitle": "schema:jobTitle",
-      "telephone": "schema:telephone",
-      "email": "schema:email"
-    },
+    "https://schema.org",
     "https://w3id.org/security/v2",
     "https://w3c-ccg.github.io/lds-bbsbls2020/contexts"
   ],
@@ -19,9 +12,9 @@
   "email": "jane.doe@example.com",
   "proof": {
     "type": "BbsBlsSignature2020",
-    "created": "2020-04-25T00:26:11Z",
+    "created": "2020-04-26T20:08:51Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "signature": "F9uMuJzNBqj4j+HPTvWjUN/MNoe6KRH0818WkvDn2Sf7kg1P17YpNyzSB+CH57AWDFunU13tL8oTBDpBhODckelTxHIaEfG0rNmqmjK6DOs0/ObksTZh7W3OTbqfD2h4C/wqqMQHSWdXXnojwyFDEg=="
+    "signature": "EG7sdQZARDzcBkV3g2GrrfaVPXko1ReeGz3UOT/mRuCl6wGDAdVL7qRHGJDPwsu8EugqFpWG1nUOkltf1dYv/s409By031XUhwhLdeWBZmtDpMEFAkGEixTgp21aG0/kGagv5BjmDKg17MjQXfavuQ=="
   }
 }

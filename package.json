@@ -28,7 +28,6 @@
     "version:release": "yarn version --minor --message \"chore(release): publish [skip ci]\""
   },
   "devDependencies": {
-    "@types/lodash": "4.14.150",
     "@types/bs58": "4.0.1",
     "@types/jest": "25.2.1",
     "@types/node": "12.7.2",
@@ -48,7 +47,7 @@
     "@mattrglobal/node-bbs-signatures": "0.0.2-unstable.006c5e9",
     "@stablelib/random": "1.0.0",
     "bs58": "4.0.1",
-    "jsonld-signatures": "5.0.1",
-    "lodash": "4.17.15"
+    "jsonld": "3.1.0",
+    "jsonld-signatures": "5.0.1"
   }
 }

@@ -4,6 +4,14 @@
  */
 export interface VerifyProofOptions {
   /**
+   * The proof
+   */
+  readonly proof: any;
+  /**
+   * The document
+   */
+  readonly document: any;
+  /**
    * The proof purpose to specify for the generated proof
    */
   readonly purpose: any;
@@ -15,16 +23,4 @@ export interface VerifyProofOptions {
    * Optional expansion map
    */
   expansionMap?(): any;
-  /**
-   * Indicates whether to compact the resulting proof
-   */
-  readonly compactProof: boolean;
-  /**
-   * The proof
-   */
-  readonly proof: any;
-  /**
-   * The document
-   */
-  readonly document: any;
 }

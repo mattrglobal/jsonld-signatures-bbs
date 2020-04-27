@@ -3,7 +3,9 @@ import {
   testDocument,
   testSignedDocument,
   testBadSignedDocument,
-  customLoader
+  customLoader,
+  testVcDocument,
+  testSignedVcDocument
 } from "./__fixtures__";
 
 import jsigs from "jsonld-signatures";
@@ -18,7 +20,20 @@ describe("BbsBlsSignature2020", () => {
       suite: new BbsBlsSignature2020({ key }),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
       documentLoader: customLoader,
-      compactProof: false
+      compactProof: false,
+      expansionMap: undefined
+    });
+    console.log(JSON.stringify(signed, null, 2));
+    expect(signed).toBeDefined();
+  });
+
+  it("should sign verifiable credential with jsigs", async () => {
+    const signed = await jsigs.sign(testVcDocument, {
+      suite: new BbsBlsSignature2020({ key }),
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
+      documentLoader: customLoader,
+      compactProof: false,
+      expansionMap: undefined
     });
     expect(signed).toBeDefined();
   });
@@ -28,7 +43,21 @@ describe("BbsBlsSignature2020", () => {
       suite: new BbsBlsSignature2020({ key }),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
       documentLoader: customLoader,
-      compactProof: false
+      compactProof: false,
+      expansionMap: undefined
+    });
+    expect(verificationResult).toBeDefined();
+    console.log(verificationResult);
+    expect(verificationResult.verified).toBeTruthy();
+  });
+
+  it("should verify verifiable credential with jsigs", async () => {
+    const verificationResult = await jsigs.verify(testSignedVcDocument, {
+      suite: new BbsBlsSignature2020({ key }),
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
+      documentLoader: customLoader,
+      compactProof: false,
+      expansionMap: undefined
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeTruthy();
@@ -39,7 +68,8 @@ describe("BbsBlsSignature2020", () => {
       suite: new BbsBlsSignature2020({ key }),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
       documentLoader: customLoader,
-      compactProof: false
+      compactProof: false,
+      expansionMap: undefined
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeFalsy();
