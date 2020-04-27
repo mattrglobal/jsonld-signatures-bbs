@@ -153,7 +153,6 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       document,
       documentLoader,
       expansionMap,
-      compactProof,
       purpose
     } = options;
 
@@ -164,7 +163,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
         proof,
         documentLoader,
         expansionMap,
-        compactProof
+        compactProof: false
       });
 
       // fetch verification method
@@ -305,9 +304,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
 
     // Note: `expansionMap` is intentionally not passed; we can safely drop
     // properties here and must allow for it
-    const {
-      "@graph": [framed]
-    } = await jsonld.frame(
+    const result = await jsonld.frame(
       verificationMethod,
       {
         "@context": SECURITY_CONTEXT_URL,
@@ -316,16 +313,16 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       },
       { documentLoader, compactToRelative: false }
     );
-    if (!framed) {
+    if (!result) {
       throw new Error(`Verification method ${verificationMethod} not found.`);
     }
 
     // ensure verification method has not been revoked
-    if (framed.revoked !== undefined) {
+    if (result.revoked !== undefined) {
       throw new Error("The verification method has been revoked.");
     }
 
-    return framed;
+    return result;
   }
 
   /**

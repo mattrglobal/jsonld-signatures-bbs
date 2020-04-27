@@ -7,6 +7,12 @@ import testSignedDocument from "./data/test_signed_document.json";
 import testBadSignedDocument from "./data/test_bad_signed_document.json";
 import testProofDocument from "./data/test_proof_document.json";
 import testPartialProofDocument from "./data/test_partial_proof_document.json";
+import testBadPartialProofDocument from "./data/test_bad_partial_proof_document.json";
+import testVcDocument from "./data/test_vc.json";
+import testSignedVcDocument from "./data/test_signed_vc.json";
+import testRevealVcDocument from "./data/test_vc_reveal_document.json";
+import testPartialVcProof from "./data/test_partial_proof_vc_document.json";
+import testRevealAllDocument from "./data/test_reveal_all_document.json";
 
 const exampleSingleMessage = "someData";
 const exampleSingleMessageSignature =
@@ -31,7 +37,13 @@ export {
   testRevealDocument,
   testSignedDocument,
   testProofDocument,
+  testVcDocument,
+  testRevealAllDocument,
+  testPartialVcProof,
+  testSignedVcDocument,
+  testRevealVcDocument,
   testPartialProofDocument,
+  testBadPartialProofDocument,
   testBadSignedDocument,
   badSignature,
   badSignatureBadLength,

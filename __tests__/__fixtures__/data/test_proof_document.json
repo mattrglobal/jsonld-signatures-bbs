@@ -1,17 +1,11 @@
 {
   "@context": [
-    {
-      "schema": "http://schema.org/",
-      "firstName": "schema:firstName",
-      "lastName": "schema:lastName",
-      "jobTitle": "schema:jobTitle",
-      "telephone": "schema:telephone",
-      "email": "schema:email"
-    },
+    "http://schema.org/",
     "https://w3id.org/security/v2",
     "https://w3c-ccg.github.io/lds-bbsbls2020/contexts"
   ],
   "id": "urn:bnid:_:c14n0",
+  "type": "Person",
   "email": "jane.doe@example.com",
   "firstName": "Jane",
   "jobTitle": "Professor",
@@ -20,10 +14,10 @@
   "proof": {
     "type": "BbsBlsSignatureProof2020",
     "@context": "https://w3id.org/security/v2",
-    "created": "2020-04-25T00:26:11Z",
+    "created": "2020-04-26T20:08:51Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "proof": "kTTbA3pmDa6Qia/JkOnIXDLmoBz3vsi7L5t3DWySI/VLmBqleJ/Tbus5RoyiDERDBEh5rnACXlnOqJ/U8yFQFtcp/mBCc2FtKNPHae9jKIv1dm9K9QK1F3GI1AwyGoUfjLWrkGDObO1ouNAhpEd0+et+qiOf2j8p3MTTtRRx4Hgjcl0jXCq7C7R5/nLpgimHAAAAdAx4ouhMk7v9dXijCIMaG0deicn6fLoq3GcNHuH5X1j22LU/hDu7vvPnk/6JLkZ1xQAAAAIPd1tu598L/K3NSy0zOy6obaojEnaqc1R5Ih/6ZZgfEln2a6tuUp4wePExI1DGHqwj3j2lKg31a/6bSs7SMecHBQdgIYHnBmCYGNQnu/LZ9TFV56tBXY6YOWZgFzgLDrApnrFpixEACM9rwrJ5ORtxAAAAAgE4gUIIC9aHyJNa5TBklMOh6lvQkMVLXa/vEl+3NCLXblxjgpM7UEMqBkE9/QcoD3Tgmy+z0hN+4eky1RnJsEg=",
+    "proof": "gcd97mStzaEp51tLTXVpupjqcjCMVCXtTwnkwhGeh8FGMzxzboDlsI2zdNZZQojzFaBQ1qHPe/ih/6ELm3u3ZolJynzYhjfzFREQ82A1r/aX3BEBWCNLz1hiMZguovm2Ab8fUjaw2CsHdKok81Je1iiHPIk5fMRjib2yTNw4/Ng5uzkV+fXGBNYclAc6zbdjAAAAdItCkGndPJ1ufAeSE6ZNpNjGql75j+8M2M9J5N8sCwMQDEIRjYqNaImCGz/JZ3S22gAAAAIvBo5dfaD4gya4Q0uzC5HOfYzeZhG4csQ2S1FJMS2VFiTer59ExZlu1gUgdt7frg97NMA3RbcWvZ7i+FfUnqWSkW8bjjuP2T/kxxVjeYai03sd5DIEueloAkcGhw6/Sqts1UiKCHJTDmIuUfNbsmo8AAAAAh2YvYKiOZm28t1iWD4wKNmjk+tzy/vz5eeHp63AbDCKS3aaRrCF3CwmjKuA3SRcED+xIwVtRo5/1zqee567P0A=",
     "revealStatements": [
       0,
       1,
@@ -32,9 +26,10 @@
       4,
       5,
       6,
-      7
+      7,
+      8
     ],
-    "totalStatements": 8,
-    "nonce": "6i3dTz5yFfWJ8zgsamuyZa4yAHPm75tUOOXddR6krCvCYk77sbCOuEVcdBCDd/l6tIY="
+    "totalStatements": 9,
+    "nonce": "iDp+YmVKkU9ORUoHBLEmYYdNMROyoflLuozn2KlgoZ0xM9yDbddya1Vv8hGNHIRMv20="
   }
 }

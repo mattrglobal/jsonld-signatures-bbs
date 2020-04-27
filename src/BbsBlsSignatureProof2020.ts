@@ -8,11 +8,12 @@ import {
 import {
   DeriveProofOptions,
   VerifyProofOptions,
-  CreateVerifyDataOptions
+  CreateVerifyDataOptions,
+  CanonizeOptions
 } from "./types";
 import { BbsBlsSignature2020 } from "./BbsBlsSignature2020";
 import { randomBytes } from "@stablelib/random";
-import { objectIntersection } from "./objectIntersection";
+import { VerifyProofResult } from "./types/VerifyProofResult";
 
 export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
   constructor({ useNativeCanonize, key }: any) {
@@ -52,7 +53,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     //Initialize the BBS signature suite
     const suite = new BbsBlsSignature2020({ key: this.key });
-
+    
     // Get the input document statements
     const documentStatements = await suite.createVerifyDocumentData(document, {
       documentLoader,
@@ -67,7 +68,9 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       compactProof
     });
 
-    // Transform any blank node identifiers for the input document statements into actual node identifiers
+    // Transform any blank node identifiers for the input 
+    // document statements into actual node identifiers
+    // e.g _:c14n0 => urn:bnid:_:c14n0
     const transformedInputDocumentStatements = documentStatements.map(
       element => {
         const nodeIdentifier = element.split(" ")[0];
@@ -81,32 +84,15 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       }
     );
 
-    //Fetch the required JSON-LD contexts
-    const ctx = jsonld.getValues(document, "@context");
+    //Transform the resulting RDF statements back into JSON-LD
+    const compactInputProofDocument = await jsonld.fromRDF(transformedInputDocumentStatements.join("\n"));
 
-    // Re-render the transformed input statements into compact jsonld to obtain the allocated node identifiers
-    const compactInputProofDocument = await jsonld.compact(
-      await jsonld.fromRDF(transformedInputDocumentStatements.join("\n")),
-      ctx,
+    // Frame the result to create the reveal document result
+    const revealDocumentResult = await jsonld.frame(
+      compactInputProofDocument,
+      revealDocument,
       { documentLoader }
     );
-
-    delete revealDocument["@context"];
-    delete revealDocument["@type"];
-
-    delete compactInputProofDocument["@context"];
-    delete compactInputProofDocument["@type"];
-
-    //TODO this needs to be replaced with a more efficient method of diffing the two graphs
-    const revealDocumentResult = {
-      "@context": document["@context"],
-      "@type": document["@type"],
-      ...objectIntersection(
-        compactInputProofDocument,
-        revealDocument,
-        new Set<string>(["id"])
-      )
-    };
 
     // Canonicalize the resulting reveal document
     const revealDocumentStatements = await suite.createVerifyDocumentData(
@@ -134,6 +120,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         numberOfProofStatements
     );
 
+    // Check there is not a mismatch
     if (documentRevealIndicies.length !== revealDocumentStatements.length) {
       throw new Error(
         "Some statements in the reveal document not found in original proof"
@@ -142,6 +129,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     const revealIndicies = proofRevealIndicies.concat(documentRevealIndicies);
 
+    // Create a nonce if one is not supplied
     if (!nonce) {
       nonce = Buffer.from(randomBytes(50)).toString("base64");
     }
@@ -181,7 +169,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    *
    * @returns {Promise<{object}>} Resolves with the verification result.
    */
-  async verifyProof(options: VerifyProofOptions): Promise<object> {
+  async verifyProof(options: VerifyProofOptions): Promise<VerifyProofResult> {
     const { proof, document, documentLoader, expansionMap, purpose } = options;
 
     try {
@@ -197,7 +185,8 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         expansionMap
       });
 
-      // Transform the blank node identifier placeholders back into actual blank node identifiers
+      // Transform the blank node identifier placeholders for the document statements
+      // back into actual blank node identifiers
       const transformedDocumentStatements = documentStatements.map(element => {
         const nodeIdentifier = element.split(" ")[0];
         if (nodeIdentifier.startsWith("<urn:bnid:_:c14n")) {
@@ -212,11 +201,12 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         return element;
       });
 
+      // Combine all the statements to be verified
       const statementsToVerify = proofStatements.concat(
         transformedDocumentStatements
       );
 
-      // fetch verification method
+      // Fetch the verification method
       const verificationMethod = await this.getVerificationMethod({
         proof,
         document,
@@ -224,6 +214,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         expansionMap
       });
 
+      // Verify the proof
       const verified = blsVerifyProof({
         proof: new Uint8Array(new Buffer(proof.proof, "base64")),
         publicKey: new Uint8Array(this.key.publicKeyBuffer),
@@ -233,7 +224,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         revealed: proof.revealStatements
       });
 
-      // ensure proof was performed for a valid purpose
+      // Ensure proof was performed for a valid purpose
       const { valid, error } = await purpose.validate(proof, {
         document,
         suite: this,
@@ -253,8 +244,9 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
   async canonize(
     input: any,
-    { documentLoader, expansionMap, skipExpansion }: any
+    options: CanonizeOptions
   ): Promise<string> {
+    const { documentLoader, expansionMap, skipExpansion } = options;
     return jsonld.canonize(input, {
       algorithm: "URDNA2015",
       format: "application/n-quads",
@@ -267,8 +259,9 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
   async canonizeProof(
     proof: any,
-    { documentLoader, expansionMap }: any
+    options: CanonizeOptions
   ): Promise<string> {
+    const { documentLoader, expansionMap } = options;
     proof = { ...proof };
 
     delete proof.totalStatements;
@@ -352,16 +345,13 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     if (typeof verificationMethod === "object") {
       verificationMethod = verificationMethod.id;
     }
-
     if (!verificationMethod) {
       throw new Error('No "verificationMethod" found in proof.');
     }
 
     // Note: `expansionMap` is intentionally not passed; we can safely drop
     // properties here and must allow for it
-    const {
-      "@graph": [framed]
-    } = await jsonld.frame(
+    const result = await jsonld.frame(
       verificationMethod,
       {
         "@context": SECURITY_CONTEXT_URL,
@@ -370,15 +360,15 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       },
       { documentLoader, compactToRelative: false }
     );
-    if (!framed) {
+    if (!result) {
       throw new Error(`Verification method ${verificationMethod} not found.`);
     }
 
     // ensure verification method has not been revoked
-    if (framed.revoked !== undefined) {
+    if (result.revoked !== undefined) {
       throw new Error("The verification method has been revoked.");
     }
 
-    return framed;
+    return result;
   }
 }
