@@ -53,7 +53,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     //Initialize the BBS signature suite
     const suite = new BbsBlsSignature2020({ key: this.key });
-    
+
     // Get the input document statements
     const documentStatements = await suite.createVerifyDocumentData(document, {
       documentLoader,
@@ -68,7 +68,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       compactProof
     });
 
-    // Transform any blank node identifiers for the input 
+    // Transform any blank node identifiers for the input
     // document statements into actual node identifiers
     // e.g _:c14n0 => urn:bnid:_:c14n0
     const transformedInputDocumentStatements = documentStatements.map(
@@ -85,7 +85,9 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     );
 
     //Transform the resulting RDF statements back into JSON-LD
-    const compactInputProofDocument = await jsonld.fromRDF(transformedInputDocumentStatements.join("\n"));
+    const compactInputProofDocument = await jsonld.fromRDF(
+      transformedInputDocumentStatements.join("\n")
+    );
 
     // Frame the result to create the reveal document result
     const revealDocumentResult = await jsonld.frame(
@@ -242,10 +244,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     }
   }
 
-  async canonize(
-    input: any,
-    options: CanonizeOptions
-  ): Promise<string> {
+  async canonize(input: any, options: CanonizeOptions): Promise<string> {
     const { documentLoader, expansionMap, skipExpansion } = options;
     return jsonld.canonize(input, {
       algorithm: "URDNA2015",
@@ -257,10 +256,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     });
   }
 
-  async canonizeProof(
-    proof: any,
-    options: CanonizeOptions
-  ): Promise<string> {
+  async canonizeProof(proof: any, options: CanonizeOptions): Promise<string> {
     const { documentLoader, expansionMap } = options;
     proof = { ...proof };
 

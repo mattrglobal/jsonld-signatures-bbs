@@ -44,7 +44,9 @@ describe("Bls12381G2KeyPair", () => {
     const myLdKey = await Bls12381G2KeyPair.generate({
       id: "test-key-id",
       controller: "test-key-controller",
-      seed: base58.decode("2Dk1kmfJaZT2wbWd81piFyKBkd2ip29B3rfEpLud4bCBK3MwUXfk2z3YSLFeNojENkJzW")
+      seed: base58.decode(
+        "2Dk1kmfJaZT2wbWd81piFyKBkd2ip29B3rfEpLud4bCBK3MwUXfk2z3YSLFeNojENkJzW"
+      )
     });
 
     expect(myLdKey.id).toBe("test-key-id");
@@ -62,8 +64,14 @@ describe("Bls12381G2KeyPair", () => {
     );
 
     //TODO fix me seed generation not working
-    expect(myLdKey.privateKeyBuffer).toEqual(base58.decode("7aW6k9Wh3HuQDbUUP6NLCPt7JuWdzdwDuYEiWVb8UMdb"));
-    expect(myLdKey.publicKeyBuffer).toEqual(base58.decode("mwJYFHhSfyxE8EGonneXde9cSMVxHrikD8TkLWRWgeoagSBH2UNhckGg2prBTD4f7LiSzj8L5WmR4KNfGP2tunLCVNX3uUGAL3oo2mXg69Sgwxeq5z5B3RPyKRvRxJcib4B"));
+    expect(myLdKey.privateKeyBuffer).toEqual(
+      base58.decode("7aW6k9Wh3HuQDbUUP6NLCPt7JuWdzdwDuYEiWVb8UMdb")
+    );
+    expect(myLdKey.publicKeyBuffer).toEqual(
+      base58.decode(
+        "mwJYFHhSfyxE8EGonneXde9cSMVxHrikD8TkLWRWgeoagSBH2UNhckGg2prBTD4f7LiSzj8L5WmR4KNfGP2tunLCVNX3uUGAL3oo2mXg69Sgwxeq5z5B3RPyKRvRxJcib4B"
+      )
+    );
   });
 
   it("should sign single message", async () => {

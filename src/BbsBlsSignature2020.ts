@@ -148,13 +148,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    * @returns {Promise<{object}>} Resolves with the verification result.
    */
   async verifyProof(options: VerifyProofOptions): Promise<object> {
-    const {
-      proof,
-      document,
-      documentLoader,
-      expansionMap,
-      purpose
-    } = options;
+    const { proof, document, documentLoader, expansionMap, purpose } = options;
 
     try {
       // create data to verify

@@ -65,7 +65,7 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should derive proof from vc", async () => {
-      jest.setTimeout(30000);
+    jest.setTimeout(30000);
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
       key
