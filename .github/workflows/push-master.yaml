@@ -20,22 +20,16 @@ jobs:
           with:
             node-version: ${{ matrix.node-version }}
             registry-url: "https://registry.npmjs.org"
-            scope: "@mattrglobal"
-        - run: yarn
+        - run: yarn install --frozen-lockfile
           env:
             NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
-        - run: yarn install --frozen-lockfile
         - run: yarn lint
         - run: yarn build
         - run: yarn test
-        - name: Publish unstable release
+        - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc 2> /dev/null
           env:
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          run: |
-            git checkout master
-            yarn install --frozen-lockfile
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc 2> /dev/null
-            git config user.name "Mattr CI"
-            git config user.email "ci@mattr.global"
-            git status
-            yarn publish:unstable
+            NPM_TOKEN: ${{ secrets.NPMJS_TOKEN }}
+        - run: git config user.name "Mattr CI"
+        - run: git config user.email "npmjs_ci_mattr_public@mattr.global"
+        - run: npm whoami
+        - run: yarn publish:unstable
