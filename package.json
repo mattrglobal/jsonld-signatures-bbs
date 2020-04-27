@@ -24,8 +24,7 @@
     "lint:fix": "yarn lint --fix",
     "pre-pr": "yarn clean && yarn format && yarn lint:fix && yarn build && yarn test",
     "publish:unstable": "./scripts/publish_unstable.sh",
-    "publish": "./scripts/publish.sh",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "publish:release": "./scripts/publish.sh",
     "version:release": "yarn version --minor --message \"chore(release): publish [skip ci]\""
   },
   "devDependencies": {
