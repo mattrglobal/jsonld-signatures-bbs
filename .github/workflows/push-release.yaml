@@ -18,8 +18,10 @@ jobs:
         - uses: actions/setup-node@v1
           with:
             node-version: ${{ matrix.node-version }}
-        - run: yarn
+            registry-url: "https://registry.npmjs.org"
         - run: yarn install --frozen-lockfile
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
         - run: yarn lint
         - run: yarn build
         - run: yarn test
