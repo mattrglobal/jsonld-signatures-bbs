@@ -16,11 +16,13 @@ import { extendContextLoader } from "jsonld-signatures";
 import bbsContext from "./contexts/lds-bbsbls2020-v0.0.json";
 import exampleDidKey from "./data/did_example_489398593_test.json";
 import exampleDidDoc from "./data/did_example_489398593.json";
+import citizenVocab from "./data/citizen_vocab.json";
 
 export const documents: any = {
   "https://w3c-ccg.github.io/lds-bbsbls2020/contexts": bbsContext,
   "did:example:489398593#test": exampleDidKey,
-  "did:example:489398593": exampleDidDoc
+  "did:example:489398593": exampleDidDoc,
+  "https://w3id.org/citizenship/v1": citizenVocab
 };
 
 const customDocLoader = (url: string): any => {
