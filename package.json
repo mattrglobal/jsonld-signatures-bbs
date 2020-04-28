@@ -29,6 +29,8 @@
     "version:release": "yarn version --minor --message \"chore(release): publish [skip ci]\""
   },
   "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
     "@types/bs58": "4.0.1",
     "@types/jest": "25.2.1",
     "@types/node": "12.7.2",
@@ -40,8 +42,10 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.3",
+    "husky": "4.2.5",
     "jest": "25.4.0",
     "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
     "ts-jest": "25.4.0",
     "ts-node": "8.4.1",
     "typescript": "3.7.5"
@@ -52,5 +56,21 @@
     "bs58": "4.0.1",
     "jsonld": "3.1.0",
     "jsonld-signatures": "5.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "[[ -n $HUSKY_BYPASS ]] || commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "[[ -n $HUSKY_BYPASS ]] || pretty-quick --staged"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
