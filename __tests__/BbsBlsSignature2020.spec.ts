@@ -29,6 +29,7 @@ const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
 describe("BbsBlsSignature2020", () => {
   it("should sign with jsigs", async () => {
+    jest.setTimeout(30000);
     const signed = await jsigs.sign(testDocument, {
       suite: new BbsBlsSignature2020({ key }),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
@@ -36,7 +37,6 @@ describe("BbsBlsSignature2020", () => {
       compactProof: false,
       expansionMap: undefined
     });
-    console.log(JSON.stringify(signed, null, 2));
     expect(signed).toBeDefined();
   });
 
@@ -60,7 +60,6 @@ describe("BbsBlsSignature2020", () => {
       expansionMap: undefined
     });
     expect(verificationResult).toBeDefined();
-    console.log(verificationResult);
     expect(verificationResult.verified).toBeTruthy();
   });
 
