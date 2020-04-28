@@ -5,7 +5,7 @@
 ![push-master](https://github.com/mattrglobal/jsonld-signatures-bbs/workflows/push-master/badge.svg)
 ![push-release](https://github.com/mattrglobal/jsonld-signatures-bbs/workflows/push-release/badge.svg)
 
-The following repository contains an [linked data proof](https://w3c-ccg.github.io/ld-proofs/) implementation for creating [BBS+ Signatures](https://eprint.iacr.org/2009/095.pdf)
+The following repository contains a [linked data proof](https://w3c-ccg.github.io/ld-proofs/) implementation for creating [BBS+ Signatures](https://eprint.iacr.org/2009/095.pdf)
 using [BLS12-381](https://tools.ietf.org/id/draft-yonezawa-pairing-friendly-curves-00.html#rfc.section.2.4) key pairs.
 
 Due to the properties of a [BBS+ Signatures](https://eprint.iacr.org/2009/095.pdf), [zero knowledge proof](https://en.wikipedia.org/wiki/Zero-knowledge_proof) can be derived from the signature, where-by the party generating the proof can elect to selectively disclose statements from the originally signed payload.
