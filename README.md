@@ -4,6 +4,7 @@
 
 ![push-master](https://github.com/mattrglobal/jsonld-signatures-bbs/workflows/push-master/badge.svg)
 ![push-release](https://github.com/mattrglobal/jsonld-signatures-bbs/workflows/push-release/badge.svg)
+![codecov](https://codecov.io/gh/mattrglobal/jsonld-signatures-bbs/branch/master/graph/badge.svg)
 
 The following repository contains a [linked data proof](https://w3c-ccg.github.io/ld-proofs/) implementation for creating [BBS+ Signatures](https://eprint.iacr.org/2009/095.pdf)
 using [BLS12-381](https://tools.ietf.org/id/draft-yonezawa-pairing-friendly-curves-00.html#rfc.section.2.4) key pairs.
@@ -37,10 +38,7 @@ The following is an example of a signed JSON-LD document featuring a `BBSSignatu
     "https://w3id.org/citizenship/v1"
   ],
   "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
-  "type": [
-    "VerifiableCredential",
-    "PermanentResidentCard"
-  ],
+  "type": ["VerifiableCredential", "PermanentResidentCard"],
   "issuer": "did:example:489398593",
   "identifier": "83627465",
   "name": "Permanent Resident Card",
@@ -49,10 +47,7 @@ The following is an example of a signed JSON-LD document featuring a `BBSSignatu
   "expirationDate": "2029-12-03T12:19:52Z",
   "credentialSubject": {
     "id": "did:example:b34ca6cd37bbf23",
-    "type": [
-      "PermanentResident",
-      "Person"
-    ],
+    "type": ["PermanentResident", "Person"],
     "givenName": "JOHN",
     "familyName": "SMITH",
     "gender": "Male",
@@ -78,20 +73,19 @@ Whereby a zero knowledge proof disclosing only `givenName`, `familyName` and `ge
 which is a [JSON-LD frame](https://www.w3.org/TR/json-ld11-framing/).
 
 ```json
-  
 {
-    "@context": [
-      "https://www.w3.org/2018/credentials/v1",
-      "https://w3id.org/citizenship/v1"
-    ],
-    "type": ["VerifiableCredential", "PermanentResidentCard"],
-    "credentialSubject": {
-      "type": ["PermanentResident", "Person"],
-      "@explicit": true,
-      "givenName": {},
-      "familyName": {},
-      "gender": {}
-    }
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/citizenship/v1"
+  ],
+  "type": ["VerifiableCredential", "PermanentResidentCard"],
+  "credentialSubject": {
+    "type": ["PermanentResident", "Person"],
+    "@explicit": true,
+    "givenName": {},
+    "familyName": {},
+    "gender": {}
+  }
 }
 ```
 
@@ -104,19 +98,13 @@ That gives rise to the output zero knowledge proof
     "https://w3id.org/citizenship/v1"
   ],
   "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
-  "type": [
-    "PermanentResidentCard",
-    "VerifiableCredential"
-  ],
+  "type": ["PermanentResidentCard", "VerifiableCredential"],
   "description": "Government of Example Permanent Resident Card.",
   "identifier": "83627465",
   "name": "Permanent Resident Card",
   "credentialSubject": {
     "id": "did:example:b34ca6cd37bbf23",
-    "type": [
-      "Person",
-      "PermanentResident"
-    ],
+    "type": ["Person", "PermanentResident"],
     "familyName": "SMITH",
     "gender": "Male",
     "givenName": "JOHN"
@@ -130,7 +118,25 @@ That gives rise to the output zero knowledge proof
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
     "proof": "GO/i24loDTTgUtMCGM/jivlD260k93d9ek2FxB/L2NQmZANjKd13r+8yDIrRqD5hB1HjIc1gY3Y/lwexZNUa+BAlaXBQZa8iXhYr6M9lMauZxlYuaJkyGlUiu/QwcHwDD9hpB2LK8kUvQHdYZmkBwL3Whyqptl2hkgNIdCnpqoBH+L9DmIZH9iGwrzYJ6rx/AAAAdIu4GCCrIhQ1Vb/BOlHYaer1eTC+Sukw3ypVmNNoP5pa4nDD+/UQin2HjmS8YtZNqwAAAAIMTkAU/oDTR4EcEsFcUbiM9ThFKytMZ/uGC28463I/9Bb1JAL3F23JgUHe5eJzScg7Nu2hDHpkskO4/NaExd0cA/Sle9qeoObCi6trWtR8+ZuAI5tpkiOojsKBGoU55Diy8rMyOA+ruP2+F6tptRavAAAACUiVcbDWpO7LE8hMFmAfrO+DrWd7S0T2opAk6QheOTdnUfZIO5gpCDEvXGnZ2pmnGYqcLnAjth/gwhAEfTSTrntnAJQomBJStgVS73wZgVTgchhOFO2Qbg0nFGHyhzkZJD0NSjihxQDOx45pYSaIqiF0uM4iGLh79G5xU2Av+PBqbG4ASU1kzXa8N2cE6F7osl5LYKvm+yeGl2gDktCRwrcansuuZ4RQpPFE2ZCNYlsPKrjBQ+QTgWjpHQmhtfLpVFJcFpIy4x2GUD3tkZFGKYpEm2Sc00bNzfYozLdKj4erTr17SjoHwYyHwiofPmb2PRcrknpYVJaxyrVYM9sn9gwEoI4dLJRbT66k4lgEXRJJ3Kb430WHyWuWABmJ2dd0iQ==",
-    "revealStatements": [ 0, 1, 2, 4, 5, 6, 8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23 ],
+    "revealStatements": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      8,
+      9,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
     "totalStatements": 24,
     "nonce": "M/e44JTNSsfhnykE0yoD8eaYIdJARbpDIWFhu+TWwc70J5iwPHa8Q6bYQd1YjjxpV4c="
   }
