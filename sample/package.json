@@ -1,0 +1,23 @@
+{
+  "name": "jsonld-signatures-bbs-sample",
+  "version": "1.0.0",
+  "description": "A sample for using jsonld-signatures-bbs",
+  "main": "lib/index.js",
+  "repository": "https://github.com/mattrglobal/jsonld-signatures-bbs",
+  "author": "Mattr Limited",
+  "license": "Apache 2.0",
+  "private": false,
+  "scripts": {
+    "demo": "ts-node --files src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "12.7.2",
+    "ts-node": "8.4.1",
+    "typescript": "3.7.5"
+  },
+  "dependencies": {
+    "@mattrglobal/jsonld-signatures-bbs": "0.3.0",
+    "jsonld": "3.1.0",
+    "jsonld-signatures": "5.0.1"
+  }
+}
