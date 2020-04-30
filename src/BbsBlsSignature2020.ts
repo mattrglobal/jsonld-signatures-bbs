@@ -318,7 +318,11 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
         "@embed": "@always",
         id: verificationMethod
       },
-      { documentLoader, compactToRelative: false }
+      {
+        documentLoader,
+        compactToRelative: false,
+        expandContext: SECURITY_CONTEXT_URL
+      }
     );
     if (!result) {
       throw new Error(`Verification method ${verificationMethod} not found.`);
