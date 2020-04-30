@@ -27,6 +27,10 @@ Or with [Yarn](https://yarnpkg.com/)
 yarn add @mattrglobal/jsonld-signatures-bbs
 ```
 
+## Sample
+
+See the [sample](./sample) directory for a runnable demo.
+
 ## Examples
 
 The following is an example of a signed JSON-LD document featuring a `BBSSignature2020` type signature.

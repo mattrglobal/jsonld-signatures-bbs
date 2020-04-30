@@ -1,0 +1,10 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "id": "@id",
+    "type": "@type",
+    "ldssk": "https://w3c-ccg.github.io/lds-bbsbls2020/contexts/#",
+    "BbsBlsSignature2020": "ldssk:BbsBlsSignature2020",
+    "Bls12381VerificationKey2020": "ldssk:Bls12381VerificationKey2020"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "sourceMap": true,
+    "allowJs": false,
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "outDir": "./lib",
+    "typeRoots": ["./src/types"]
+  },
+  "include": ["./src", "index.d.ts"]
+}
