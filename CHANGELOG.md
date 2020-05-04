@@ -1,3 +1,10 @@
+# 0.4.0 (2020-05-04)
+
+### Features
+
+- add simple sample ([#41](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/41)) ([8bb49ce](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/8bb49ce2e76bf9be432c8b538bd04b440ec65add))
+- update node-bbs-signatures version ([#44](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/44)) ([1a85b83](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/1a85b8326a6fca08184665672a44816cc4ff7bff))
+
 # 0.3.0 (2020-04-30)
 
 ### Bug Fixes
