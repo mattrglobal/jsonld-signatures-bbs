@@ -27,24 +27,7 @@ import testRevealVcDocument from "./data/test_vc_reveal_document.json";
 import testPartialVcProof from "./data/test_partial_proof_vc_document.json";
 import testRevealAllDocument from "./data/test_reveal_all_document.json";
 
-const exampleSingleMessage = "someData";
-const exampleSingleMessageSignature =
-  "BB941wFBFAR0VBaD/Skk3gx5PbxMc4y1IYN0KiAnLH542Orc1gTuxNnAbh0VU3umboXUv/PZgN95UiYg9SJsp8u+IpnCiPKsKnuK3mpSsBMABoc6TBEwQutvUwdHtaSBPFg7VpF8tBdpk1c9AEiXMw==";
-
-const exampleMultiMessage = ["test", "value"];
-const exampleMultiMessageSignature =
-  "CWcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
-
-const badSignature =
-  "AdcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
-const badSignatureBadLength =
-  "aaaaAdcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
-
 export {
-  exampleSingleMessage,
-  exampleSingleMessageSignature,
-  exampleMultiMessage,
-  exampleMultiMessageSignature,
   exampleBls12381KeyPair,
   testDocument,
   testRevealDocument,
@@ -58,7 +41,5 @@ export {
   testPartialProofDocument,
   testBadPartialProofDocument,
   testBadSignedDocument,
-  badSignature,
-  badSignatureBadLength,
   customLoader
 };
