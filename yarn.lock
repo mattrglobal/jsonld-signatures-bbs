@@ -594,6 +594,14 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
+"@mattrglobal/bls12381-key-pair@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.1.0.tgz#562160e3138bc12110f20fb5d2a312a71032f0ef"
+  integrity sha512-NN44V4U0JhGOcZ/gOW4HpWSi4VZMOGSTW6MXVkgktijavN/CRyg2lGGJIZdNGxf5HMbVoo6LaNNKFqxXluusqA==
+  dependencies:
+    "@mattrglobal/node-bbs-signatures" "0.7.0"
+    bs58 "4.0.1"
+
 "@mattrglobal/node-bbs-signatures@0.7.0":
   version "0.7.0"
   resolved "https://registry.npmjs.org/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.7.0.tgz#1fd94bdfbd1f5be6bd8a79d4d79fc9cd0180772a"
