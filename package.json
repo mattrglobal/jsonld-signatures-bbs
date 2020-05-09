@@ -52,7 +52,7 @@
     "typescript": "3.7.5"
   },
   "dependencies": {
-    "@mattrglobal/bls12381-key-pair": "0.1.0",
+    "@mattrglobal/bls12381-key-pair": "0.2.0",
     "@mattrglobal/node-bbs-signatures": "0.7.0",
     "@stablelib/random": "1.0.0",
     "bs58": "4.0.1",

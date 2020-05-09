@@ -24,6 +24,7 @@ import {
   SuiteSignOptions
 } from "./types";
 import { w3cDate } from "./w3cDate";
+import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
 
 /**
  * A BBS+ signature suite for use with BLS12-381 key pairs
@@ -33,7 +34,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    * Default constructor
    * @param options {SignatureSuiteOptions} options for constructing the signature suite
    */
-  constructor(options: SignatureSuiteOptions) {
+  constructor(options: SignatureSuiteOptions = {}) {
     const {
       verificationMethod,
       signer,
@@ -50,6 +51,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     }
     super({ type: "BbsBlsSignature2020" });
 
+    this.LDKeyClass = Bls12381G2KeyPair;
     this.signer = signer;
     this.verificationMethod = verificationMethod;
     this.proofSignatureKey = "signature";
