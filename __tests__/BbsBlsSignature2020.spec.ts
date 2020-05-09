@@ -53,7 +53,7 @@ describe("BbsBlsSignature2020", () => {
 
   it("should verify with jsigs", async () => {
     const verificationResult = await jsigs.verify(testSignedDocument, {
-      suite: new BbsBlsSignature2020({ key }),
+      suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
       documentLoader: customLoader,
       compactProof: false,
@@ -65,7 +65,7 @@ describe("BbsBlsSignature2020", () => {
 
   it("should verify verifiable credential with jsigs", async () => {
     const verificationResult = await jsigs.verify(testSignedVcDocument, {
-      suite: new BbsBlsSignature2020({ key }),
+      suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
       documentLoader: customLoader,
       compactProof: false,
@@ -77,7 +77,7 @@ describe("BbsBlsSignature2020", () => {
 
   it("should not verify bad sig with jsigs", async () => {
     const verificationResult = await jsigs.verify(testBadSignedDocument, {
-      suite: new BbsBlsSignature2020({ key }),
+      suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
       documentLoader: customLoader,
       compactProof: false,

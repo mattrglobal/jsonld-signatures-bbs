@@ -27,10 +27,12 @@ import {
 import { BbsBlsSignature2020 } from "./BbsBlsSignature2020";
 import { randomBytes } from "@stablelib/random";
 import { VerifyProofResult } from "./types/VerifyProofResult";
+import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
 
 export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
-  constructor({ useNativeCanonize, key }: any) {
+  constructor({ useNativeCanonize, key }: any = {}) {
     super({ type: "BbsBlsSignatureProof2020" });
+    this.LDKeyClass = Bls12381G2KeyPair;
     this.proofSignatureKey = "signature";
     this.key = key;
     this.useNativeCanonize = useNativeCanonize;
@@ -62,10 +64,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     }
 
     //Extract the BBS signature from the input proof
-    const signature = new Buffer(proof.signature, "base64");
+    const signature = Buffer.from(proof.signature, "base64");
 
     //Initialize the BBS signature suite
-    const suite = new BbsBlsSignature2020({ key: this.key });
+    const suite = new BbsBlsSignature2020();
 
     // Get the input document statements
     const documentStatements = await suite.createVerifyDocumentData(document, {
@@ -153,9 +155,19 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     //were originally signed to generate the proof
     const allInputStatements = proofStatements.concat(documentStatements);
 
+    // Fetch the verification method
+    const verificationMethod = await this.getVerificationMethod({
+      proof,
+      document,
+      documentLoader,
+      expansionMap
+    });
+
+    const key = await this.LDKeyClass.from(verificationMethod);
+
     const outputProof = blsCreateProof({
       signature: new Uint8Array(signature),
-      publicKey: new Uint8Array(this.key.publicKeyBuffer),
+      publicKey: new Uint8Array(key.publicKeyBuffer),
       messages: allInputStatements,
       nonce: nonce,
       revealed: revealIndicies
@@ -229,10 +241,12 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         expansionMap
       });
 
+      const key = await this.LDKeyClass.from(verificationMethod);
+
       // Verify the proof
       const verified = blsVerifyProof({
-        proof: new Uint8Array(new Buffer(proof.proof, "base64")),
-        publicKey: new Uint8Array(this.key.publicKeyBuffer),
+        proof: new Uint8Array(Buffer.from(proof.proof, "base64")),
+        publicKey: new Uint8Array(key.publicKeyBuffer),
         messageCount: proof.totalStatements,
         messages: statementsToVerify,
         nonce: proof.nonce,

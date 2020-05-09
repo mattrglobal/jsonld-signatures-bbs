@@ -12,7 +12,6 @@
  */
 
 import {
-  exampleBls12381KeyPair,
   testRevealDocument,
   testSignedDocument,
   customLoader,
@@ -20,19 +19,13 @@ import {
   testRevealVcDocument
 } from "./__fixtures__";
 
-import {
-  Bls12381G2KeyPair,
-  BbsBlsSignatureProof2020,
-  deriveProof
-} from "../src/index";
-
-const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+import { BbsBlsSignatureProof2020, deriveProof } from "../src/index";
 
 describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof", async () => {
     jest.setTimeout(30000);
     const result = await deriveProof(testSignedDocument, testRevealDocument, {
-      suite: new BbsBlsSignatureProof2020({ useNativeCanonize: false, key }),
+      suite: new BbsBlsSignatureProof2020(),
       documentLoader: customLoader,
       compactProof: false
     });
@@ -42,7 +35,7 @@ describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof revealing all statements", async () => {
     jest.setTimeout(30000);
     const result = await deriveProof(testSignedDocument, testRevealDocument, {
-      suite: new BbsBlsSignatureProof2020({ useNativeCanonize: false, key }),
+      suite: new BbsBlsSignatureProof2020(),
       documentLoader: customLoader,
       compactProof: false
     });
@@ -55,7 +48,7 @@ describe("BbsBlsSignatureProof2020", () => {
       testSignedVcDocument,
       testRevealVcDocument,
       {
-        suite: new BbsBlsSignatureProof2020({ useNativeCanonize: false, key }),
+        suite: new BbsBlsSignatureProof2020(),
         documentLoader: customLoader,
         compactProof: false
       }

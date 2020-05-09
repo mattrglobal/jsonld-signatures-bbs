@@ -100,10 +100,7 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should verify derived proof", async () => {
-    const suite = new BbsBlsSignatureProof2020({
-      useNativeCanonize: false,
-      key
-    });
+    const suite = new BbsBlsSignatureProof2020();
     let document = { ...testProofDocument };
     let proof = {
       "@context": jsigs.SECURITY_CONTEXT_URL,
@@ -120,10 +117,7 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should verify partial derived proof", async () => {
-    const suite = new BbsBlsSignatureProof2020({
-      useNativeCanonize: false,
-      key
-    });
+    const suite = new BbsBlsSignatureProof2020();
     let document = { ...testPartialProofDocument };
     let proof = {
       "@context": jsigs.SECURITY_CONTEXT_URL,
@@ -140,10 +134,7 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should verify partial derived proof from vc", async () => {
-    const suite = new BbsBlsSignatureProof2020({
-      useNativeCanonize: false,
-      key
-    });
+    const suite = new BbsBlsSignatureProof2020();
     let document = { ...testPartialVcProof };
     let proof = {
       "@context": jsigs.SECURITY_CONTEXT_URL,
@@ -160,10 +151,7 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should not verify partial derived proof with bad proof", async () => {
-    const suite = new BbsBlsSignatureProof2020({
-      useNativeCanonize: false,
-      key
-    });
+    const suite = new BbsBlsSignatureProof2020();
     let document = { ...testBadPartialProofDocument };
     let proof = {
       "@context": jsigs.SECURITY_CONTEXT_URL,
