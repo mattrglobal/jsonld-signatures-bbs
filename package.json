@@ -1,6 +1,6 @@
 {
   "name": "@mattrglobal/jsonld-signatures-bbs",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A JSON-LD linked data proof suite for creating and verifying BBS+ signatures and proofs",
   "homepage": "https://github.com/mattrglobal/jsonld-signatures-bbs",
   "main": "lib/index.js",

@@ -1,3 +1,9 @@
+# 0.5.0 (2020-05-09)
+
+### Features
+
+- use from key pair method ([#47](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/47)) ([2998710](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/29987106344191819bac3073d913e39927183813))
+
 # 0.4.0 (2020-05-04)
 
 ### Features
