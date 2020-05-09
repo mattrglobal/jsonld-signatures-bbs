@@ -2,21 +2,30 @@
 # yarn lockfile v1
 
 
-"@mattrglobal/jsonld-signatures-bbs@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/@mattrglobal/jsonld-signatures-bbs/-/jsonld-signatures-bbs-0.3.0.tgz#ceff1c9d82644250bac8e47524b80e6697050578"
-  integrity sha512-QS+ff2uZZNAZiO5dTL4c6gweuzaxWfFrq+XRWPv99rjTk5y//Sxl7XzYgIdV95T86Yj0izXBUf/UAAIJpTf2zA==
+"@mattrglobal/bls12381-key-pair@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.2.0.tgz#b94b0659c1be6a1ee490ce9e21d153f6bc627eff"
+  integrity sha512-gUV/egf+xlugQdWVTl9Rcdu8EnM8CjbTQ9NuauFnJBVW1Vb2GUnNorz+ga0KnhrsjXEQpOfcQNaP+YX0xWdJog==
   dependencies:
-    "@mattrglobal/node-bbs-signatures" "0.5.0"
+    "@mattrglobal/node-bbs-signatures" "0.7.0"
+    bs58 "4.0.1"
+
+"@mattrglobal/jsonld-signatures-bbs@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/@mattrglobal/jsonld-signatures-bbs/-/jsonld-signatures-bbs-0.5.0.tgz#daadc5651da2504e05aa4fd15912b2122daac568"
+  integrity sha512-k5hBEofo8b20l9VgNC8sTMJNmWeJjsLvkNRjG96jBtNC+vajc/e7e2iW/j0H+SCQXd+CLcDHiz6zJcLiEiF96g==
+  dependencies:
+    "@mattrglobal/bls12381-key-pair" "0.2.0"
+    "@mattrglobal/node-bbs-signatures" "0.7.0"
     "@stablelib/random" "1.0.0"
     bs58 "4.0.1"
     jsonld "3.1.0"
     jsonld-signatures "5.0.1"
 
-"@mattrglobal/node-bbs-signatures@0.5.0":
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.5.0.tgz#108ea921a2bf83f9d200fcce8a9e81a527b290ad"
-  integrity sha512-u37BZmd+cWl3SJf6UhpN1DShD9UsOL5GdGoe2vdoGfJfV4Csa0q0s55oHwwT95RoACCUN5AAmzeapQjZAx0T7A==
+"@mattrglobal/node-bbs-signatures@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.npmjs.org/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.7.0.tgz#1fd94bdfbd1f5be6bd8a79d4d79fc9cd0180772a"
+  integrity sha512-Ng94JpgWuYS7r35GcwXJmz15IxnIfhHFg5fVBelXdct86koDD2qm17EssytiBTL2qM65W0J7+BH8xOrSTvT7Eg==
   dependencies:
     neon-cli "0.4.0"
     node-pre-gyp "0.14.0"

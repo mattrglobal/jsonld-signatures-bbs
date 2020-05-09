@@ -74,7 +74,7 @@ const main = async (): Promise<void> => {
 
   //Verify the proof
   let verified = await verify(signedDocument, {
-    suite: new BbsBlsSignature2020({ key: keyPair }),
+    suite: new BbsBlsSignature2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader,
     compactProof: false
@@ -85,7 +85,7 @@ const main = async (): Promise<void> => {
 
   //Derive a proof
   const derivedProof = await deriveProof(signedDocument, revealDocument, {
-    suite: new BbsBlsSignatureProof2020({ key: keyPair }),
+    suite: new BbsBlsSignatureProof2020(),
     documentLoader
   });
 
@@ -93,7 +93,7 @@ const main = async (): Promise<void> => {
 
   //Verify the derived proof
   verified = await verify(derivedProof, {
-    suite: new BbsBlsSignatureProof2020({ key: keyPair }),
+    suite: new BbsBlsSignatureProof2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader,
     compactProof: false
