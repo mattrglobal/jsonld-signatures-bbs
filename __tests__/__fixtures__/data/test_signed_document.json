@@ -12,9 +12,9 @@
   "email": "jane.doe@example.com",
   "proof": {
     "type": "BbsBlsSignature2020",
-    "created": "2020-04-26T20:08:51Z",
+    "created": "2020-05-25T22:49:38Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "signature": "EG7sdQZARDzcBkV3g2GrrfaVPXko1ReeGz3UOT/mRuCl6wGDAdVL7qRHGJDPwsu8EugqFpWG1nUOkltf1dYv/s409By031XUhwhLdeWBZmtDpMEFAkGEixTgp21aG0/kGagv5BjmDKg17MjQXfavuQ=="
+    "signature": "jHQ22/z+kDiXSKMjuRtn/owTxNjpbauXyHVU2/1xZeGeCOr0qTNzf/z36u4JxZlhKIkgj/1UoOp9XiEQdO25JsGtNnmjKX/m69gPhbJM4O5NXiTGsctdnhrBLHqH4MG29zq9yshvabeSm7EtgSJjpQ=="
   }
 }
