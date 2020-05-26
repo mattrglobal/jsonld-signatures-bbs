@@ -2,30 +2,30 @@
 # yarn lockfile v1
 
 
-"@mattrglobal/bls12381-key-pair@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.2.0.tgz#b94b0659c1be6a1ee490ce9e21d153f6bc627eff"
-  integrity sha512-gUV/egf+xlugQdWVTl9Rcdu8EnM8CjbTQ9NuauFnJBVW1Vb2GUnNorz+ga0KnhrsjXEQpOfcQNaP+YX0xWdJog==
+"@mattrglobal/bls12381-key-pair@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.3.0.tgz#e2237fa056e4840bc6ea770062255a040c4102a8"
+  integrity sha512-cyQtprHjazqtToWHUVBieOFrMS6xHYUVKVZyARy+EMCjh89daZFId6j5jPDM0ep//Fp/Nr6sU+/xlCpasXm2QQ==
   dependencies:
-    "@mattrglobal/node-bbs-signatures" "0.7.0"
+    "@mattrglobal/node-bbs-signatures" "0.8.0"
     bs58 "4.0.1"
 
-"@mattrglobal/jsonld-signatures-bbs@0.5.0":
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/@mattrglobal/jsonld-signatures-bbs/-/jsonld-signatures-bbs-0.5.0.tgz#daadc5651da2504e05aa4fd15912b2122daac568"
-  integrity sha512-k5hBEofo8b20l9VgNC8sTMJNmWeJjsLvkNRjG96jBtNC+vajc/e7e2iW/j0H+SCQXd+CLcDHiz6zJcLiEiF96g==
+"@mattrglobal/jsonld-signatures-bbs@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/@mattrglobal/jsonld-signatures-bbs/-/jsonld-signatures-bbs-0.6.0.tgz#8c05d5009f5d7525176f75f8306d03be4f5c571d"
+  integrity sha512-gwMICeEnrXxiwsuBs8q6LeuBjTnzubjBbksMsuuDEX2RY32Tcmu7gRN4eDPZuyAeaE63C4PnXW1UglW6e2Q2/Q==
   dependencies:
-    "@mattrglobal/bls12381-key-pair" "0.2.0"
-    "@mattrglobal/node-bbs-signatures" "0.7.0"
+    "@mattrglobal/bls12381-key-pair" "0.3.0"
+    "@mattrglobal/node-bbs-signatures" "0.8.0"
     "@stablelib/random" "1.0.0"
     bs58 "4.0.1"
     jsonld "3.1.0"
     jsonld-signatures "5.0.1"
 
-"@mattrglobal/node-bbs-signatures@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.7.0.tgz#1fd94bdfbd1f5be6bd8a79d4d79fc9cd0180772a"
-  integrity sha512-Ng94JpgWuYS7r35GcwXJmz15IxnIfhHFg5fVBelXdct86koDD2qm17EssytiBTL2qM65W0J7+BH8xOrSTvT7Eg==
+"@mattrglobal/node-bbs-signatures@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.8.0.tgz#cc09b9da4db0b298e35f9313c4dcc9c69ab1f06f"
+  integrity sha512-jIPNlexenUXiqmISyo2+LV6hfGHFJAbex9BUcj+HZxdUPdmca30jG5x06TvIC/TuF1AiSIqJ5YsqTLBWA4X3Ig==
   dependencies:
     neon-cli "0.4.0"
     node-pre-gyp "0.14.0"
