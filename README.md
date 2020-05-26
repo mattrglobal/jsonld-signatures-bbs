@@ -118,31 +118,11 @@ That gives rise to the output zero knowledge proof
   "issuer": "did:example:489398593",
   "proof": {
     "type": "BbsBlsSignatureProof2020",
-    "created": "2020-04-26T04:21:07Z",
+    "created": "2020-05-25T23:07:10Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "proof": "GO/i24loDTTgUtMCGM/jivlD260k93d9ek2FxB/L2NQmZANjKd13r+8yDIrRqD5hB1HjIc1gY3Y/lwexZNUa+BAlaXBQZa8iXhYr6M9lMauZxlYuaJkyGlUiu/QwcHwDD9hpB2LK8kUvQHdYZmkBwL3Whyqptl2hkgNIdCnpqoBH+L9DmIZH9iGwrzYJ6rx/AAAAdIu4GCCrIhQ1Vb/BOlHYaer1eTC+Sukw3ypVmNNoP5pa4nDD+/UQin2HjmS8YtZNqwAAAAIMTkAU/oDTR4EcEsFcUbiM9ThFKytMZ/uGC28463I/9Bb1JAL3F23JgUHe5eJzScg7Nu2hDHpkskO4/NaExd0cA/Sle9qeoObCi6trWtR8+ZuAI5tpkiOojsKBGoU55Diy8rMyOA+ruP2+F6tptRavAAAACUiVcbDWpO7LE8hMFmAfrO+DrWd7S0T2opAk6QheOTdnUfZIO5gpCDEvXGnZ2pmnGYqcLnAjth/gwhAEfTSTrntnAJQomBJStgVS73wZgVTgchhOFO2Qbg0nFGHyhzkZJD0NSjihxQDOx45pYSaIqiF0uM4iGLh79G5xU2Av+PBqbG4ASU1kzXa8N2cE6F7osl5LYKvm+yeGl2gDktCRwrcansuuZ4RQpPFE2ZCNYlsPKrjBQ+QTgWjpHQmhtfLpVFJcFpIy4x2GUD3tkZFGKYpEm2Sc00bNzfYozLdKj4erTr17SjoHwYyHwiofPmb2PRcrknpYVJaxyrVYM9sn9gwEoI4dLJRbT66k4lgEXRJJ3Kb430WHyWuWABmJ2dd0iQ==",
-    "revealStatements": [
-      0,
-      1,
-      2,
-      4,
-      5,
-      6,
-      8,
-      9,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23
-    ],
-    "totalStatements": 24,
-    "nonce": "M/e44JTNSsfhnykE0yoD8eaYIdJARbpDIWFhu+TWwc70J5iwPHa8Q6bYQd1YjjxpV4c="
+    "proofValue": "ABgA/4N3qygQRJlX3gmQOlJRGbO1KTXKQUmaN02xl+FiNZUDmGfa5OoKtg0RJ4wxxA08t3Vut61G/pq4yN0bygaFk5EJF6j7zFXmz9Vc7EdlDAvUkXqPaKA8inSBNv97HiZ1o5hIpoRnepW89p4JXPVrFi8XbDARSZpCg18GUuUMaPQLHKU82M/9l8tqqG1lKBOs+sRAAAAAdKRrRPj6zAz5LPZgDZJ0J2rNJjQI+JNYbV4AYEVwW37sxQ99aGGvmBk3DL0sod1V/gAAAAJMLYjmrb92zV087wO8UtFLwMj7qJuqV9VkMDghdrrc3BGtJuQgKx2GTrOb4CQxI1bf+iG0USjTktcjTlKv3X5spg3+ihOnyve0HnMWWggAW22j8b78jbl7lkYGJvzIXTzrVJ5KdYp3tXMDTAX7CLEXAAAACVY8oocA9Bz1w42F8Yv7UAPHv4pSvunXqndFOet3kWtzYHYEbO5gc42wPQtLmTtmqP6kUbQv6ruxzRmANulB8fUfy2jah/QeHKvsp907YDnSfo2wofRxa/vzsZnVriw0UmZnP0sYjbhmCkhoQZkxhqel3IkOF+H80wzvCKCl6eq5biEFMYA4bXpDX6Ap5/6WS5SSFaJRWxW+hpR/9EuQE11sGtk2W2Wn4eBrQUgVqYgPLI+U/ONaUJrh+GVJ/XXx7xxbAUf/NeQ/13AkTnYNn1fUdiOJ2oKl1lGr59udFq2tBBsyC3msTtQPYJS084355GRBur5jnzPNJ2W6Gu3ZqqQeRrVyw1gzdhVDNOE8KUm9OQ3AvCuxo8PHNrqzNvc6VA==",
+    "nonce": "37pdwue1a8FWLqgwCd0QJ0IJTFhp609KtxeCTWZGnfAVE+sOBDffYez+TY/bmVy+6z4="
   }
 }
 ```
