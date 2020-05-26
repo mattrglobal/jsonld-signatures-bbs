@@ -3,18 +3,31 @@
   "version": "0.5.0",
   "description": "A JSON-LD linked data proof suite for creating and verifying BBS+ signatures and proofs",
   "homepage": "https://github.com/mattrglobal/jsonld-signatures-bbs",
+  "author": {
+    "name": "Mattr",
+    "email": "oss@mattr.global",
+    "url": "https://mattr.global"
+  },
+  "contributors": [
+    "Tobias Looker",
+    "Mike Lodder"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattrglobal/jsonld-signatures-bbs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mattrglobal/jsonld-signatures-bbs/issues",
+    "email": "oss@mattr.global"
+  },
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "directories": {
     "lib": "lib"
   },
   "files": [
     "lib"
   ],
-  "typings": "lib/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattrglobal/jsonld-signatures-bbs.git"
-  },
   "scripts": {
     "test": "jest",
     "build": "tsc --pretty",
