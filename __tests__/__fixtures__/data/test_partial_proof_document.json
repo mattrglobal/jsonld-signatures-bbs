@@ -11,19 +11,10 @@
   "proof": {
     "type": "BbsBlsSignatureProof2020",
     "@context": "https://w3id.org/security/v2",
-    "created": "2020-04-26T20:08:51Z",
+    "created": "2020-05-25T22:49:38Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "proof": "mGOWSa5qZ39XWFBXS1fcnHB9mbvDKNJZs3d3Q2z8RT1DM7XtO2ktTuqfVhXLOVk2iyocNXxp7JeDV8tUNi90ui6MnFCgWgpMM0cHZwYfOtql0gndsJVke7EBw+6PzwSDDFYpkYbh0T2JGd+UrTcxORMcdhQ09k6m+bXb2h24ACgV1yuIRL8uUVM0A+hb/QWoAAAAdAuGlyNqkT2B5RyDIcXOL835ZG+W3HoUWldoAhi26Mgd/VvOq5HlkuuIMLZRo1kTCgAAAAJyfcn2qGpVdjljTer8kN3tT15DcZ4AKTSlWun6b5KGtg9Io0kc6sYVx/RB32etO/bToLDVIXqzePrnkwgrdvpAB9BcMwjV+JpQPi2r+VKLwH7RgXhjQjg6KfpmO5A9+RqkGH9ZXl3jvJC4Qsxua6YgAAAABUwh/obLvihL9T9oDfN7che5BZQGyngOV981Kw+jOB4KKgBi+KZt7zcjp2pr0mpKbiQuYsnePgEgQpztc3td4X0xOIGdVvOA4LdxE7bLolYTGuUiGocZlOiYmZLLCunmW0pVlwjDKB+Eqjcme3fiT63Ir9ajq/4kpd/bUqhDpcRjLc+fGixdRD06PKJPKrkzuN+Uqk4UyYnHz2WhuJB5wuE=",
-    "revealStatements": [
-      0,
-      1,
-      2,
-      4,
-      6,
-      8
-    ],
-    "totalStatements": 9,
-    "nonce": "eRh54xj/gYmf3zm8S3/iH2UR5G0Q8VXXMgPmcbE76//O8MkolI4BE3yWOLCC95OSsFA="
+    "proof": "AAkBV44EXaM9fq2thk930UkcADLgL7Z9cg7BPFb3EPgg09b/fGnh64mFohGYGQo99EsJ4bb3yZo9aBdrBmwrEijn5fzjkOp12NOOcepk66miCw+I7cfyTgL7njpd5y8x3DFz6Jk1uYaRBlHwOhvE4AH1C1UhyOW0aL5oZrm2WXbFLsng642+2T0x3t8s1WgOFRBavQAAAHSZkhqIc3q3a7NVAcyKQtH8rIVb1Mq3x6dI63LR8ynXPrVktxVRCnrWr5SUd/dXoYYAAAACCklntNAUfV+Ep84p3p8bREAlSrSGWmr+hLAYdsWEcUAikCkx0APLU265f2D4xwOjZZ4d7FE/sXLNNcAdaGFvM6hlXloVbQ6sNP/BHegl3CzAevlC7CMpmhithSmfWPwMhC8Ky+NVyc3F+HrCZV71ZAAAAAUSgikwleUuQQn7KVkCRG5KEkYWcj/HX+8WnerGw18RXw4NERJd2a2lrx9Rn3Sl8/eqU3i804GvYzfsMNo2G5P8CCoOAAoZztRJ7Ttt5M7PiMMBFZy+TQz4hfWr9ODBnBNqVHRG9CJgs9Y4ivQ5ZVm0+fVtx8RjPkCyhlEGTPNGiANYqCAJgRethcMonP/sHXLfDqp3TvgGazhkZGCXRkQU",
+    "nonce": "LSlkfDNxSbJqDw885WoNl2hMTriDh9Z8/GV870Mzi4lYlD4KsgMjs4jis70F2UgVr94="
   }
 }

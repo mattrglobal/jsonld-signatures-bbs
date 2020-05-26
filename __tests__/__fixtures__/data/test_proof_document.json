@@ -14,22 +14,10 @@
   "proof": {
     "type": "BbsBlsSignatureProof2020",
     "@context": "https://w3id.org/security/v2",
-    "created": "2020-04-26T20:08:51Z",
+    "created": "2020-05-25T22:49:38Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "proof": "gcd97mStzaEp51tLTXVpupjqcjCMVCXtTwnkwhGeh8FGMzxzboDlsI2zdNZZQojzFaBQ1qHPe/ih/6ELm3u3ZolJynzYhjfzFREQ82A1r/aX3BEBWCNLz1hiMZguovm2Ab8fUjaw2CsHdKok81Je1iiHPIk5fMRjib2yTNw4/Ng5uzkV+fXGBNYclAc6zbdjAAAAdItCkGndPJ1ufAeSE6ZNpNjGql75j+8M2M9J5N8sCwMQDEIRjYqNaImCGz/JZ3S22gAAAAIvBo5dfaD4gya4Q0uzC5HOfYzeZhG4csQ2S1FJMS2VFiTer59ExZlu1gUgdt7frg97NMA3RbcWvZ7i+FfUnqWSkW8bjjuP2T/kxxVjeYai03sd5DIEueloAkcGhw6/Sqts1UiKCHJTDmIuUfNbsmo8AAAAAh2YvYKiOZm28t1iWD4wKNmjk+tzy/vz5eeHp63AbDCKS3aaRrCF3CwmjKuA3SRcED+xIwVtRo5/1zqee567P0A=",
-    "revealStatements": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8
-    ],
-    "totalStatements": 9,
-    "nonce": "iDp+YmVKkU9ORUoHBLEmYYdNMROyoflLuozn2KlgoZ0xM9yDbddya1Vv8hGNHIRMv20="
+    "proof": "AAkB/4oxhQKow7T1W9iX8RYSV4W6+WexKBW56ecfgKSN9z3/L85pqdMQLFa7lxHonEiiIrMkODOdE7aeXaegz35i5K7wLd9QzuUxsTTcKQ+AYSzpvi6xacUsggAl1Go6fMI8ZK8rOnukhiiKWUaBcI33MyzC9VnqP5qQ0fZ2ymtX3BNi6QbfKdICCtAip2XteWrUXQAAAHSg+KVIw+RLyMKbEVq3EHSxCPQZ8FgWyLceDU3pnoj+vXsUKfyGBCKV1ug6/AMfu78AAAACSVGd9MwVlKS/UeeoajgD23ituIX1k3HPpnUFn7ncwEorL2ksncOUsnhDKmCEWQ902LqMKCUt2hcyjTF81inGo6DK8CSymX+e3AV/Jdj0lAHiFhHGQJN0qsp79kGuMgJnpCNxU5mEK4/k973NEG5N4gAAAAJP8MkQiTvubiyk0hHBhNdyD8HxphMGCNMuLdCFraFLtzzlk/0jJmB3K6UxJkc9Ul08IaPusXjJSwwZdji/HMru",
+    "nonce": "fmHRymGNI12VMo6T8PX1bIVCKmHf9AdVagUzXdPMvFs4W+kvjqqZ520nQMXvfYa/v28="
   }
 }

@@ -184,8 +184,6 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         type: this.type,
         ...inputProof,
         proof: Buffer.from(outputProof).toString("base64"),
-        revealStatements: revealIndicies,
-        totalStatements: allInputStatements.length,
         nonce
       }
     };
@@ -247,10 +245,8 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       const verified = blsVerifyProof({
         proof: new Uint8Array(Buffer.from(proof.proof, "base64")),
         publicKey: new Uint8Array(key.publicKeyBuffer),
-        messageCount: proof.totalStatements,
         messages: statementsToVerify,
-        nonce: proof.nonce,
-        revealed: proof.revealStatements
+        nonce: proof.nonce
       });
 
       // Ensure proof was performed for a valid purpose
