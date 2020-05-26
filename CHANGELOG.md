@@ -1,17 +1,17 @@
-# 0.5.0 (2020-05-09)
+# [0.5.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.4.0...v0.5.0) (2020-05-09)
 
 ### Features
 
 - use from key pair method ([#47](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/47)) ([2998710](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/29987106344191819bac3073d913e39927183813))
 
-# 0.4.0 (2020-05-04)
+# [0.4.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.3.0...v0.4.0) (2020-05-04)
 
 ### Features
 
 - add simple sample ([#41](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/41)) ([8bb49ce](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/8bb49ce2e76bf9be432c8b538bd04b440ec65add))
 - update node-bbs-signatures version ([#44](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/44)) ([1a85b83](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/1a85b8326a6fca08184665672a44816cc4ff7bff))
 
-# 0.3.0 (2020-04-30)
+# [0.3.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.2.0...v0.3.0) (2020-04-30)
 
 ### Bug Fixes
 
@@ -21,7 +21,7 @@
 
 - add deriveProof api ([a1024f7](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/a1024f7001236a6e3a12e4c13e90e2f444f8047f))
 
-# 0.2.0 (2020-04-28)
+# [0.2.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.1.0...v0.2.0) (2020-04-28)
 
 ### Bug Fixes
 
