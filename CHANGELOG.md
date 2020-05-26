@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.5.0...v0.6.0) (2020-05-26)
+
+### Features
+
+- update bbs dependency ([20d6f62](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/20d6f622a5270704f3e5744c2790ce6042c37491))
+- update sample ([#49](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/49)) ([73fdf98](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/73fdf98a63a00702f71a9df87dff9f9bcf6fe22a))
+
 # [0.5.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.4.0...v0.5.0) (2020-05-09)
 
 ### Features
