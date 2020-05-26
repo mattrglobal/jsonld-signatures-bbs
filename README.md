@@ -2,6 +2,8 @@
 
 # jsonld-signatures-bbs
 
+![npm-version](https://badgen.net/npm/v/@mattrglobal/jsonld-signatures-bbs)
+![npm-unstable-version](https://badgen.net/npm/v/@mattrglobal/jsonld-signatures-bbs/unstable)
 ![push-master](https://github.com/mattrglobal/jsonld-signatures-bbs/workflows/push-master/badge.svg)
 ![push-release](https://github.com/mattrglobal/jsonld-signatures-bbs/workflows/push-release/badge.svg)
 ![codecov](https://codecov.io/gh/mattrglobal/jsonld-signatures-bbs/branch/master/graph/badge.svg)
