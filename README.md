@@ -8,10 +8,10 @@
 ![push-release](https://github.com/mattrglobal/jsonld-signatures-bbs/workflows/push-release/badge.svg)
 ![codecov](https://codecov.io/gh/mattrglobal/jsonld-signatures-bbs/branch/master/graph/badge.svg)
 
-The following repository contains a [linked data proof](https://w3c-ccg.github.io/ld-proofs/) implementation for creating [BBS+ Signatures](https://eprint.iacr.org/2009/095.pdf)
+The following repository contains a [linked data proof](https://w3c-ccg.github.io/ld-proofs/) implementation for creating [BBS+ Signatures](https://github.com/mattrglobal/bbs-signatures-spec)
 using [BLS12-381](https://tools.ietf.org/id/draft-yonezawa-pairing-friendly-curves-00.html#rfc.section.2.4) key pairs.
 
-Due to the properties of a [BBS+ Signatures](https://eprint.iacr.org/2009/095.pdf), [zero knowledge proof](https://en.wikipedia.org/wiki/Zero-knowledge_proof) can be derived from the signature, where-by the party generating the proof can elect to selectively disclose statements from the originally signed payload.
+Due to the properties of a [BBS+ Signatures](https://github.com/mattrglobal/bbs-signatures-spec), [zero knowledge proof](https://en.wikipedia.org/wiki/Zero-knowledge_proof) can be derived from the signature, where-by the party generating the proof can elect to selectively disclose statements from the originally signed payload.
 
 **Note** At this time this project is limited to working in [node](nodejs.org) environments because the underlying cryptographic implementation is supplied by [node-bbs-signatures](https://github.com/mattrglobal/node-bbs-signatures), however we are targeting support for other parts of the JS/TS ecosystem in the near future.
 
@@ -35,7 +35,7 @@ See the [sample](./sample) directory for a runnable demo.
 
 ## Examples
 
-The following is an example of a signed JSON-LD document featuring a `BBSSignature2020` type signature.
+The following is an example of a signed JSON-LD document featuring a `BbsBlsSignature2020` type signature.
 
 ```json
 {
@@ -165,12 +165,3 @@ To run the test in the project run:
 ```
 yarn test
 ```
-
-## Relevant References
-
-- [BLS12-381 For The Rest Of Us](https://hackmd.io/@benjaminion/bls12-381)
-- [Pairing-based cryptography](https://en.wikipedia.org/wiki/Pairing-based_cryptography)
-- [Exploring Elliptic Curve Pairings](https://vitalik.ca/general/2017/01/14/exploring_ecp.html)
-- [BBS+ Signature Scheme](https://eprint.iacr.org/2009/095.pdf)
-- [Anonymous Attestation Using the Strong Diffie Hellman Assumption Revisited](https://www.researchgate.net/publication/306347781_Anonymous_Attestation_Using_the_Strong_Diffie_Hellman_Assumption_Revisited)
-- [Pairing Friendly Curves Draft RFC](https://tools.ietf.org/html/draft-irtf-cfrg-pairing-friendly-curves-01)
