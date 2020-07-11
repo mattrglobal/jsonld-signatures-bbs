@@ -65,6 +65,7 @@
     "typescript": "3.7.5"
   },
   "dependencies": {
+    "@mattrglobal/bbs-signatures": "^0.2.1-unstable.28ed2fa",
     "@mattrglobal/bls12381-key-pair": "0.3.0",
     "@mattrglobal/node-bbs-signatures": "0.8.0",
     "@stablelib/random": "1.0.0",

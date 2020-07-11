@@ -14,10 +14,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jsonld from "jsonld";
 import { suites, SECURITY_CONTEXT_URL } from "jsonld-signatures";
-import {
-  blsCreateProof,
-  blsVerifyProof
-} from "@mattrglobal/node-bbs-signatures";
+import * as nodeBbs from "@mattrglobal/node-bbs-signatures";
+import * as wasmBbs from "@mattrglobal/bbs-signatures";
 import {
   DeriveProofOptions,
   VerifyProofOptions,
@@ -165,13 +163,24 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     const key = await this.LDKeyClass.from(verificationMethod);
 
-    const outputProof = blsCreateProof({
-      signature: new Uint8Array(signature),
-      publicKey: new Uint8Array(key.publicKeyBuffer),
-      messages: allInputStatements,
-      nonce: nonce,
-      revealed: revealIndicies
-    });
+    let outputProof;
+    if (!WebAssembly) {
+      outputProof = wasmBbs.blsCreateProof({
+        signature: new Uint8Array(signature),
+        publicKey: new Uint8Array(key.publicKeyBuffer),
+        messages: allInputStatements,
+        nonce: nonce,
+        revealed: revealIndicies
+      });
+    } else {
+      outputProof = nodeBbs.blsCreateProof({
+        signature: new Uint8Array(signature),
+        publicKey: new Uint8Array(key.publicKeyBuffer),
+        messages: allInputStatements,
+        nonce: nonce,
+        revealed: revealIndicies
+      });
+    }
 
     const inputProof = { ...proof };
 
@@ -242,12 +251,22 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       const key = await this.LDKeyClass.from(verificationMethod);
 
       // Verify the proof
-      const verified = blsVerifyProof({
-        proof: new Uint8Array(Buffer.from(proof.proofValue, "base64")),
-        publicKey: new Uint8Array(key.publicKeyBuffer),
-        messages: statementsToVerify,
-        nonce: proof.nonce
-      });
+      let verified;
+      if (!WebAssembly) {
+        verified = wasmBbs.blsVerifyProof({
+          proof: new Uint8Array(Buffer.from(proof.proofValue, "base64")),
+          publicKey: new Uint8Array(key.publicKeyBuffer),
+          messages: statementsToVerify,
+          nonce: proof.nonce
+        });
+      } else {
+        verified = nodeBbs.blsVerifyProof({
+          proof: new Uint8Array(Buffer.from(proof.proofValue, "base64")),
+          publicKey: new Uint8Array(key.publicKeyBuffer),
+          messages: statementsToVerify,
+          nonce: proof.nonce
+        });
+      }
 
       // Ensure proof was performed for a valid purpose
       const { valid, error } = await purpose.validate(proof, {
