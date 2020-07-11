@@ -11,6 +11,9 @@
  * limitations under the License.
  */
 
+// @ts-ignore
+global.WebAssembly = null;
+
 import {
   exampleBls12381KeyPair,
   testRevealDocument,
@@ -32,7 +35,7 @@ const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
 describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof", async () => {
-    jest.setTimeout(30000);
+    jest.setTimeout(60000);
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
       key
@@ -55,7 +58,7 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should derive proof revealing all statements", async () => {
-    jest.setTimeout(30000);
+    jest.setTimeout(60000);
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
       key
@@ -78,7 +81,7 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should derive proof from vc", async () => {
-    jest.setTimeout(30000);
+    jest.setTimeout(60000);
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
       key
