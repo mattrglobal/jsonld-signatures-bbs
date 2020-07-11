@@ -29,7 +29,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest && ts-node ./__tests__/BbsBlsSignatureProof2020.asm.ts",
     "build": "tsc --pretty",
     "clean": "rm -rf lib/",
     "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",

@@ -11,7 +11,9 @@
  * limitations under the License.
  */
 
+// @ts-ignore
 import jsonld from "jsonld";
+// @ts-ignore
 import { extendContextLoader } from "jsonld-signatures";
 import bbsContext from "./contexts/lds-bbsbls2020-v0.0.json";
 import exampleDidKey from "./data/did_example_489398593_test.json";

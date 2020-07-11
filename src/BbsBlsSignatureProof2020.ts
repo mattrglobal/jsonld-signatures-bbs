@@ -163,7 +163,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     const key = await this.LDKeyClass.from(verificationMethod);
 
-    let outputProof;
+    let outputProof: Uint8Array;
     if (!WebAssembly) {
       outputProof = wasmBbs.blsCreateProof({
         signature: new Uint8Array(signature),
