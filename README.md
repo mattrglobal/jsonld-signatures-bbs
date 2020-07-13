@@ -165,3 +165,7 @@ To run the test in the project run:
 ```
 yarn test
 ```
+
+## Security Policy
+
+Please see our [security policy](./SECURITY.md) for additional details about responsible disclosure of security related issues.
