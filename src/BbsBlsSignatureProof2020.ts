@@ -14,10 +14,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jsonld from "jsonld";
 import { suites, SECURITY_CONTEXT_URL } from "jsonld-signatures";
-import {
-  blsCreateProof,
-  blsVerifyProof
-} from "@mattrglobal/node-bbs-signatures";
+import { blsCreateProof, blsVerifyProof } from "@mattrglobal/bbs-signatures";
 import {
   DeriveProofOptions,
   VerifyProofOptions,
