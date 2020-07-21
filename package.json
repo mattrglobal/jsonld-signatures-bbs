@@ -29,7 +29,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "NODE_OPTIONS='--max-old-space-size=8192' jest",
     "build": "tsc --pretty",
     "clean": "rm -rf lib/",
     "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",
