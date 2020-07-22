@@ -32,7 +32,6 @@ const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
 describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof", async () => {
-    jest.setTimeout(30000);
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
       key
@@ -55,7 +54,6 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should derive proof revealing all statements", async () => {
-    jest.setTimeout(30000);
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
       key
@@ -78,7 +76,6 @@ describe("BbsBlsSignatureProof2020", () => {
   });
 
   it("should derive proof from vc", async () => {
-    jest.setTimeout(30000);
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
       key
@@ -124,12 +121,15 @@ describe("BbsBlsSignatureProof2020", () => {
       ...testPartialProofDocument.proof
     };
     delete document.proof;
+    console.log("Document: ", document);
+    console.log("Proof: ", proof);
     const result = await suite.verifyProof({
       document,
       proof,
       documentLoader: customLoader,
       purpose: new jsigs.purposes.AssertionProofPurpose()
     });
+    console.log(result);
     expect(result.verified).toBeTruthy();
   });
 
@@ -141,12 +141,15 @@ describe("BbsBlsSignatureProof2020", () => {
       ...testPartialVcProof.proof
     };
     delete document.proof;
+    console.log("Document: ", document);
+    console.log("Proof: ", proof);
     const result = await suite.verifyProof({
       document,
       proof,
       documentLoader: customLoader,
       purpose: new jsigs.purposes.AssertionProofPurpose()
     });
+    console.log(result);
     expect(result.verified).toBeTruthy();
   });
 
