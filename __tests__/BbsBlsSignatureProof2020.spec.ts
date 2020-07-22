@@ -121,15 +121,12 @@ describe("BbsBlsSignatureProof2020", () => {
       ...testPartialProofDocument.proof
     };
     delete document.proof;
-    console.log("Document: ", document);
-    console.log("Proof: ", proof);
     const result = await suite.verifyProof({
       document,
       proof,
       documentLoader: customLoader,
       purpose: new jsigs.purposes.AssertionProofPurpose()
     });
-    console.log(result);
     expect(result.verified).toBeTruthy();
   });
 
@@ -141,15 +138,12 @@ describe("BbsBlsSignatureProof2020", () => {
       ...testPartialVcProof.proof
     };
     delete document.proof;
-    console.log("Document: ", document);
-    console.log("Proof: ", proof);
     const result = await suite.verifyProof({
       document,
       proof,
       documentLoader: customLoader,
       purpose: new jsigs.purposes.AssertionProofPurpose()
     });
-    console.log(result);
     expect(result.verified).toBeTruthy();
   });
 
