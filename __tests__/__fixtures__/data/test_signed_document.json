@@ -2,7 +2,7 @@
   "@context": [
     "https://schema.org",
     "https://w3id.org/security/v2",
-    "https://w3c-ccg.github.io/lds-bbsbls2020/contexts"
+    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
   ],
   "@type": "Person",
   "firstName": "Jane",
@@ -12,9 +12,9 @@
   "email": "jane.doe@example.com",
   "proof": {
     "type": "BbsBlsSignature2020",
-    "created": "2020-05-25T22:49:38Z",
+    "created": "2020-07-21T04:16:41Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "signature": "jHQ22/z+kDiXSKMjuRtn/owTxNjpbauXyHVU2/1xZeGeCOr0qTNzf/z36u4JxZlhKIkgj/1UoOp9XiEQdO25JsGtNnmjKX/m69gPhbJM4O5NXiTGsctdnhrBLHqH4MG29zq9yshvabeSm7EtgSJjpQ=="
+    "proofValue": "pTy8PJCw93RrD+X55McbjHfrlW5SJYNhF84Eggafnlb2CH8QtfXfNsTnVuTQp8UfKKbKqOp6ASwv2kmKtXJJpK+n7+mNKMbeBqw/fuwbu5w/QjvCgYZH3WhlZq6zTmRN9MwO1lQOxntcnKP8xmaoAw=="
   }
 }

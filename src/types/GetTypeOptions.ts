@@ -11,15 +11,17 @@
  * limitations under the License.
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Formats an input date to w3c standard date format
- * @param date {number|string} Optional if not defined current date is returned
+ * Options for getting the type from a JSON-LD document
  */
-export const w3cDate = (date?: number | string): string => {
-  let result = new Date();
-  if (typeof date === "number" || typeof date === "string") {
-    result = new Date(date);
-  }
-  const str = result.toISOString();
-  return str.substr(0, str.length - 5) + "Z";
-};
+export interface GetTypeOptions {
+  /**
+   * Optional custom document loader
+   */
+  documentLoader?(): any;
+  /**
+   * Optional expansion map
+   */
+  expansionMap?(): any;
+}

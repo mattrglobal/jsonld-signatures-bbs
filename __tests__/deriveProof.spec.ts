@@ -23,34 +23,28 @@ import { BbsBlsSignatureProof2020, deriveProof } from "../src/index";
 
 describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof", async () => {
-    jest.setTimeout(30000);
     const result = await deriveProof(testSignedDocument, testRevealDocument, {
       suite: new BbsBlsSignatureProof2020(),
-      documentLoader: customLoader,
-      compactProof: false
+      documentLoader: customLoader
     });
     expect(result).toBeDefined();
   });
 
   it("should derive proof revealing all statements", async () => {
-    jest.setTimeout(30000);
     const result = await deriveProof(testSignedDocument, testRevealDocument, {
       suite: new BbsBlsSignatureProof2020(),
-      documentLoader: customLoader,
-      compactProof: false
+      documentLoader: customLoader
     });
     expect(result).toBeDefined();
   });
 
   it("should derive proof from vc", async () => {
-    jest.setTimeout(30000);
     const result = await deriveProof(
       testSignedVcDocument,
       testRevealVcDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader,
-        compactProof: false
+        documentLoader: customLoader
       }
     );
     expect(result).toBeDefined();

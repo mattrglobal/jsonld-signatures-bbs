@@ -13,21 +13,17 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Options for creating a proof
+ * Options for getting a proof from a JSON-LD document
  */
-export interface DeriveProofOptions {
+export interface GetProofsOptions {
   /**
-   * Document outlining what statements to reveal
-   */
-  readonly revealDocument: any;
-  /**
-   * The document featuring the proof to derive from
+   * The JSON-LD document to extract the proofs from.
    */
   readonly document: any;
   /**
-   * The proof for the document
+   * Optional the proof type to filter the returned proofs by
    */
-  readonly proof: any;
+  readonly proofType?: string;
   /**
    * Optional custom document loader
    */
@@ -37,11 +33,7 @@ export interface DeriveProofOptions {
    */
   expansionMap?(): any;
   /**
-   * Nonce to include in the derived proof
-   */
-  readonly nonce?: string;
-  /**
-   * Indicates whether to compact the resulting proof
+   * Optional property to indicate whether to skip compacting the resulting proof
    */
   readonly skipProofCompaction?: boolean;
 }

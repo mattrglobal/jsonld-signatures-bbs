@@ -17,6 +17,9 @@ import exampleBls12381KeyPair from "./data/exampleBls12381KeyPair.json";
 import testDocument from "./data/test_document.json";
 import testRevealDocument from "./data/test_reveal_document.json";
 import testSignedDocument from "./data/test_signed_document.json";
+import testSignedDocumentMultiProofs from "./data/test_signed_document_multi_proofs.json";
+import testSignedDocumentMultiDifProofs from "./data/test_signed_document_multi_dif_proofs.json";
+import testSignedDocumentEd25519 from "./data/test_signed_document_ed25519.json";
 import testBadSignedDocument from "./data/test_bad_signed_document.json";
 import testProofDocument from "./data/test_proof_document.json";
 import testPartialProofDocument from "./data/test_partial_proof_document.json";
@@ -32,6 +35,9 @@ export {
   testDocument,
   testRevealDocument,
   testSignedDocument,
+  testSignedDocumentMultiProofs,
+  testSignedDocumentMultiDifProofs,
+  testSignedDocumentEd25519,
   testProofDocument,
   testVcDocument,
   testRevealAllDocument,

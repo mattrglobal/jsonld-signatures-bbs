@@ -1,11 +1,13 @@
 {
-    "@context": [ "https://schema.org",
-                  "https://w3id.org/security/v2",
-                  "https://w3c-ccg.github.io/lds-bbsbls2020/contexts" ],
-    "@type": "Person",
-    "firstName": "Jane",
-    "lastName": "Does",
-    "jobTitle": "Professor",
-    "telephone": "(425) 123-4567",
-    "email": "jane.doe@example.com"
+  "@context": [
+    "https://schema.org",
+    "https://w3id.org/security/v2",
+    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
+  ],
+  "@type": "Person",
+  "firstName": "Jane",
+  "lastName": "Does",
+  "jobTitle": "Professor",
+  "telephone": "(425) 123-4567",
+  "email": "jane.doe@example.com"
 }
