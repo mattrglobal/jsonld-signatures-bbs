@@ -12,7 +12,9 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SECURITY_CONTEXT_URL } from "jsonld-signatures";
+import { getProofs, getTypeInfo } from "./utilities";
+import jsonld from "jsonld";
+import { SECURITY_PROOF_URL } from "jsonld-signatures";
 
 /**
  * Derives a proof from a document featuring a supported linked data proof
@@ -26,31 +28,58 @@ import { SECURITY_CONTEXT_URL } from "jsonld-signatures";
 export const deriveProof = async (
   proofDocument: any,
   revealDocument: any,
-  { suite, documentLoader, expansionMap, compactProof }: any
+  { suite, documentLoader, expansionMap, skipProofCompaction }: any
 ): Promise<any> => {
   if (!suite) {
     throw new TypeError('"options.suite" is required.');
   }
 
-  // shallow copy
-  const document = { ...proofDocument };
-
-  if (!document.proof) {
-    throw new TypeError('"proofDocument" must contain a proof');
-  }
-
-  const proof = {
-    "@context": SECURITY_CONTEXT_URL,
-    ...proofDocument.proof
-  };
-  delete document.proof;
-
-  return await suite.deriveProof({
-    document,
-    proof,
-    revealDocument,
+  const { proofs, document } = await getProofs({
+    document: proofDocument,
+    proofType: suite.supportedDeriveProofType,
     documentLoader,
-    compactProof,
     expansionMap
   });
+
+  const result = await suite.deriveProof({
+    document,
+    proof: proofs[0],
+    revealDocument,
+    documentLoader,
+    expansionMap
+  });
+
+  if (!skipProofCompaction) {
+    let expandedProof: any = {
+      [SECURITY_PROOF_URL]: { "@graph": result.proof }
+    };
+
+    // account for type-scoped `proof` definition by getting document types
+    const { types, alias } = await getTypeInfo(result.document, {
+      documentLoader,
+      expansionMap
+    });
+
+    expandedProof["@type"] = types;
+
+    const ctx = jsonld.getValues(result.document, "@context");
+
+    const compactProof = await jsonld.compact(expandedProof, ctx, {
+      documentLoader,
+      expansionMap,
+      compactToRelative: false
+    });
+
+    delete compactProof[alias];
+    delete compactProof["@context"];
+
+    // add proof to document
+    const key = Object.keys(compactProof)[0];
+    jsonld.addValue(result.document, key, compactProof[key]);
+  } else {
+    delete result.proof["@context"];
+    jsonld.addValue(result.document, "proof", result.proof);
+  }
+
+  return result.document;
 };

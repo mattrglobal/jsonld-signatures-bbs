@@ -1,9 +1,5 @@
 {
-  "@context": [
-    "http://schema.org/",
-    "https://w3id.org/security/v2",
-    "https://w3c-ccg.github.io/lds-bbsbls2020/contexts"
-  ],
+  "@context": ["http://schema.org/", "https://w3id.org/security/v2"],
   "id": "urn:bnid:_:c14n0",
   "type": "Person",
   "email": "jane.doe@example.com",
@@ -13,11 +9,10 @@
   "telephone": "(425) 123-4567",
   "proof": {
     "type": "BbsBlsSignatureProof2020",
-    "@context": "https://w3id.org/security/v2",
-    "created": "2020-05-25T22:49:38Z",
+    "created": "2020-07-21T04:16:41Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "proofValue": "AAkB/4oxhQKow7T1W9iX8RYSV4W6+WexKBW56ecfgKSN9z3/L85pqdMQLFa7lxHonEiiIrMkODOdE7aeXaegz35i5K7wLd9QzuUxsTTcKQ+AYSzpvi6xacUsggAl1Go6fMI8ZK8rOnukhiiKWUaBcI33MyzC9VnqP5qQ0fZ2ymtX3BNi6QbfKdICCtAip2XteWrUXQAAAHSg+KVIw+RLyMKbEVq3EHSxCPQZ8FgWyLceDU3pnoj+vXsUKfyGBCKV1ug6/AMfu78AAAACSVGd9MwVlKS/UeeoajgD23ituIX1k3HPpnUFn7ncwEorL2ksncOUsnhDKmCEWQ902LqMKCUt2hcyjTF81inGo6DK8CSymX+e3AV/Jdj0lAHiFhHGQJN0qsp79kGuMgJnpCNxU5mEK4/k973NEG5N4gAAAAJP8MkQiTvubiyk0hHBhNdyD8HxphMGCNMuLdCFraFLtzzlk/0jJmB3K6UxJkc9Ul08IaPusXjJSwwZdji/HMru",
-    "nonce": "fmHRymGNI12VMo6T8PX1bIVCKmHf9AdVagUzXdPMvFs4W+kvjqqZ520nQMXvfYa/v28="
+    "proofValue": "AAoD/4XIHpCb/4necmgnauMPaGKoQiTfDmB3Gk+oX99V8qe/Os3X21NNnPrr5QusW1eizom+c5zIMi8uIprRuumLCpN/HpzbTYaYrts+R6wIoB9GtUOcBR3Pwp6avuPK1sO84YStE91pLu5zO64/OsHz2XsqMb3Qo3AL9drfwlhCOh+gzVuEkHtS38TxLvhru/I7BwAAAHSFWEOFEHY4bXwZZf8710RdkN2phd0A3DIi4fq+NMh0Bxx9vmBevt7LnaVln5so20UAAAACOkUnNGzLNxtWPYhS4hiVFf2D3mkQ2LaxaYsjz7Dvc8gz6ucnMMMYFGEsN4DwgrAk3BekfAb40RrzXPRWRWni3LXi4kbGx6BNlWB28L7LKrBBsgi64xALHEWXedU9mxCrz5fENJ3G45cx6Yh7ixHxMQAAAAJhQb1RFEBF0X1bggECt4ipbWwvKLuSECtJ5LmTcDDF4DinW96UfoR3ZZ3F3BR2km+uDWOi1dCT8t/aCmnIPUkM",
+    "nonce": "BOfgWqu5YfS13yGy/zEVrK8FNtV4ZjgJ2P3K5/CLxcntYHskookpehxWm2ccuUqJb9o="
   }
 }
