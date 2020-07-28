@@ -50,6 +50,7 @@ export const deriveProof = async (
   });
 
   if (!skipProofCompaction) {
+    /* eslint-disable prefer-const */
     let expandedProof: any = {
       [SECURITY_PROOF_URL]: { "@graph": result.proof }
     };

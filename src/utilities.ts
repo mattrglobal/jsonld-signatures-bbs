@@ -88,9 +88,12 @@ export const w3cDate = (date?: number | string): string => {
  * @param document {any} JSON-LD document to extract the type information from
  * @param options {GetTypeInfoOptions} Options for extracting the JSON-LD document
  *
- * @returns {string} date in a standard format as a string
+ * @returns {object} Type info for the JSON-LD document
  */
-export const getTypeInfo = async (document: any, options: GetTypeOptions) => {
+export const getTypeInfo = async (
+  document: any,
+  options: GetTypeOptions
+): Promise<any> => {
   const { documentLoader, expansionMap } = options;
 
   // determine `@type` alias, if any
@@ -106,6 +109,7 @@ export const getTypeInfo = async (document: any, options: GetTypeOptions) => {
   const alias = Object.keys(compacted)[0];
 
   // optimize: expand only `@type` and `type` values
+  /* eslint-disable prefer-const */
   let toExpand: any = { "@context": context };
   toExpand["@type"] = jsonld
     .getValues(document, "@type")
