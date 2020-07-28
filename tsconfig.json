@@ -12,7 +12,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "outDir": "./lib",
-    "types": ["jest", "node"]
+    "types": ["jest", "node", "./__tests__"]
   },
-  "include": ["./src", "./__tests__"]
+  "include": ["./src"]
 }
