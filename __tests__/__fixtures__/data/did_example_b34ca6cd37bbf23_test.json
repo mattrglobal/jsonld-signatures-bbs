@@ -1,0 +1,8 @@
+{
+  "@context": "https://w3id.org/security/v2",
+  "id": "did:example:b34ca6cd37bbf23#test",
+  "type": "Ed25519VerificationKey2018",
+  "controller": "did:example:b34ca6cd37bbf23",
+  "publicKeyBase58": "DggG1kT5JEFwTC6RJTsT6VQPgCz1qszCkX5Lv4nun98x",
+  "privateKeyBase58": "sSicNq6YBSzafzYDAcuduRmdHtnrZRJ7CbvjzdQhC45ewwvQeuqbM2dNwS9RCf6buUJGu6N3rBy6oLSpMwha8tc"
+}

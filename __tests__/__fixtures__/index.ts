@@ -14,6 +14,7 @@
 import { customLoader } from "./customDocumentLoader";
 
 import exampleBls12381KeyPair from "./data/exampleBls12381KeyPair.json";
+import exampleEd25519KeyPair from "./data/did_example_b34ca6cd37bbf23_test.json";
 import testDocument from "./data/test_document.json";
 import testRevealDocument from "./data/test_reveal_document.json";
 import testSignedDocument from "./data/test_signed_document.json";
@@ -32,6 +33,7 @@ import testRevealAllDocument from "./data/test_reveal_all_document.json";
 
 export {
   exampleBls12381KeyPair,
+  exampleEd25519KeyPair,
   testDocument,
   testRevealDocument,
   testSignedDocument,
