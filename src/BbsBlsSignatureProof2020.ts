@@ -27,10 +27,21 @@ import { VerifyProofResult } from "./types/VerifyProofResult";
 import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
 
 export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
-  constructor({ useNativeCanonize, key }: any = {}) {
-    super({ type: "BbsBlsSignatureProof2020" });
-    this.LDKeyClass = Bls12381G2KeyPair;
-    this.proofSignatureKey = "signature";
+  constructor({ useNativeCanonize, key, LDKeyClass }: any = {}) {
+    super({
+      type:
+        "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignatureProof2020"
+    });
+
+    this.proof = {
+      "@context": "https://w3c-ccg.github.io/ldp-bbs2020/context/v1",
+      type: "BbsBlsSignatureProof2020"
+    };
+    this.supportedDeriveProofType =
+      "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignature2020";
+
+    this.LDKeyClass = LDKeyClass ?? Bls12381G2KeyPair;
+    this.proofSignatureKey = "proofValue";
     this.key = key;
     this.useNativeCanonize = useNativeCanonize;
   }
@@ -49,35 +60,52 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       revealDocument,
       documentLoader,
       expansionMap,
-      compactProof
+      skipProofCompaction
     } = options;
     let { nonce } = options;
 
-    // Validate that the input proof document has a proof compatible with the suite
-    if (proof.type !== "BbsBlsSignature2020") {
+    // Validate that the input proof document has a proof compatible with this suite
+    if (proof.type !== this.supportedDeriveProofType) {
       throw new TypeError(
-        "proof document proof incompatible, expected proof type of BbsBlsSignature2020"
+        `proof document proof incompatible, expected proof type of ${this.supportedDeriveProofType} received ${proof.type}`
       );
     }
 
     //Extract the BBS signature from the input proof
-    const signature = Buffer.from(proof.signature, "base64");
+    const signature = Buffer.from(proof[this.proofSignatureKey], "base64");
 
     //Initialize the BBS signature suite
     const suite = new BbsBlsSignature2020();
+
+    //Initialize the derived proof
+    let derivedProof;
+    if (this.proof) {
+      // use proof JSON-LD document passed to API
+      derivedProof = await jsonld.compact(this.proof, SECURITY_CONTEXT_URL, {
+        documentLoader,
+        expansionMap,
+        compactToRelative: false
+      });
+    } else {
+      // create proof JSON-LD document
+      derivedProof = { "@context": SECURITY_CONTEXT_URL };
+    }
+
+    // ensure proof type is set
+    derivedProof.type = this.type;
 
     // Get the input document statements
     const documentStatements = await suite.createVerifyDocumentData(document, {
       documentLoader,
       expansionMap,
-      compactProof
+      compactProof: !skipProofCompaction
     });
 
     // Get the proof statements
     const proofStatements = await suite.createVerifyProofData(proof, {
       documentLoader,
       expansionMap,
-      compactProof
+      compactProof: !skipProofCompaction
     });
 
     // Transform any blank node identifiers for the input
@@ -141,12 +169,16 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       );
     }
 
+    // Combine all indicies to get the resulting list of revealed indicies
     const revealIndicies = proofRevealIndicies.concat(documentRevealIndicies);
 
     // Create a nonce if one is not supplied
     if (!nonce) {
       nonce = Buffer.from(randomBytes(50)).toString("base64");
     }
+
+    // Set the nonce on the derived proof
+    derivedProof.nonce = nonce;
 
     //Combine all the input statements that
     //were originally signed to generate the proof
@@ -160,8 +192,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       expansionMap
     });
 
+    // Construct a key pair class from the returned verification method
     const key = await this.LDKeyClass.from(verificationMethod);
 
+    // Compute the proof
     const outputProof = blsCreateProof({
       signature: new Uint8Array(signature),
       publicKey: new Uint8Array(key.publicKeyBuffer),
@@ -170,19 +204,17 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       revealed: revealIndicies
     });
 
-    const inputProof = { ...proof };
+    // Set the proof value on the derived proof
+    derivedProof.proofValue = Buffer.from(outputProof).toString("base64");
 
-    delete inputProof.signature;
-    delete inputProof.type;
+    // Set the relevant proof elements on the derived proof from the input proof
+    derivedProof.verificationMethod = proof.verificationMethod;
+    derivedProof.proofPurpose = proof.proofPurpose;
+    derivedProof.created = proof.created;
 
     return {
-      ...revealDocumentResult,
-      proof: {
-        type: this.type,
-        ...inputProof,
-        proofValue: Buffer.from(outputProof).toString("base64"),
-        nonce
-      }
+      document: { ...revealDocumentResult },
+      proof: derivedProof
     };
   }
 
@@ -192,9 +224,12 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    * @returns {Promise<{object}>} Resolves with the verification result.
    */
   async verifyProof(options: VerifyProofOptions): Promise<VerifyProofResult> {
-    const { proof, document, documentLoader, expansionMap, purpose } = options;
+    const { document, documentLoader, expansionMap, purpose } = options;
+    const { proof } = options;
 
     try {
+      proof.type = this.supportedDeriveProofType;
+
       // Get the proof statements
       const proofStatements = await this.createVerifyProofData(proof, {
         documentLoader,
@@ -280,8 +315,6 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     const { documentLoader, expansionMap } = options;
     proof = { ...proof };
 
-    delete proof.totalStatements;
-    delete proof.revealStatements;
     delete proof.nonce;
     delete proof.proofValue;
 

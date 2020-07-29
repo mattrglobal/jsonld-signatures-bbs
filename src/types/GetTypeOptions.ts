@@ -13,13 +13,9 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Options for signing using a signature suite
+ * Options for getting the type from a JSON-LD document
  */
-export interface SuiteSignOptions {
-  /**
-   * Input document to sign
-   */
-  readonly document: any;
+export interface GetTypeOptions {
   /**
    * Optional custom document loader
    */
@@ -28,12 +24,4 @@ export interface SuiteSignOptions {
    * Optional expansion map
    */
   expansionMap?: Function;
-  /**
-   * The array of statements to sign
-   */
-  readonly verifyData: string[];
-  /**
-   * The proof
-   */
-  readonly proof: any;
 }

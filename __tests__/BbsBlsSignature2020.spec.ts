@@ -29,13 +29,10 @@ const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
 describe("BbsBlsSignature2020", () => {
   it("should sign with jsigs", async () => {
-    jest.setTimeout(30000);
     const signed = await jsigs.sign(testDocument, {
       suite: new BbsBlsSignature2020({ key }),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-      compactProof: false,
-      expansionMap: undefined
+      documentLoader: customLoader
     });
     expect(signed).toBeDefined();
   });
@@ -44,9 +41,7 @@ describe("BbsBlsSignature2020", () => {
     const signed = await jsigs.sign(testVcDocument, {
       suite: new BbsBlsSignature2020({ key }),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-      compactProof: false,
-      expansionMap: undefined
+      documentLoader: customLoader
     });
     expect(signed).toBeDefined();
   });
@@ -55,9 +50,7 @@ describe("BbsBlsSignature2020", () => {
     const verificationResult = await jsigs.verify(testSignedDocument, {
       suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-      compactProof: false,
-      expansionMap: undefined
+      documentLoader: customLoader
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeTruthy();
@@ -67,9 +60,7 @@ describe("BbsBlsSignature2020", () => {
     const verificationResult = await jsigs.verify(testSignedVcDocument, {
       suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-      compactProof: false,
-      expansionMap: undefined
+      documentLoader: customLoader
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeTruthy();
@@ -79,9 +70,7 @@ describe("BbsBlsSignature2020", () => {
     const verificationResult = await jsigs.verify(testBadSignedDocument, {
       suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-      compactProof: false,
-      expansionMap: undefined
+      documentLoader: customLoader
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeFalsy();

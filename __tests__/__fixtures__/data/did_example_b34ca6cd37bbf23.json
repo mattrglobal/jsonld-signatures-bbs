@@ -1,0 +1,5 @@
+{
+  "@context": "https://w3id.org/security/v2",
+  "id": "did:example:b34ca6cd37bbf23",
+  "authentication": ["did:example:b34ca6cd37bbf23#test"]
+}

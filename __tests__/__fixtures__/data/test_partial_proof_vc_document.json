@@ -1,7 +1,8 @@
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://w3id.org/citizenship/v1"
+    "https://w3id.org/citizenship/v1",
+    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
   ],
   "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
   "type": ["PermanentResidentCard", "VerifiableCredential"],
@@ -20,11 +21,10 @@
   "issuer": "did:example:489398593",
   "proof": {
     "type": "BbsBlsSignatureProof2020",
-    "@context": "https://w3id.org/security/v2",
-    "created": "2020-05-25T23:07:10Z",
+    "created": "2020-07-21T04:21:26Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "proofValue": "ABgA/4N3qygQRJlX3gmQOlJRGbO1KTXKQUmaN02xl+FiNZUDmGfa5OoKtg0RJ4wxxA08t3Vut61G/pq4yN0bygaFk5EJF6j7zFXmz9Vc7EdlDAvUkXqPaKA8inSBNv97HiZ1o5hIpoRnepW89p4JXPVrFi8XbDARSZpCg18GUuUMaPQLHKU82M/9l8tqqG1lKBOs+sRAAAAAdKRrRPj6zAz5LPZgDZJ0J2rNJjQI+JNYbV4AYEVwW37sxQ99aGGvmBk3DL0sod1V/gAAAAJMLYjmrb92zV087wO8UtFLwMj7qJuqV9VkMDghdrrc3BGtJuQgKx2GTrOb4CQxI1bf+iG0USjTktcjTlKv3X5spg3+ihOnyve0HnMWWggAW22j8b78jbl7lkYGJvzIXTzrVJ5KdYp3tXMDTAX7CLEXAAAACVY8oocA9Bz1w42F8Yv7UAPHv4pSvunXqndFOet3kWtzYHYEbO5gc42wPQtLmTtmqP6kUbQv6ruxzRmANulB8fUfy2jah/QeHKvsp907YDnSfo2wofRxa/vzsZnVriw0UmZnP0sYjbhmCkhoQZkxhqel3IkOF+H80wzvCKCl6eq5biEFMYA4bXpDX6Ap5/6WS5SSFaJRWxW+hpR/9EuQE11sGtk2W2Wn4eBrQUgVqYgPLI+U/ONaUJrh+GVJ/XXx7xxbAUf/NeQ/13AkTnYNn1fUdiOJ2oKl1lGr59udFq2tBBsyC3msTtQPYJS084355GRBur5jnzPNJ2W6Gu3ZqqQeRrVyw1gzdhVDNOE8KUm9OQ3AvCuxo8PHNrqzNvc6VA==",
-    "nonce": "37pdwue1a8FWLqgwCd0QJ0IJTFhp609KtxeCTWZGnfAVE+sOBDffYez+TY/bmVy+6z4="
+    "proofValue": "ABkB/wbvhFm/daKQXX5mYpKHLWWC705FWFS2eTEm5g+5A916OyD2iV+ISxAkNVRseQ+BzON3pRdPYWxBi4iMO4zXqm4gMPiMplSATjhsYHydZ8r2odigLDhoufpZBakB8x/D6sfzquBz7ov5M5pNkUW4pJiVD7vnRzKCgORXT4QoLUhJGnRUBeA2FzH8DSO7xaryCm+GAAAAdImv7O5lg0T24bi2smv5w6tRr8C0RNXYi+RFQ82Nkbxcqfek/fj1sYhH0uiF3PSogwAAAAJk3zuPqODgs0yV3VdWnl38HELRaXj+GL2evWGbPFfJkzunuVj46BY1VKKOzzVjP/sbPlf+KHOtF+mkXiSQM7F1oSOlaTKY5YZF9EaOMjpQhWEkmuozbGINGluG5F0amW2K2topkQ/Vb/BRDI2H+DUAAAAACWbnQ0wYMn367L/Xx6QT2GIAXD2z4Fz/tUqQYHlPbbKrLC0AbDnSQDAL6dH5OHGoBfsJ2wNgG9I8mtkvP6XP3ZYJWR4UVdihQCp04e2hXkY0pqsP+fItLMQrZyPTCuMWVzbi+rlNbkWOp2zWEi7kRhDNSp8E/azV3TPKKrxf4oLvLlSKPHu/+72/l0Puyv4vGwR3O3WF/2Fg1OCjdLwchPdN8ojrFCOcJjIlNQEzWsqnWSfAl8WYH0MiUnUa4hrdwVXOCZ5jNw//Yky0KkWLPeZ+IGRWGCJC04hv0AXaoVlTDyh7coolxKIyaxSkfJj1W5aCfYizjeCA0CBLleyziwUuXTEeLIhiPN+DyQyDvzdDQLQiOD+gdB1zXEL966Z/YQ==",
+    "nonce": "thlQKSZ48ATCZHk1DKKkuE+t02jJ/1hYWC3gtSVpMzpuHE/BQACpDaU8+t9POI1pyo8="
   }
 }

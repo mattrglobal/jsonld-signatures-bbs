@@ -23,7 +23,7 @@ import {
   VerifySignatureOptions,
   SuiteSignOptions
 } from "./types";
-import { w3cDate } from "./w3cDate";
+import { w3cDate } from "./utilities";
 import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
 
 /**
@@ -40,7 +40,8 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       signer,
       key,
       date,
-      useNativeCanonize
+      useNativeCanonize,
+      LDKeyClass
     } = options;
     // validate common options
     if (
@@ -49,12 +50,20 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     ) {
       throw new TypeError('"verificationMethod" must be a URL string.');
     }
-    super({ type: "BbsBlsSignature2020" });
+    super({
+      type:
+        "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignature2020"
+    });
 
-    this.LDKeyClass = Bls12381G2KeyPair;
+    this.proof = {
+      "@context": "https://w3c-ccg.github.io/ldp-bbs2020/context/v1",
+      type: "BbsBlsSignature2020"
+    };
+
+    this.LDKeyClass = LDKeyClass ?? Bls12381G2KeyPair;
     this.signer = signer;
     this.verificationMethod = verificationMethod;
-    this.proofSignatureKey = "signature";
+    this.proofSignatureKey = "proofValue";
     if (key) {
       if (verificationMethod === undefined) {
         this.verificationMethod = key.id;
@@ -229,7 +238,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
   async canonizeProof(proof: any, options: CanonizeOptions): Promise<string> {
     const { documentLoader, expansionMap } = options;
     proof = { ...proof };
-    delete proof.signature;
+    delete proof[this.proofSignatureKey];
     return this.canonize(proof, {
       documentLoader,
       expansionMap,

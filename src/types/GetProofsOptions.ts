@@ -13,27 +13,27 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Options for signing using a signature suite
+ * Options for getting a proof from a JSON-LD document
  */
-export interface SuiteSignOptions {
+export interface GetProofsOptions {
   /**
-   * Input document to sign
+   * The JSON-LD document to extract the proofs from.
    */
   readonly document: any;
   /**
+   * Optional the proof type to filter the returned proofs by
+   */
+  readonly proofType?: string;
+  /**
    * Optional custom document loader
    */
-  documentLoader?: Function;
+  documentLoader?(): any;
   /**
    * Optional expansion map
    */
-  expansionMap?: Function;
+  expansionMap?(): any;
   /**
-   * The array of statements to sign
+   * Optional property to indicate whether to skip compacting the resulting proof
    */
-  readonly verifyData: string[];
-  /**
-   * The proof
-   */
-  readonly proof: any;
+  readonly skipProofCompaction?: boolean;
 }

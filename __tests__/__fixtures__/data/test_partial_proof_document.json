@@ -2,7 +2,7 @@
   "@context": [
     "http://schema.org/",
     "https://w3id.org/security/v2",
-    "https://w3c-ccg.github.io/lds-bbsbls2020/contexts"
+    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
   ],
   "id": "urn:bnid:_:c14n0",
   "type": "Person",
@@ -10,11 +10,10 @@
   "lastName": "Does",
   "proof": {
     "type": "BbsBlsSignatureProof2020",
-    "@context": "https://w3id.org/security/v2",
-    "created": "2020-05-25T22:49:38Z",
+    "created": "2020-07-21T04:16:41Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "proofValue": "AAkBV44EXaM9fq2thk930UkcADLgL7Z9cg7BPFb3EPgg09b/fGnh64mFohGYGQo99EsJ4bb3yZo9aBdrBmwrEijn5fzjkOp12NOOcepk66miCw+I7cfyTgL7njpd5y8x3DFz6Jk1uYaRBlHwOhvE4AH1C1UhyOW0aL5oZrm2WXbFLsng642+2T0x3t8s1WgOFRBavQAAAHSZkhqIc3q3a7NVAcyKQtH8rIVb1Mq3x6dI63LR8ynXPrVktxVRCnrWr5SUd/dXoYYAAAACCklntNAUfV+Ep84p3p8bREAlSrSGWmr+hLAYdsWEcUAikCkx0APLU265f2D4xwOjZZ4d7FE/sXLNNcAdaGFvM6hlXloVbQ6sNP/BHegl3CzAevlC7CMpmhithSmfWPwMhC8Ky+NVyc3F+HrCZV71ZAAAAAUSgikwleUuQQn7KVkCRG5KEkYWcj/HX+8WnerGw18RXw4NERJd2a2lrx9Rn3Sl8/eqU3i804GvYzfsMNo2G5P8CCoOAAoZztRJ7Ttt5M7PiMMBFZy+TQz4hfWr9ODBnBNqVHRG9CJgs9Y4ivQ5ZVm0+fVtx8RjPkCyhlEGTPNGiANYqCAJgRethcMonP/sHXLfDqp3TvgGazhkZGCXRkQU",
-    "nonce": "LSlkfDNxSbJqDw885WoNl2hMTriDh9Z8/GV870Mzi4lYlD4KsgMjs4jis70F2UgVr94="
+    "proofValue": "AAoCr4bKbF3tmEsDoM3HfKQw4UvF3gw+4HKtn1oqis/ZAPY52i8DU2HXtd7aR0wC7AVbaLc6XUVzCePhSFdCSyBLf+vyToCVcOpGXCaxB69vuSRYnNnXcVBtPRuLs6yt8P42R6V0pFiXGxFt/pOsUogzmSkXUq76z5kRE2oa8wYVj7g7fdNjdcT6jrUbaaRY6OlEowAAAHSHG4w2TQGpdpw2lWT9F359AkxYut7rJmU8MFhvoPwgnDp5JpM7A3mrRMuUuMxZ/hMAAAACBF/podNcLyo0Dy+TA7r7f+meT4W4ozce0OTn7AQHfyFXnWCbY+24sl8koinQlEms5Anc/KOvpvrs+WbeV/yGg7JNAXq+X1BZ/rM0RYwjEmySxjvhzBk8/iOfbuyKfHRdpoAjie7fYAeeDhg43n8nVwAAAAVZSEGRVMqU56ZIGTowCRzxXulLSD5C9D1tgxVmX8VDFUC8wsWIOUX9X5Oz1+nUUwB8YkvFyeKnG8QX36H8DyhBDiiSAMIV0vLeVlnZWtpbrzDUPYYftAqSUaHsAjQJ8pQRKUq3+k7/RVxnTWqc/PrI/P7lGcnKykb5fktZVfT8KRUOlS+jXVkRnP4z6G/IztTB2a4dLLBtzla9TW1tszTD",
+    "nonce": "5rxsQdyjX8rcfYuRAbZ8t6yhB9yJQM6PCI29sBky7kQbH07yqSe1N1YIC3xZr3gzK4w="
   }
 }

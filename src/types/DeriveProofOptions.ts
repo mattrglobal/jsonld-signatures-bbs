@@ -31,11 +31,11 @@ export interface DeriveProofOptions {
   /**
    * Optional custom document loader
    */
-  documentLoader?(): any;
+  documentLoader?: Function;
   /**
    * Optional expansion map
    */
-  expansionMap?(): any;
+  expansionMap?: Function;
   /**
    * Nonce to include in the derived proof
    */
@@ -43,5 +43,5 @@ export interface DeriveProofOptions {
   /**
    * Indicates whether to compact the resulting proof
    */
-  readonly compactProof: boolean;
+  readonly skipProofCompaction?: boolean;
 }

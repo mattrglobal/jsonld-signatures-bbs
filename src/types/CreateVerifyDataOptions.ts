@@ -27,11 +27,11 @@ export interface CreateVerifyDataOptions {
   /**
    * Optional custom document loader
    */
-  documentLoader?(): any;
+  documentLoader?: Function;
   /**
    * Optional expansion map
    */
-  expansionMap?(): any;
+  expansionMap?: Function;
   /**
    * Indicates whether to compact the proof
    */
