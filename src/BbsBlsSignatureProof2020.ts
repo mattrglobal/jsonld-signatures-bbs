@@ -30,7 +30,7 @@ import { VerifyProofResult } from "./types/VerifyProofResult";
 import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
 
 export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
-  constructor({ useNativeCanonize, key }: any = {}) {
+  constructor({ useNativeCanonize, key, LDKeyClass }: any = {}) {
     super({
       type:
         "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignatureProof2020"
@@ -42,7 +42,8 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     };
     this.supportedDeriveProofType =
       "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignature2020";
-    this.LDKeyClass = Bls12381G2KeyPair;
+
+    this.LDKeyClass = LDKeyClass ?? Bls12381G2KeyPair;
     this.proofSignatureKey = "proofValue";
     this.key = key;
     this.useNativeCanonize = useNativeCanonize;
