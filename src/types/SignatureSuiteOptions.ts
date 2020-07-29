@@ -44,4 +44,8 @@ export interface SignatureSuiteOptions {
    * Additional proof elements
    */
   readonly proof?: any;
+  /**
+   * Linked data key class
+   */
+  readonly LDKeyClass?: any;
 }

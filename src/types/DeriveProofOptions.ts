@@ -31,11 +31,11 @@ export interface DeriveProofOptions {
   /**
    * Optional custom document loader
    */
-  documentLoader?(): any;
+  documentLoader?: Function;
   /**
    * Optional expansion map
    */
-  expansionMap?(): any;
+  expansionMap?: Function;
   /**
    * Nonce to include in the derived proof
    */
