@@ -23,11 +23,11 @@ export interface SuiteSignOptions {
   /**
    * Optional custom document loader
    */
-  documentLoader?(): any;
+  documentLoader?: Function;
   /**
    * Optional expansion map
    */
-  expansionMap?(): any;
+  expansionMap?: Function;
   /**
    * The array of statements to sign
    */
