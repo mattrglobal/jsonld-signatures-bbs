@@ -29,7 +29,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "NODE_OPTIONS='--max-old-space-size=8192' jest",
     "build": "tsc --pretty",
     "clean": "rm -rf lib/",
     "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",
@@ -67,8 +67,8 @@
     "vc-js": "0.6.4"
   },
   "dependencies": {
+    "@mattrglobal/bbs-signatures": "0.3.0",
     "@mattrglobal/bls12381-key-pair": "0.3.0",
-    "@mattrglobal/node-bbs-signatures": "0.8.0",
     "@stablelib/random": "1.0.0",
     "bs58": "4.0.1",
     "jsonld": "3.1.0",
