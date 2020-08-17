@@ -13,7 +13,7 @@ using [BLS12-381](https://tools.ietf.org/id/draft-yonezawa-pairing-friendly-curv
 
 Due to the properties of a [BBS+ Signatures](https://github.com/mattrglobal/bbs-signatures-spec), [zero knowledge proof](https://en.wikipedia.org/wiki/Zero-knowledge_proof) can be derived from the signature, where-by the party generating the proof can elect to selectively disclose statements from the originally signed payload.
 
-**Note** At this time this project is limited to working in [node](nodejs.org) environments because the underlying cryptographic implementation is supplied by [node-bbs-signatures](https://github.com/mattrglobal/node-bbs-signatures), however we are targeting support for other parts of the JS/TS ecosystem in the near future.
+**Note** At this time this project is limited to working in [node](nodejs.org) environments because the underlying cryptographic implementation is supplied by [node-bbs-signatures](https://github.com/mattrglobal/node-bbs-signatures), however we are targeting support for other parts of the JS/TS ecosystem in the near future. See [bbs-signatures](https://github.com/mattrglobal/bbs-signatures) for more details.
 
 ## Getting started
 
@@ -41,7 +41,8 @@ The following is an example of a signed JSON-LD document featuring a `BbsBlsSign
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://w3id.org/citizenship/v1"
+    "https://w3id.org/citizenship/v1",
+    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
   ],
   "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
   "type": ["VerifiableCredential", "PermanentResidentCard"],
@@ -70,7 +71,7 @@ The following is an example of a signed JSON-LD document featuring a `BbsBlsSign
     "created": "2020-04-26T04:21:07Z",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "signature": "jx2VhjyZqUT91e2OhzweJA7G2u2UvmiDtIfmr+wUWNHWno+UOAh0FaNpM8Br+5j2JBkH981/nO1I7/9PFaRrng6NXu7vzDroKtuyj6nHGkMmGq4OMmBzIqRnG3ybin/Sxmu5YwqOxPMRsWH3H+2wSA=="
+    "proofValue": "jx2VhjyZqUT91e2OhzweJA7G2u2UvmiDtIfmr+wUWNHWno+UOAh0FaNpM8Br+5j2JBkH981/nO1I7/9PFaRrng6NXu7vzDroKtuyj6nHGkMmGq4OMmBzIqRnG3ybin/Sxmu5YwqOxPMRsWH3H+2wSA=="
   }
 }
 ```
@@ -82,7 +83,8 @@ which is a [JSON-LD frame](https://www.w3.org/TR/json-ld11-framing/).
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://w3id.org/citizenship/v1"
+    "https://w3id.org/citizenship/v1",
+    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
   ],
   "type": ["VerifiableCredential", "PermanentResidentCard"],
   "credentialSubject": {
@@ -101,7 +103,8 @@ That gives rise to the output zero knowledge proof
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://w3id.org/citizenship/v1"
+    "https://w3id.org/citizenship/v1",
+    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
   ],
   "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
   "type": ["PermanentResidentCard", "VerifiableCredential"],
@@ -138,7 +141,6 @@ The following describes how to get started as a contributor to this project
 The following is a list of dependencies you must install to build and contribute to this project
 
 - [Yarn](https://yarnpkg.com/)
-- [Rust](https://www.rust-lang.org/)
 
 For more details see our [contribution guidelines](./docs/CONTRIBUTING.md)
 
