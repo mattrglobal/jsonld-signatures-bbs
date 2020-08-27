@@ -39,7 +39,7 @@ export interface DeriveProofOptions {
   /**
    * Nonce to include in the derived proof
    */
-  readonly nonce?: string;
+  readonly nonce?: Uint8Array;
   /**
    * Indicates whether to compact the resulting proof
    */

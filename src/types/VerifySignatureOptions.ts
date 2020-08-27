@@ -23,7 +23,7 @@ export interface VerifySignatureOptions {
   /**
    * Array of statements to verify
    */
-  readonly verifyData: string[];
+  readonly verifyData: Uint8Array[];
   /**
    * Verification method to verify the signature against
    */

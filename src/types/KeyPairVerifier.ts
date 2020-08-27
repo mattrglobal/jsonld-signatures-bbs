@@ -25,6 +25,6 @@ export interface KeyPairVerifier {
  * Key pair verifier options
  */
 export interface KeyPairVerifierOptions {
-  readonly data: string | string[];
-  readonly signature: string;
+  readonly data: Uint8Array | Uint8Array[];
+  readonly signature: Uint8Array;
 }
