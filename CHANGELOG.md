@@ -1,3 +1,16 @@
+# [0.7.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.6.0...v0.7.0) (2020-08-28)
+
+### Bug Fixes
+
+- json-ld context issue ([a911440](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/a9114404dede2a736cf37ca2588b62ad5d6a4492))
+
+### Features
+
+- add the ability to specify the key pair class when creating suites([#66](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/66)) ([1fb03cf](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/1fb03cf2b2a26ba1c79e8b4eaa836bc24c3763e7))
+- update sample to use latest package version ([cdd9b39](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/cdd9b3932e2d5022c9ecc78573e232bcc1d3cdfc))
+- update to use bbs-signatures ([#73](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/73)) ([540ccec](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/540ccecbe6f755db7975615cdd23e6b88ee16b3f))
+- use bbs-signatures library ([#61](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/61)) ([dbbd4e5](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/dbbd4e569169781cd56dabc6d1290578cd773560))
+
 # [0.6.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.5.0...v0.6.0) (2020-05-26)
 
 ### Features
