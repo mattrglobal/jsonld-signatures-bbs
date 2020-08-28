@@ -174,15 +174,17 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     // Create a nonce if one is not supplied
     if (!nonce) {
-      nonce = Buffer.from(randomBytes(50)).toString("base64");
+      nonce = randomBytes(50);
     }
 
     // Set the nonce on the derived proof
-    derivedProof.nonce = nonce;
+    derivedProof.nonce = Buffer.from(nonce).toString("base64");
 
     //Combine all the input statements that
     //were originally signed to generate the proof
-    const allInputStatements = proofStatements.concat(documentStatements);
+    const allInputStatements: Uint8Array[] = proofStatements
+      .concat(documentStatements)
+      .map(item => new Uint8Array(Buffer.from(item)));
 
     // Fetch the verification method
     const verificationMethod = await this.getVerificationMethod({
@@ -259,9 +261,9 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       });
 
       // Combine all the statements to be verified
-      const statementsToVerify = proofStatements.concat(
-        transformedDocumentStatements
-      );
+      const statementsToVerify: Uint8Array[] = proofStatements
+        .concat(transformedDocumentStatements)
+        .map(item => new Uint8Array(Buffer.from(item)));
 
       // Fetch the verification method
       const verificationMethod = await this.getVerificationMethod({
@@ -278,7 +280,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         proof: new Uint8Array(Buffer.from(proof.proofValue, "base64")),
         publicKey: new Uint8Array(key.publicKeyBuffer),
         messages: statementsToVerify,
-        nonce: proof.nonce
+        nonce: new Uint8Array(Buffer.from(proof.nonce as string, "base64"))
       });
 
       // Ensure proof was performed for a valid purpose

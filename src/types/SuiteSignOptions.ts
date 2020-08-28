@@ -31,7 +31,7 @@ export interface SuiteSignOptions {
   /**
    * The array of statements to sign
    */
-  readonly verifyData: string[];
+  readonly verifyData: readonly Uint8Array[];
   /**
    * The proof
    */

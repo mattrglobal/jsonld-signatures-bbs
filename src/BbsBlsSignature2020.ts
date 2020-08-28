@@ -146,13 +146,15 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     });
 
     // create data to sign
-    const verifyData = await this.createVerifyData({
-      document,
-      proof,
-      documentLoader,
-      expansionMap,
-      compactProof
-    });
+    const verifyData = (
+      await this.createVerifyData({
+        document,
+        proof,
+        documentLoader,
+        expansionMap,
+        compactProof
+      })
+    ).map(item => new Uint8Array(Buffer.from(item)));
 
     // sign data
     proof = await this.sign({
@@ -176,13 +178,15 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
 
     try {
       // create data to verify
-      const verifyData = await this.createVerifyData({
-        document,
-        proof,
-        documentLoader,
-        expansionMap,
-        compactProof: false
-      });
+      const verifyData = (
+        await this.createVerifyData({
+          document,
+          proof,
+          documentLoader,
+          expansionMap,
+          compactProof: false
+        })
+      ).map(item => new Uint8Array(Buffer.from(item)));
 
       // fetch verification method
       const verificationMethod = await this.getVerificationMethod({
@@ -361,9 +365,12 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       );
     }
 
-    proof[this.proofSignatureKey] = await this.signer.sign({
+    const proofValue: Uint8Array = await this.signer.sign({
       data: verifyData
     });
+
+    proof[this.proofSignatureKey] = Buffer.from(proofValue).toString("base64");
+
     return proof;
   }
 
@@ -380,9 +387,12 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       const key = await this.LDKeyClass.from(verificationMethod);
       verifier = key.verifier(key, this.alg, this.type);
     }
+
     return await verifier.verify({
       data: verifyData,
-      signature: proof[this.proofSignatureKey]
+      signature: new Uint8Array(
+        Buffer.from(proof[this.proofSignatureKey] as string, "base64")
+      )
     });
   }
 }
