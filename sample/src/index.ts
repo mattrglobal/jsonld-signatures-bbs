@@ -31,7 +31,7 @@ import citizenVocab from "./data/citizenVocab.json";
 const documents: any = {
   "did:example:489398593#test": keyPairOptions,
   "did:example:489398593": exampleControllerDoc,
-  "https://w3c-ccg.github.io/lds-bbsbls2020/contexts": bbsContext,
+  "https://w3c-ccg.github.io/ldp-bbs2020/context/v1": bbsContext,
   "https://w3id.org/citizenship/v1": citizenVocab
 };
 
@@ -65,26 +65,24 @@ const main = async (): Promise<void> => {
   const signedDocument = await sign(inputDocument, {
     suite: new BbsBlsSignature2020({ key: keyPair }),
     purpose: new purposes.AssertionProofPurpose(),
-    documentLoader,
-    compactProof: false
+    documentLoader
   });
 
   console.log("Input document with proof");
-  console.log(JSON.stringify(signedDocument, null, 2));
+  console.log(JSON.stringify(inputDocument, null, 2));
 
   //Verify the proof
-  let verified = await verify(signedDocument, {
+  let verified = await verify(inputDocument, {
     suite: new BbsBlsSignature2020(),
     purpose: new purposes.AssertionProofPurpose(),
-    documentLoader,
-    compactProof: false
+    documentLoader
   });
 
   console.log("Verification result");
   console.log(JSON.stringify(verified, null, 2));
 
   //Derive a proof
-  const derivedProof = await deriveProof(signedDocument, revealDocument, {
+  const derivedProof = await deriveProof(inputDocument, revealDocument, {
     suite: new BbsBlsSignatureProof2020(),
     documentLoader
   });
@@ -95,8 +93,7 @@ const main = async (): Promise<void> => {
   verified = await verify(derivedProof, {
     suite: new BbsBlsSignatureProof2020(),
     purpose: new purposes.AssertionProofPurpose(),
-    documentLoader,
-    compactProof: false
+    documentLoader
   });
 
   console.log("Verification result");
