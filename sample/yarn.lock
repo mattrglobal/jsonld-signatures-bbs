@@ -2,37 +2,38 @@
 # yarn lockfile v1
 
 
-"@mattrglobal/bbs-signatures@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.4.0.tgz#de106c4a5946e590dc1ecaf672e90c284a5fba85"
-  integrity sha512-r6ed3N9xO+7AlO6FF2rVksH+HjfLwxZ9eKWHg3saTi5hzhJyehE3Qahj+goddgYD6emzwzrVbawNZDTttMQUKg==
+"@mattrglobal/bbs-signatures@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.5.0.tgz#c8e3842a657cabbf7f1e16db06f77c9f84a42f3f"
+  integrity sha512-4te4TpacAmeCM8aa/kHkU0i1IJwsO1x/Tez6/YLUWg6rK6bfGA1NNO7IBc12u9ETkoTsiU32UmsiYWXcw9QwKQ==
   optionalDependencies:
-    "@mattrglobal/node-bbs-signatures" "0.10.0"
+    "@mattrglobal/node-bbs-signatures" "0.11.0"
 
-"@mattrglobal/bls12381-key-pair@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.4.0.tgz#595b4651ab59f3cb9e98497bf6a6b56a50a232a9"
-  integrity sha512-cbo5PkeIIOtfgf/wS1n+B6XsBWatYyOFjz+cehr/25x2SB0q8tO2leAaahvZNJmQQHIj1/hVVPigO1mh40sZ3w==
+"@mattrglobal/bls12381-key-pair@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.5.0.tgz#dd6014b5b14903d4a280af4286c74d8a97b38410"
+  integrity sha512-eXAtke0HOEr9RcT+NEI1MERE50gUnnLm1mYBJkUugk9REP3MfKXtX2Mo4FXyCH/IR4Oxj2jCcfNYW/h0Q3x5sg==
   dependencies:
-    "@mattrglobal/bbs-signatures" "0.4.0"
+    "@mattrglobal/bbs-signatures" "0.5.0"
     bs58 "4.0.1"
+    rfc4648 "1.4.0"
 
-"@mattrglobal/jsonld-signatures-bbs@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/jsonld-signatures-bbs/-/jsonld-signatures-bbs-0.7.0.tgz#4cb694883168c4d1c559bf96c76672c3fea71759"
-  integrity sha512-TAxFtevtKtF/t2yhQwic1/Faz5u7bBCsz8skZp1ASCARhUJXACIlxPKKVqcIuzHJew0zJHW60+GXPmKB0MJeZA==
+"@mattrglobal/jsonld-signatures-bbs@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/jsonld-signatures-bbs/-/jsonld-signatures-bbs-0.8.0.tgz#3451e862f0ddae17ee91dff8ed088a5fa1333e8c"
+  integrity sha512-ys4jYOKn8SZDPlkWd4K9I6vP4ujTi7m/B0rSVbWPcbi+FR4e4L5+0ufHuKQh8V3+hwGP2kly11yqhO+cpQ/YQQ==
   dependencies:
-    "@mattrglobal/bbs-signatures" "0.4.0"
-    "@mattrglobal/bls12381-key-pair" "0.4.0"
+    "@mattrglobal/bbs-signatures" "0.5.0"
+    "@mattrglobal/bls12381-key-pair" "0.5.0"
     "@stablelib/random" "1.0.0"
     bs58 "4.0.1"
     jsonld "3.1.0"
     jsonld-signatures "5.0.1"
 
-"@mattrglobal/node-bbs-signatures@0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.10.0.tgz#6bdcdf135f8b101bf74f07207589104ef505db3d"
-  integrity sha512-i2sd61gXQJ0YJZ6JLUnKoQ8w+V39OOh5cdrYv0odnnF00H0a8y9JbSoDbzqEywFGol6oXk2ezFGI/ilU+1R7wQ==
+"@mattrglobal/node-bbs-signatures@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.11.0.tgz#c63ab8648a529cfe1dd855cc78a93f78ee27a9f4"
+  integrity sha512-V0wcY0ZewrPOiMOrL3wam0oYL1SLbF2ihgAM6JQvLrAKw1MckYiJ8T4vL+nOBs2hf1PA1TZI+USe5mqMWuVKTw==
   dependencies:
     neon-cli "0.4.0"
     node-pre-gyp "0.14.0"
@@ -1176,6 +1177,11 @@ restore-cursor@^2.0.0:
   dependencies:
     onetime "^2.0.0"
     signal-exit "^3.0.2"
+
+rfc4648@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/rfc4648/-/rfc4648-1.4.0.tgz#c75b2856ad2e2d588b6ddb985d556f1f7f2a2abd"
+  integrity sha512-3qIzGhHlMHA6PoT6+cdPKZ+ZqtxkIvg8DZGKA5z6PQ33/uuhoJ+Ws/D/J9rXW6gXodgH8QYlz2UCl+sdUDmNIg==
 
 rimraf@^2.6.1:
   version "2.7.1"
