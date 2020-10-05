@@ -34,6 +34,10 @@ export const deriveProof = async (
     throw new TypeError('"options.suite" is required.');
   }
 
+  if (Array.isArray(proofDocument)) {
+    throw new TypeError("proofDocument should be an object not an array.");
+  }
+
   const { proofs, document } = await getProofs({
     document: proofDocument,
     proofType: suite.supportedDeriveProofType,
@@ -41,7 +45,14 @@ export const deriveProof = async (
     expansionMap
   });
 
-  const result = await suite.deriveProof({
+  if (proofs.length === 0) {
+    throw new Error(
+      "There were not any BBSBlsSignatureProof2020 proofs provided that can be used to derive a proof."
+    );
+  }
+  let derivedProof;
+
+  derivedProof = await suite.deriveProof({
     document,
     proof: proofs[0],
     revealDocument,
@@ -49,21 +60,43 @@ export const deriveProof = async (
     expansionMap
   });
 
+  if (proofs.length > 1) {
+    // convert the proof property value from object ot array of objects
+    derivedProof = { ...derivedProof, proof: [derivedProof.proof] };
+
+    // drop the first proof because it's already been processed
+    proofs.splice(0, 1);
+
+    // add all the additional proofs to the derivedProof document
+    for (const proof of proofs) {
+      const additionalDerivedProofValue = await suite.deriveProof({
+        document,
+        proof,
+        revealDocument,
+        documentLoader,
+        expansionMap
+      });
+      derivedProof.proof.push(additionalDerivedProofValue.proof);
+    }
+  }
+
   if (!skipProofCompaction) {
     /* eslint-disable prefer-const */
     let expandedProof: any = {
-      [SECURITY_PROOF_URL]: { "@graph": result.proof }
+      [SECURITY_PROOF_URL]: {
+        "@graph": derivedProof.proof
+      }
     };
 
     // account for type-scoped `proof` definition by getting document types
-    const { types, alias } = await getTypeInfo(result.document, {
+    const { types, alias } = await getTypeInfo(derivedProof.document, {
       documentLoader,
       expansionMap
     });
 
     expandedProof["@type"] = types;
 
-    const ctx = jsonld.getValues(result.document, "@context");
+    const ctx = jsonld.getValues(derivedProof.document, "@context");
 
     const compactProof = await jsonld.compact(expandedProof, ctx, {
       documentLoader,
@@ -74,13 +107,22 @@ export const deriveProof = async (
     delete compactProof[alias];
     delete compactProof["@context"];
 
+    /**
+     * removes the @included tag when multiple proofs exist because the
+     * @included tag messes up the canonicalized bytes leading to a bad
+     * signature that won't verify.
+     **/
+    if (compactProof.proof["@included"]) {
+      compactProof.proof = compactProof.proof["@included"];
+    }
+
     // add proof to document
     const key = Object.keys(compactProof)[0];
-    jsonld.addValue(result.document, key, compactProof[key]);
+    jsonld.addValue(derivedProof.document, key, compactProof[key]);
   } else {
-    delete result.proof["@context"];
-    jsonld.addValue(result.document, "proof", result.proof);
+    delete derivedProof.proof["@context"];
+    jsonld.addValue(derivedProof.document, "proof", derivedProof.proof);
   }
 
-  return result.document;
+  return derivedProof.document;
 };
