@@ -19,14 +19,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          registry-url: "https://registry.npmjs.org"
       - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn build
       - run: yarn test
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc 2> /dev/null
-        env:
-          NPM_TOKEN: ${{ secrets.NPMJS_PUBLIC_TOKEN }}
       - run: git config user.name "Mattr CI"
       - run: git config user.email "npmjs_ci_mattr_public@mattr.global"
       - run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLIC_TOKEN }}
       - run: yarn publish:release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLIC_TOKEN }}
