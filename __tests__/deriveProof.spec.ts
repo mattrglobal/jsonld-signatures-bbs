@@ -16,10 +16,15 @@ import {
   testSignedDocument,
   customLoader,
   testSignedVcDocument,
-  testRevealVcDocument
+  testRevealVcDocument,
+  testSignedDocumentMultiProofs,
+  testSignedDocumentMultiDifProofs,
+  testSignedDocumentEd25519
 } from "./__fixtures__";
 
 import { BbsBlsSignatureProof2020, deriveProof } from "../src/index";
+
+import jsigs from "jsonld-signatures";
 
 describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof", async () => {
@@ -48,5 +53,78 @@ describe("BbsBlsSignatureProof2020", () => {
       }
     );
     expect(result).toBeDefined();
+  });
+
+  it("should derive proofs from a document featuring multiple supporting proofs", async () => {
+    const result = await deriveProof(
+      testSignedDocumentMultiProofs,
+      testRevealDocument,
+      {
+        suite: new BbsBlsSignatureProof2020(),
+        documentLoader: customLoader
+      }
+    );
+    expect(result).toBeDefined();
+    expect(result.proof.length).toBe(2);
+  });
+
+  it("should derive proofs from a document featuring multiple different proofs with at least 1 supporting proof", async () => {
+    const result = await deriveProof(
+      testSignedDocumentMultiDifProofs,
+      testRevealDocument,
+      {
+        suite: new BbsBlsSignatureProof2020(),
+        documentLoader: customLoader
+      }
+    );
+    expect(result).toBeDefined();
+
+    // this returns a document with only a single proof so it should be an object rather than an array
+    expect(Array.isArray(result.proof)).toBe(false);
+  });
+
+  it("should derive proofs from multiple proof documents and be able to verify them using jsonld-signatures library", async () => {
+    const result = await deriveProof(
+      testSignedDocumentMultiProofs,
+      testRevealDocument,
+      {
+        suite: new BbsBlsSignatureProof2020(),
+        documentLoader: customLoader
+      }
+    );
+
+    const derivedProofVerified = await jsigs.verify(result, {
+      suite: new BbsBlsSignatureProof2020(),
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
+      documentLoader: customLoader
+    });
+
+    expect(result).toBeDefined();
+    expect(result.proof.length).toBe(2);
+    expect(derivedProofVerified.verified).toBeTruthy();
+  });
+
+  it("should throw an error when proofDocument is the wrong type", async () => {
+    await expect(
+      deriveProof(
+        [testSignedDocument, testSignedDocument],
+        testRevealDocument,
+        {
+          suite: new BbsBlsSignatureProof2020(),
+          documentLoader: customLoader
+        }
+      )
+    ).rejects.toThrowError("proofDocument should be an object not an array.");
+  });
+
+  it("should throw an error when proofDocument doesn't include a BBSBlsSignatureProof2020", async () => {
+    await expect(
+      deriveProof(testSignedDocumentEd25519, testRevealDocument, {
+        suite: new BbsBlsSignatureProof2020(),
+        documentLoader: customLoader
+      })
+    ).rejects.toThrowError(
+      "There were not any BBSBlsSignatureProof2020 proofs provided that can be used to derive a proof."
+    );
   });
 });
