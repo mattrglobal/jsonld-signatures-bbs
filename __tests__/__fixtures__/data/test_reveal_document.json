@@ -1,9 +1,5 @@
 {
-  "@context": [
-    "http://schema.org/",
-    "https://w3id.org/security/v2",
-    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
-  ],
+  "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
   "@type": "Person",
   "@explicit": true,
   "firstName": "Jane",

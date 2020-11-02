@@ -52,6 +52,7 @@ describe("BbsBlsSignature2020", () => {
       purpose: new jsigs.purposes.AssertionProofPurpose(),
       documentLoader: customLoader
     });
+
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeTruthy();
   });

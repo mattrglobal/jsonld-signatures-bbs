@@ -40,7 +40,7 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const { proofs, document } = await getProofs({
       document: testSignedDocument,
-      proofType: suite.supportedDeriveProofType,
+      proofType: BbsBlsSignatureProof2020.supportedDerivedProofType,
       documentLoader: customLoader
     });
 
@@ -61,7 +61,7 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const { proofs, document } = await getProofs({
       document: testSignedDocument,
-      proofType: suite.supportedDeriveProofType,
+      proofType: BbsBlsSignatureProof2020.supportedDerivedProofType,
       documentLoader: customLoader
     });
 
@@ -82,7 +82,7 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const { proofs, document } = await getProofs({
       document: testSignedVcDocument,
-      proofType: suite.supportedDeriveProofType,
+      proofType: BbsBlsSignatureProof2020.supportedDerivedProofType,
       documentLoader: customLoader
     });
 
@@ -100,6 +100,7 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const { proofs, document } = await getProofs({
       document: testProofDocument,
+      proofType: BbsBlsSignatureProof2020.proofType,
       documentLoader: customLoader
     });
 
@@ -117,6 +118,7 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const { proofs, document } = await getProofs({
       document: testPartialProofDocument,
+      proofType: BbsBlsSignatureProof2020.proofType,
       documentLoader: customLoader
     });
 
@@ -134,6 +136,7 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const { proofs, document } = await getProofs({
       document: testPartialVcProof,
+      proofType: BbsBlsSignatureProof2020.proofType,
       documentLoader: customLoader
     });
 
@@ -151,6 +154,7 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const { proofs, document } = await getProofs({
       document: testBadPartialProofDocument,
+      proofType: BbsBlsSignatureProof2020.proofType,
       documentLoader: customLoader
     });
 

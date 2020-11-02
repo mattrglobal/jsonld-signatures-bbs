@@ -53,8 +53,11 @@ export const getProofs = async (
   proofs = jsonld.getValues(document, PROOF_PROPERTY);
   delete document[PROOF_PROPERTY];
 
-  if (proofType) {
+  if (typeof proofType === "string") {
     proofs = proofs.filter((_: any) => _.type == proofType);
+  }
+  if (Array.isArray(proofType)) {
+    proofs = proofs.filter((_: any) => proofType.includes(_.type));
   }
 
   proofs = proofs.map((matchedProof: any) => ({
