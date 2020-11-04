@@ -1,9 +1,5 @@
 {
-  "@context": [
-    "https://schema.org",
-    "https://w3id.org/security/v2",
-    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
-  ],
+  "@context": ["https://schema.org", "https://w3id.org/security/v3-unstable"],
   "@type": "Person",
   "firstName": "Jane",
   "lastName": "Does",
@@ -12,9 +8,9 @@
   "email": "jane.doe@example.com",
   "proof": {
     "type": "BbsBlsSignature2020",
-    "created": "2020-07-21T04:16:41Z",
-    "verificationMethod": "did:example:489398593#test",
+    "created": "2020-10-30T04:34:10Z",
     "proofPurpose": "assertionMethod",
-    "proofValue": "pTy8PJCw93RrD+X55McbjHfrlW5SJYNhF84Eggafnlb2CH8QtfXfNsTnVuTQp8UfKKbKqOp6ASwv2kmKtXJJpK+n7+mNKMbeBqw/fuwbu5w/QjvCgYZH3WhlZq6zTmRN9MwO1lQOxntcnKP8xmaoAw=="
+    "proofValue": "t+lSsiNnCYrVUzVsT1DoWMfZP5vHcXnrwo8kxSdsROv9+kTUjZWi5yEju4PZrHWwVPDP0AY2VYjDE5Y9QKYkxJ7PPg3CId2e/Wrk17Tjp31hEll7tBeMszRkTEUUb+gHSulYnYdN/Nvp/BWCekbuIg==",
+    "verificationMethod": "did:example:489398593#test"
   }
 }

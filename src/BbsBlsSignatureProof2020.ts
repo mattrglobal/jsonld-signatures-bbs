@@ -29,16 +29,17 @@ import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
 export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
   constructor({ useNativeCanonize, key, LDKeyClass }: any = {}) {
     super({
-      type:
-        "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignatureProof2020"
+      type: "sec:BbsBlsSignatureProof2020"
     });
 
     this.proof = {
-      "@context": "https://w3c-ccg.github.io/ldp-bbs2020/context/v1",
+      "@context": "https://w3id.org/security/v3-unstable",
       type: "BbsBlsSignatureProof2020"
     };
+    this.mappedDerivedProofType =
+      "https://w3id.org/security#BbsBlsSignature2020";
     this.supportedDeriveProofType =
-      "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignature2020";
+      BbsBlsSignatureProof2020.supportedDerivedProofType;
 
     this.LDKeyClass = LDKeyClass ?? Bls12381G2KeyPair;
     this.proofSignatureKey = "proofValue";
@@ -65,9 +66,13 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     let { nonce } = options;
 
     // Validate that the input proof document has a proof compatible with this suite
-    if (proof.type !== this.supportedDeriveProofType) {
+    if (
+      !BbsBlsSignatureProof2020.supportedDerivedProofType.includes(proof.type)
+    ) {
       throw new TypeError(
-        `proof document proof incompatible, expected proof type of ${this.supportedDeriveProofType} received ${proof.type}`
+        `proof document proof incompatible, expected proof types of ${JSON.stringify(
+          BbsBlsSignatureProof2020.supportedDerivedProofType
+        )} received ${proof.type}`
       );
     }
 
@@ -230,7 +235,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     const { proof } = options;
 
     try {
-      proof.type = this.supportedDeriveProofType;
+      proof.type = this.mappedDerivedProofType;
 
       // Get the proof statements
       const proofStatements = await this.createVerifyProofData(proof, {
@@ -426,4 +431,16 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     return result;
   }
+
+  static proofType = [
+    "BbsBlsSignatureProof2020",
+    "sec:BbsBlsSignatureProof2020",
+    "https://w3id.org/security#BbsBlsSignatureProof2020"
+  ];
+
+  static supportedDerivedProofType = [
+    "BbsBlsSignature2020",
+    "sec:BbsBlsSignature2020",
+    "https://w3id.org/security#BbsBlsSignature2020"
+  ];
 }

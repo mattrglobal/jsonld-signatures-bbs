@@ -15,7 +15,7 @@ import jsonld from "jsonld";
 import { extendContextLoader } from "jsonld-signatures";
 import credentialContext from "./data/credential_vocab.json";
 import odrlContext from "./data/odrl.json";
-import bbsContext from "./contexts/lds-bbsbls2020-v0.0.json";
+import bbsContext from "./contexts/v3_unstable.json";
 import exampleDidKey from "./data/did_example_489398593_test.json";
 import exampleDidDoc from "./data/did_example_489398593.json";
 import exampleDidb34Key from "./data/did_example_b34ca6cd37bbf23_test.json";
@@ -23,7 +23,7 @@ import exampleDidb34Doc from "./data/did_example_b34ca6cd37bbf23.json";
 import citizenVocab from "./data/citizen_vocab.json";
 
 export const documents: any = {
-  "https://w3c-ccg.github.io/ldp-bbs2020/context/v1": bbsContext,
+  "https://w3id.org/security/v3-unstable": bbsContext,
   "https://www.w3.org/2018/credentials/v1": credentialContext,
   "https://www.w3.org/ns/odrl.jsonld": odrlContext,
   "did:example:489398593#test": exampleDidKey,

@@ -21,9 +21,9 @@ export interface GetProofsOptions {
    */
   readonly document: any;
   /**
-   * Optional the proof type to filter the returned proofs by
+   * Optional the proof type(s) to filter the returned proofs by
    */
-  readonly proofType?: string;
+  readonly proofType?: string | readonly string[];
   /**
    * Optional custom document loader
    */

@@ -1,5 +1,5 @@
 {
-  "@context": ["http://schema.org/", "https://w3id.org/security/v2"],
+  "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
   "id": "urn:bnid:_:c14n0",
   "type": "Person",
   "email": "jane.doe@example.com",
@@ -9,10 +9,10 @@
   "telephone": "(425) 123-4567",
   "proof": {
     "type": "BbsBlsSignatureProof2020",
-    "created": "2020-07-21T04:16:41Z",
+    "nonce": "Qvv+50burAq9dHFIE6drJWKVcQj4G+IdwQXT/S2mHkxwbd4ZI/d4lrWQ1uiJPNToHx4=",
+    "proofValue": "AAoD/5BmimoSIcEAL2qzBgzHMkRF5GiNLInT30Klkp/DKgzYdIxad+DDoKSLtu3HqUJZ44bT77EubVQclHcJl3zsI826G77z53am0jZRBCmVyTRqbjIbmlBGR+DlSPs/e7Vo35Q8hKq0wBCQBLwQ6+ArSshYVPD3fvTd6lsOpvz0fJPkDYmCXhu2w9vdXZYgsobsyAAAAHSNUZ27LZKohwy3M8OoNBk59TfX8sb/ss8QagDeQ2IOQ6Tb6tyRVeF0kkDNuYno4JAAAAACXYgOfWJ8s+gDYgb/7qXnJ8amB7hhUJxWMkFGQd1D7yopAqyp9S9lwqwY5Zi8YwxfO9JjX9g5TYBorYVooI25molA0BcvIu0IzX23j9GJ9gpJuTHCUKtizD/tgepu+H6ow/mbsIeTlpUlAlasX7NIhgAAAAJpOZ/vLm9Omn7GqKBnoxCMK+dqi4Hr9NsGNOSk2qnW9Erf74dJA+e4CRMfP4ZCbYbbx7Ex+4cckdqUH4WRby4M",
     "verificationMethod": "did:example:489398593#test",
     "proofPurpose": "assertionMethod",
-    "proofValue": "AAoD/4NZb1PEEDncdEaklhUo23vy146XiCKsFoc0eA7QLNDKH06gLYUFIdrxxQGSEZVvA4EJtcQ29GI+9GHvp7XEMwHXqjPDd61Ry2eZRyvAio27ofUv8ocU2Xj4QgMP0KGHspgVZSC/9z2hQf0b2FeSwgiepbCBk8jYRXzvvZxv/QzJYAn5KzRPJ749S/ezoypeNAAAAHSD27FbKVcd9FJIfHx+VMtlpyzHGpIIfJU4WA0PAP/dTgzVDXU/ojRf8s7Zu+Jt1xwAAAACS/l1SpFTm50NbBuXKHs4OYX6gb1G8JQZs07jNx/DPtkE0oP2pQl5tEgNV9TaFssKkwtCf+MU+hhAiYw226zxfKjG/2a77QfQ390jUco2sRzc2FQs/e8oAsCEl8ndONsq5GGwL6CRCfh7Lzrz1NDgowAAAAJxbiSj/8eT6HwP1rC959bCHDGKM0hHSHwp4QWB20mBYwsIvkgY7JiLMtz5TChRJaWfwewl7vGZZN120cjrUdQ/",
-    "nonce": "oJeYgrdkKmLlqG+ZhmV6lpWX01tDr4vVhJpck6gdAQfpHo18DTjV2i82HEbBptzqz6o="
+    "created": "2020-10-30T04:34:10Z"
   }
 }

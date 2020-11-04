@@ -124,7 +124,7 @@ describe("BbsBlsSignatureProof2020", () => {
         documentLoader: customLoader
       })
     ).rejects.toThrowError(
-      "There were not any BBSBlsSignatureProof2020 proofs provided that can be used to derive a proof."
+      "There were not any proofs provided that can be used to derive a proof with this suite."
     );
   });
 });

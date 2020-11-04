@@ -51,12 +51,11 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       throw new TypeError('"verificationMethod" must be a URL string.');
     }
     super({
-      type:
-        "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignature2020"
+      type: "sec:BbsBlsSignature2020"
     });
 
     this.proof = {
-      "@context": "https://w3c-ccg.github.io/ldp-bbs2020/context/v1",
+      "@context": "https://w3id.org/security/v3-unstable",
       type: "BbsBlsSignature2020"
     };
 
@@ -395,4 +394,10 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       )
     });
   }
+
+  static proofType = [
+    "BbsBlsSignature2020",
+    "sec:BbsBlsSignature2020",
+    "https://w3id.org/security#BbsBlsSignature2020"
+  ];
 }

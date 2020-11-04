@@ -8,8 +8,7 @@
       "telephone": "schema:telephone",
       "email": "schema:email"
     },
-    "https://w3id.org/security/v2",
-    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
+    "https://w3id.org/security/v3-unstable"
   ],
   "@type": "Person",
   "lastName": "Does",
