@@ -1,5 +1,5 @@
 {
-  "@context": "https://w3id.org/security/v2",
+  "@context": "https://w3id.org/security/v3-unstable",
   "id": "did:example:489398593#test",
   "type": "Bls12381G2Key2020",
   "controller": "did:example:489398593",

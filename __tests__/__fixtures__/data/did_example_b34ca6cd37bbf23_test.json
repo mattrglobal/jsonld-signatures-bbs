@@ -1,5 +1,5 @@
 {
-  "@context": "https://w3id.org/security/v2",
+  "@context": "https://w3id.org/security/v3-unstable",
   "id": "did:example:b34ca6cd37bbf23#test",
   "type": "Ed25519VerificationKey2018",
   "controller": "did:example:b34ca6cd37bbf23",
