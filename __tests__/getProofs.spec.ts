@@ -60,7 +60,7 @@ describe("getProofs", () => {
     const result = await getProofs({
       document: testSignedDocumentEd25519,
       proofType:
-        "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignature2020",
+        "https://w3c-ccg.github.io/ldp-bbs2020/contexts/v1#BbsBlsSignature2020",
       documentLoader: customLoader
     });
     expect(result).toBeDefined();

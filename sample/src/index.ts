@@ -17,20 +17,23 @@ import {
   BbsBlsSignatureProof2020,
   deriveProof
 } from "@mattrglobal/jsonld-signatures-bbs";
+
 import { extendContextLoader, sign, verify, purposes } from "jsonld-signatures";
 import { documentLoaders } from "jsonld";
 
-import inputDocument from "./data/inputDocument.json";
+import credentialTemplate from "./data/credentialTemplate.json";
 import keyPairOptions from "./data/keyPair.json";
 import exampleControllerDoc from "./data/controllerDocument.json";
-import bbsContext from "./data/lds-bbsbls2020-v0.0.json";
-import revealDocument from "./data/deriveProofFrame.json";
+import bbsContext from "./data/lds-bbsbls2020-v1.json";
+import deriveProofFrame from "./data/deriveProofFrame.json";
 import citizenVocab from "./data/citizenVocab.json";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const documents: any = {
   "did:example:489398593#test": keyPairOptions,
   "did:example:489398593": exampleControllerDoc,
+  "https://w3c-ccg.github.io/ldp-bbs2020/contexts/v1": bbsContext,
+  // required to pass tests until correct context is merged
   "https://w3c-ccg.github.io/ldp-bbs2020/context/v1": bbsContext,
   "https://w3id.org/citizenship/v1": citizenVocab
 };
@@ -59,20 +62,20 @@ const main = async (): Promise<void> => {
   const keyPair = await new Bls12381G2KeyPair(keyPairOptions);
 
   console.log("Input document");
-  console.log(JSON.stringify(inputDocument, null, 2));
+  console.log(JSON.stringify(credentialTemplate, null, 2));
 
   //Sign the input document
-  const signedDocument = await sign(inputDocument, {
+  const verifiableCredential = await sign(credentialTemplate, {
     suite: new BbsBlsSignature2020({ key: keyPair }),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader
   });
 
   console.log("Input document with proof");
-  console.log(JSON.stringify(inputDocument, null, 2));
+  console.log(JSON.stringify(credentialTemplate, null, 2));
 
   //Verify the proof
-  let verified = await verify(inputDocument, {
+  let verified = await verify(verifiableCredential, {
     suite: new BbsBlsSignature2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader
@@ -82,15 +85,19 @@ const main = async (): Promise<void> => {
   console.log(JSON.stringify(verified, null, 2));
 
   //Derive a proof
-  const derivedProof = await deriveProof(inputDocument, revealDocument, {
-    suite: new BbsBlsSignatureProof2020(),
-    documentLoader
-  });
+  const derivedProofVerifiableCredential = await deriveProof(
+    credentialTemplate,
+    deriveProofFrame,
+    {
+      suite: new BbsBlsSignatureProof2020(),
+      documentLoader
+    }
+  );
 
-  console.log(JSON.stringify(derivedProof, null, 2));
+  console.log(JSON.stringify(derivedProofVerifiableCredential, null, 2));
 
   //Verify the derived proof
-  verified = await verify(derivedProof, {
+  verified = await verify(derivedProofVerifiableCredential, {
     suite: new BbsBlsSignatureProof2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader

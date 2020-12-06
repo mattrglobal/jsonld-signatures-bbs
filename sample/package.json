@@ -16,7 +16,7 @@
     "typescript": "3.7.5"
   },
   "dependencies": {
-    "@mattrglobal/jsonld-signatures-bbs": "0.7.0",
+    "@mattrglobal/jsonld-signatures-bbs": "file:..",
     "jsonld": "3.1.0",
     "jsonld-signatures": "5.0.1"
   }
