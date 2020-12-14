@@ -19,7 +19,10 @@ import {
   testRevealVcDocument,
   testSignedDocumentMultiProofs,
   testSignedDocumentMultiDifProofs,
-  testSignedDocumentEd25519
+  testSignedDocumentEd25519,
+  testNestedRevealDocument,
+  testNestedRevealFullDocument,
+  testSignedNestedVcDocument
 } from "./__fixtures__";
 
 import { BbsBlsSignatureProof2020, deriveProof } from "../src/index";
@@ -102,6 +105,35 @@ describe("BbsBlsSignatureProof2020", () => {
     expect(result).toBeDefined();
     expect(result.proof.length).toBe(2);
     expect(derivedProofVerified.verified).toBeTruthy();
+  });
+
+  it("should derive proof from a nested document with a nested frame with all properties revealed", async () => {
+    const result = await deriveProof(
+      testSignedNestedVcDocument,
+      testNestedRevealFullDocument,
+      {
+        suite: new BbsBlsSignatureProof2020(),
+        documentLoader: customLoader
+      }
+    );
+
+    expect(result).toBeDefined();
+    expect(result.credentialSubject.degree.type).toBeDefined();
+    expect(result.credentialSubject.degree.name).toBeDefined();
+  });
+
+  it("should derive proofs from a nested document with a nested frame with selectively revealed properties", async () => {
+    const result = await deriveProof(
+      testSignedNestedVcDocument,
+      testNestedRevealDocument,
+      {
+        suite: new BbsBlsSignatureProof2020(),
+        documentLoader: customLoader
+      }
+    );
+
+    expect(result).toBeDefined();
+    expect(result.credentialSubject.degree.name).toBeDefined();
   });
 
   it("should throw an error when proofDocument is the wrong type", async () => {

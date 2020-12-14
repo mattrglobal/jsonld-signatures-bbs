@@ -6,7 +6,7 @@
     "name": "http://schema.org/name",
     "description": "http://schema.org/description",
     "identifier": "http://schema.org/identifier",
-    "image": {"@id": "http://schema.org/image", "@type": "@id"},
+    "image": { "@id": "http://schema.org/image", "@type": "@id" },
 
     "PermanentResidentCard": {
       "@id": "https://w3id.org/citizenship#PermanentResidentCard",
@@ -20,7 +20,7 @@
         "description": "http://schema.org/description",
         "name": "http://schema.org/name",
         "identifier": "http://schema.org/identifier",
-        "image": {"@id": "http://schema.org/image", "@type": "@id"}
+        "image": { "@id": "http://schema.org/image", "@type": "@id" }
       }
     },
 
@@ -38,14 +38,17 @@
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
         "birthCountry": "ctzn:birthCountry",
-        "birthDate": {"@id": "schema:birthDate", "@type": "xsd:dateTime"},
+        "birthDate": { "@id": "schema:birthDate", "@type": "xsd:dateTime" },
         "commuterClassification": "ctzn:commuterClassification",
         "familyName": "schema:familyName",
         "gender": "schema:gender",
         "givenName": "schema:givenName",
         "lprCategory": "ctzn:lprCategory",
         "lprNumber": "ctzn:lprNumber",
-        "residentSince": {"@id": "ctzn:residentSince", "@type": "xsd:dateTime"}
+        "residentSince": {
+          "@id": "ctzn:residentSince",
+          "@type": "xsd:dateTime"
+        }
       }
     },
 

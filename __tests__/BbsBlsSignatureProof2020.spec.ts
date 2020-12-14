@@ -22,7 +22,9 @@ import {
   testSignedVcDocument,
   testRevealVcDocument,
   testPartialVcProof,
-  testRevealAllDocument
+  testRevealAllDocument,
+  testProofNestedVcDocument,
+  testPartialProofNestedVcDocument
 } from "./__fixtures__";
 
 import jsigs from "jsonld-signatures";
@@ -118,6 +120,42 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const { proofs, document } = await getProofs({
       document: testPartialProofDocument,
+      proofType: BbsBlsSignatureProof2020.proofType,
+      documentLoader: customLoader
+    });
+
+    const result = await suite.verifyProof({
+      document,
+      proof: proofs[0],
+      documentLoader: customLoader,
+      purpose: new jsigs.purposes.AssertionProofPurpose()
+    });
+    expect(result.verified).toBeTruthy();
+  });
+
+  it("should verify a fully revealed derived proof that uses nesting from a vc", async () => {
+    const suite = new BbsBlsSignatureProof2020();
+
+    const { proofs, document } = await getProofs({
+      document: testProofNestedVcDocument,
+      proofType: BbsBlsSignatureProof2020.proofType,
+      documentLoader: customLoader
+    });
+
+    const result = await suite.verifyProof({
+      document,
+      proof: proofs[0],
+      documentLoader: customLoader,
+      purpose: new jsigs.purposes.AssertionProofPurpose()
+    });
+    expect(result.verified).toBeTruthy();
+  });
+
+  it("should verify a partially revealed derived proof that uses nesting from a vc", async () => {
+    const suite = new BbsBlsSignatureProof2020();
+
+    const { proofs, document } = await getProofs({
+      document: testPartialProofNestedVcDocument,
       proofType: BbsBlsSignatureProof2020.proofType,
       documentLoader: customLoader
     });
