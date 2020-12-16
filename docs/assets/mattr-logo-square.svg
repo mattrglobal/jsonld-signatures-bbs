@@ -1,0 +1,27 @@
+<!--
+    Copyright (c) MATTR Limited, 2020. All rights reserved.
+    "MATTR" is a trademark of MATTR Limited, registered in New Zealand and other countries.
+    https://mattr.global
+-->
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<path d="M72 0H0V72H72V0Z" fill="#333132"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M45.45 33.62V52H52V18.8L36 33.83L20 18.8V52H26.55V33.66L36 42.95L45.45 33.62Z" fill="#EAD9E3"/>
+<path d="M0 0H72L36 33.83L0 0Z" fill="url(#paint0_linear)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear" x1="72" y1="16.92" x2="0" y2="16.92" gradientUnits="userSpaceOnUse">
+<stop stop-color="#DFCCD7"/>
+<stop offset="0.05" stop-color="#C8B7C1"/>
+<stop offset="0.16" stop-color="#9B8F96"/>
+<stop offset="0.27" stop-color="#756D72"/>
+<stop offset="0.38" stop-color="#585356"/>
+<stop offset="0.49" stop-color="#444042"/>
+<stop offset="0.6" stop-color="#373536"/>
+<stop offset="0.7" stop-color="#333132"/>
+</linearGradient>
+<clipPath id="clip0">
+<rect width="72" height="72" fill="white"/>
+</clipPath>
+</defs>
+</svg>

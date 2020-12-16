@@ -1,4 +1,4 @@
-![Mattr logo](./docs/assets/mattr-black.svg)
+[![MATTR](./docs/assets/mattr-logo-square.svg)](https://github.com/mattrglobal)
 
 # jsonld-signatures-bbs
 
@@ -171,3 +171,7 @@ yarn test
 ## Security Policy
 
 Please see our [security policy](./SECURITY.md) for additional details about responsible disclosure of security related issues.
+
+---
+
+<p align="center"><a href="https://mattr.global" target="_blank"><img height="40px" src ="./docs/assets/mattr-logo-tm.svg"></a></p><p align="center">Copyright © MATTR Limited. <a href="./LICENSE">Some rights reserved.</a><br/>“MATTR” is a trademark of MATTR Limited, registered in New Zealand and other countries.</p>
