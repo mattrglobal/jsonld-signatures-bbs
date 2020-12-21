@@ -118,13 +118,15 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     // e.g _:c14n0 => urn:bnid:_:c14n0
     const transformedInputDocumentStatements = documentStatements.map(
       element => {
-        const nodeIdentifier = element.split(" ")[0];
-        if (nodeIdentifier.startsWith("_:c14n")) {
+        if (element.includes("_:c14n")) {
+          const prefixIndex = element.indexOf("_:c14n");
+          const spaceIndex = element.indexOf(" ", prefixIndex);
           return element.replace(
-            nodeIdentifier,
-            `<urn:bnid:${nodeIdentifier}>`
+            element.substring(prefixIndex, spaceIndex),
+            `<urn:bnid:${element.substring(prefixIndex, spaceIndex)}>`
           );
         }
+
         return element;
       }
     );
@@ -252,14 +254,13 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       // Transform the blank node identifier placeholders for the document statements
       // back into actual blank node identifiers
       const transformedDocumentStatements = documentStatements.map(element => {
-        const nodeIdentifier = element.split(" ")[0];
-        if (nodeIdentifier.startsWith("<urn:bnid:_:c14n")) {
+        const prefixString = "<urn:bnid:";
+        if (element.includes("<urn:bnid:_:c14n")) {
+          const prefixIndex = element.indexOf(prefixString);
+          const closingIndex = element.indexOf(">", prefixIndex);
           return element.replace(
-            nodeIdentifier,
-            nodeIdentifier.substring(
-              "<urn:bnid:".length,
-              nodeIdentifier.length - 1
-            )
+            element.substring(prefixIndex, closingIndex + 1),
+            element.substring(prefixIndex + prefixString.length, closingIndex)
           );
         }
         return element;

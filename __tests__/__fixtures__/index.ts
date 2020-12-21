@@ -30,6 +30,12 @@ import testSignedVcDocument from "./data/test_signed_vc.json";
 import testRevealVcDocument from "./data/test_vc_reveal_document.json";
 import testPartialVcProof from "./data/test_partial_proof_vc_document.json";
 import testRevealAllDocument from "./data/test_reveal_all_document.json";
+import testNestedRevealDocument from "./data/test_nested_reveal_document.json";
+import testNestedRevealFullDocument from "./data/test_nested_reveal_full_document.json";
+import testNestedVcDocument from "./data/test_nested_vc_document.json";
+import testSignedNestedVcDocument from "./data/test_signed_nested_vc_document.json";
+import testProofNestedVcDocument from "./data/test_proof_nested_vc_document.json";
+import testPartialProofNestedVcDocument from "./data/test_partial_proof_nested_vc_document.json";
 
 export {
   exampleBls12381KeyPair,
@@ -49,5 +55,11 @@ export {
   testPartialProofDocument,
   testBadPartialProofDocument,
   testBadSignedDocument,
+  testNestedRevealDocument,
+  testNestedRevealFullDocument,
+  testNestedVcDocument,
+  testSignedNestedVcDocument,
+  testProofNestedVcDocument,
+  testPartialProofNestedVcDocument,
   customLoader
 };

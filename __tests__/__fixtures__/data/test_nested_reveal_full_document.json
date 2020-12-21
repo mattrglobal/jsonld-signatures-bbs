@@ -1,0 +1,8 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://www.w3.org/2018/credentials/examples/v1",
+    "https://www.w3id.org/security/v3-unstable"
+  ],
+  "type": ["VerifiableCredential", "UniversityDegreeCredential"]
+}
