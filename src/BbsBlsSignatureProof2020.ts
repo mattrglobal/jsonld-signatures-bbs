@@ -205,7 +205,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     const key = await this.LDKeyClass.from(verificationMethod);
 
     // Compute the proof
-    const outputProof = blsCreateProof({
+    const outputProof = await blsCreateProof({
       signature: new Uint8Array(signature),
       publicKey: new Uint8Array(key.publicKeyBuffer),
       messages: allInputStatements,
