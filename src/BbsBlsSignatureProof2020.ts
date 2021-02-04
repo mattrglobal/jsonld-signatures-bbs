@@ -181,7 +181,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     // Create a nonce if one is not supplied
     if (!nonce) {
-      nonce = randomBytes(50);
+      nonce = await randomBytes(50);
     }
 
     // Set the nonce on the derived proof
