@@ -28,7 +28,7 @@ import { SECURITY_PROOF_URL } from "jsonld-signatures";
 export const deriveProof = async (
   proofDocument: any,
   revealDocument: any,
-  { suite, documentLoader, expansionMap, skipProofCompaction }: any
+  { suite, documentLoader, expansionMap, skipProofCompaction, nonce }: any
 ): Promise<any> => {
   if (!suite) {
     throw new TypeError('"options.suite" is required.');
@@ -57,7 +57,8 @@ export const deriveProof = async (
     proof: proofs[0],
     revealDocument,
     documentLoader,
-    expansionMap
+    expansionMap,
+    nonce
   });
 
   if (proofs.length > 1) {
