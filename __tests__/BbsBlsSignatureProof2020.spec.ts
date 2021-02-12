@@ -28,7 +28,11 @@ import {
 } from "./__fixtures__";
 
 import jsigs from "jsonld-signatures";
-import { Bls12381G2KeyPair, BbsBlsSignatureProof2020 } from "../src/index";
+import {
+  Bls12381G2KeyPair,
+  BbsBlsSignatureProof2020,
+  BbsBlsSignature2020
+} from "../src/index";
 import { getProofs } from "../src/utilities";
 
 const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
@@ -53,6 +57,97 @@ describe("BbsBlsSignatureProof2020", () => {
       documentLoader: customLoader
     });
     expect(result).toBeDefined();
+  });
+
+  it("should not verify partial derived proof with bad proof", async () => {
+    const suite = new BbsBlsSignatureProof2020();
+
+    const { proofs, document } = await getProofs({
+      document: testBadPartialProofDocument,
+      proofType: BbsBlsSignatureProof2020.proofType,
+      documentLoader: customLoader
+    });
+
+    const result = await suite.verifyProof({
+      document,
+      proof: proofs[0],
+      documentLoader: customLoader,
+      purpose: new jsigs.purposes.AssertionProofPurpose()
+    });
+    expect(result.verified).toBeFalsy();
+  });
+
+  it("should not derive proof with document featuring unsigned info", async () => {
+    const suite = new BbsBlsSignatureProof2020();
+
+    const input = {
+      ...testSignedDocument,
+      unsignedClaim: true
+    };
+
+    const { proofs, document } = await getProofs({
+      document: input,
+      proofType: BbsBlsSignature2020.proofType,
+      documentLoader: customLoader
+    });
+
+    await expect(
+      suite.deriveProof({
+        document,
+        proof: proofs[0],
+        revealDocument: testRevealAllDocument,
+        documentLoader: customLoader
+      })
+    ).rejects.toThrowError("Failed to create proof");
+  });
+
+  it("should not derived proof with document featuring modified info", async () => {
+    const suite = new BbsBlsSignatureProof2020();
+
+    const input = {
+      ...testSignedDocument,
+      email: "bad@example.com"
+    };
+
+    const { proofs, document } = await getProofs({
+      document: input,
+      proofType: BbsBlsSignature2020.proofType,
+      documentLoader: customLoader
+    });
+
+    await expect(
+      suite.deriveProof({
+        document,
+        proof: proofs[0],
+        revealDocument: testRevealAllDocument,
+        documentLoader: customLoader
+      })
+    ).rejects.toThrowError("Failed to create proof");
+  });
+
+  it("should not derived proof with document featuring missing info", async () => {
+    const suite = new BbsBlsSignatureProof2020();
+
+    const input = {
+      ...testSignedDocument
+    };
+
+    delete input.email;
+
+    const { proofs, document } = await getProofs({
+      document: input,
+      proofType: BbsBlsSignature2020.proofType,
+      documentLoader: customLoader
+    });
+
+    await expect(
+      suite.deriveProof({
+        document,
+        proof: proofs[0],
+        revealDocument: testRevealAllDocument,
+        documentLoader: customLoader
+      })
+    ).rejects.toThrowError("Failed to create proof");
   });
 
   it("should derive proof revealing all statements", async () => {
@@ -185,23 +280,5 @@ describe("BbsBlsSignatureProof2020", () => {
       purpose: new jsigs.purposes.AssertionProofPurpose()
     });
     expect(result.verified).toBeTruthy();
-  });
-
-  it("should not verify partial derived proof with bad proof", async () => {
-    const suite = new BbsBlsSignatureProof2020();
-
-    const { proofs, document } = await getProofs({
-      document: testBadPartialProofDocument,
-      proofType: BbsBlsSignatureProof2020.proofType,
-      documentLoader: customLoader
-    });
-
-    const result = await suite.verifyProof({
-      document,
-      proof: proofs[0],
-      documentLoader: customLoader,
-      purpose: new jsigs.purposes.AssertionProofPurpose()
-    });
-    expect(result.verified).toBeFalsy();
   });
 });
