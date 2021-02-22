@@ -282,7 +282,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       const key = await this.LDKeyClass.from(verificationMethod);
 
       // Verify the proof
-      const verified = blsVerifyProof({
+      const verified = await blsVerifyProof({
         proof: new Uint8Array(Buffer.from(proof.proofValue, "base64")),
         publicKey: new Uint8Array(key.publicKeyBuffer),
         messages: statementsToVerify,

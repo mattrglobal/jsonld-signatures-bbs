@@ -8,7 +8,7 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   coveragePathIgnorePatterns: ["<rootDir>/__tests__"],
   testEnvironment: "node",
-  testTimeout: 10000,
+  testTimeout: 15000,
   verbose: true,
   name: pack.name,
   displayName: pack.name
