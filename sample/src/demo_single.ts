@@ -23,7 +23,8 @@ import { documentLoaders } from "jsonld";
 import inputDocument from "./data/inputDocument.json";
 import keyPairOptions from "./data/keyPair.json";
 import exampleControllerDoc from "./data/controllerDocument.json";
-import bbsContext from "./data/lds-bbsbls2020-v0.0.json";
+import bbsContext from "./data/bbs.json";
+import securityV3 from "./data/securityv3.json";
 import revealDocument from "./data/deriveProofFrame.json";
 import citizenVocab from "./data/citizenVocab.json";
 
@@ -31,7 +32,8 @@ import citizenVocab from "./data/citizenVocab.json";
 const documents: any = {
   "did:example:489398593#test": keyPairOptions,
   "did:example:489398593": exampleControllerDoc,
-  "https://w3c-ccg.github.io/ldp-bbs2020/context/v1": bbsContext,
+  "https://w3id.org/security/bbs/v1": bbsContext,
+  "https://w3id.org/security/v3-unstable": securityV3,
   "https://w3id.org/citizenship/v1": citizenVocab
 };
 
@@ -72,7 +74,7 @@ const main = async (): Promise<void> => {
   console.log(JSON.stringify(inputDocument, null, 2));
 
   //Verify the proof
-  let verified = await verify(inputDocument, {
+  let verified = await verify(signedDocument, {
     suite: new BbsBlsSignature2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader
@@ -82,7 +84,7 @@ const main = async (): Promise<void> => {
   console.log(JSON.stringify(verified, null, 2));
 
   //Derive a proof
-  const derivedProof = await deriveProof(inputDocument, revealDocument, {
+  const derivedProof = await deriveProof(signedDocument, revealDocument, {
     suite: new BbsBlsSignatureProof2020(),
     documentLoader
   });
