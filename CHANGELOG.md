@@ -1,3 +1,24 @@
+# [0.8.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.7.0...v0.8.0) (2021-02-24)
+
+### Bug Fixes
+
+- addresses bug with blank nodes that was breaking nested reveals ([#96](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/96)) ([6c347fd](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/6c347fd9f17940842509ef3e04051cfaccc83361)), closes [#91](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/91)
+- update blsCreateProof expected response to promise ([#98](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/98)) ([2523b47](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/2523b47f6399873ed1916e518721a273bf3872b0))
+
+### Features
+
+- **sample:** update to v0.7.0 release ([#80](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/80)) ([38747e6](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/38747e61c2b1a4bd763cdf995535dfc589c28b2d))
+- add nonce parameter to deriveProof method ([#100](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/100)) ([8d414d9](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/8d414d97f99226194301c4bbf2d565cfedcaf43a))
+- adds support for providing a proofDocument with multiple proofs ([#82](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/82)) ([1bb9a17](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/1bb9a17254810a7eef3181cec0a2ad60a726246d)), closes [#79](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/79)
+- bump bbs-signatures package version ([#107](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/107)) ([edf78a7](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/edf78a77c05723175d2cc17ee8ff523e648a78dc))
+- export types ([#78](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/78)) ([c66d438](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/c66d43823c11a38e3d9f13242f726d5f0371d3fd))
+- migrate to async api ([#106](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/106)) ([01000b4](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/01000b4bf48932a47d7c8c889d2201f8e8085d46))
+- migrate to using security context ([2673a0a](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/2673a0a077c232ca5be61b93339be547e5341635))
+
+### BREAKING CHANGES
+
+- The type IRI for BBS signatures now stems from the https://w3id.org/security namespace, meaning all future signing and verifications using the signature suite will now use that namespace rather than the placeholder namespace that was being used. Note - this means verifying signatures and proofs issued with older versions of this library will not work.
+
 # [0.7.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.6.0...v0.7.0) (2020-08-28)
 
 ### Bug Fixes
