@@ -594,19 +594,19 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@mattrglobal/bbs-signatures@0.4.1-unstable.10c5b9b":
-  version "0.4.1-unstable.10c5b9b"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.4.1-unstable.10c5b9b.tgz#464fb47df1564c932cf4f4a0215054e57c24176d"
-  integrity sha512-xiUmIlQc/jjfaMNIcEC4M293/+7TonzN/vF0SfyzXloREhAXFz/ZKXosvqXZcwLh3qktl7xejUazCnS3tPjpRQ==
+"@mattrglobal/bbs-signatures@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.5.0.tgz#c8e3842a657cabbf7f1e16db06f77c9f84a42f3f"
+  integrity sha512-4te4TpacAmeCM8aa/kHkU0i1IJwsO1x/Tez6/YLUWg6rK6bfGA1NNO7IBc12u9ETkoTsiU32UmsiYWXcw9QwKQ==
   optionalDependencies:
     "@mattrglobal/node-bbs-signatures" "0.11.0"
 
-"@mattrglobal/bls12381-key-pair@0.4.1-unstable.6b18486":
-  version "0.4.1-unstable.6b18486"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.4.1-unstable.6b18486.tgz#87d2e5d62e711a48291f83507af282fd04fe35f2"
-  integrity sha512-GX8GCIwz3h2kKKJ7XCczJc+P4iGvJP2RbRfQcGv8nZMeP8jHsGqLVoqxG/KkU/vzdb8SeuzbM7M+U7uMGcZKpQ==
+"@mattrglobal/bls12381-key-pair@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.5.0.tgz#dd6014b5b14903d4a280af4286c74d8a97b38410"
+  integrity sha512-eXAtke0HOEr9RcT+NEI1MERE50gUnnLm1mYBJkUugk9REP3MfKXtX2Mo4FXyCH/IR4Oxj2jCcfNYW/h0Q3x5sg==
   dependencies:
-    "@mattrglobal/bbs-signatures" "0.4.1-unstable.10c5b9b"
+    "@mattrglobal/bbs-signatures" "0.5.0"
     bs58 "4.0.1"
     rfc4648 "1.4.0"
 
