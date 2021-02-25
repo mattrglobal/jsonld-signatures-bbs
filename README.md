@@ -42,7 +42,7 @@ The following is an example of a signed JSON-LD document featuring a `BbsBlsSign
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     "https://w3id.org/citizenship/v1",
-    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
+    "https://w3id.org/security/bbs/v1"
   ],
   "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
   "type": ["VerifiableCredential", "PermanentResidentCard"],
@@ -84,7 +84,7 @@ which is a [JSON-LD frame](https://www.w3.org/TR/json-ld11-framing/).
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     "https://w3id.org/citizenship/v1",
-    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
+    "https://w3id.org/security/bbs/v1"
   ],
   "type": ["VerifiableCredential", "PermanentResidentCard"],
   "credentialSubject": {
@@ -104,7 +104,7 @@ That gives rise to the output zero knowledge proof
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     "https://w3id.org/citizenship/v1",
-    "https://w3c-ccg.github.io/ldp-bbs2020/context/v1"
+    "https://w3id.org/security/bbs/v1"
   ],
   "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
   "type": ["PermanentResidentCard", "VerifiableCredential"],
