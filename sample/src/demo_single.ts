@@ -71,7 +71,7 @@ const main = async (): Promise<void> => {
   });
 
   console.log("Input document with proof");
-  console.log(JSON.stringify(inputDocument, null, 2));
+  console.log(JSON.stringify(signedDocument, null, 2));
 
   //Verify the proof
   let verified = await verify(signedDocument, {
