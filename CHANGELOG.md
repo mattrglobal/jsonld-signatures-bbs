@@ -1,3 +1,9 @@
+# [0.9.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.8.0...v0.9.0) (2021-04-05)
+
+### Features
+
+- use local context instead of security v3 ([#116](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/116)) ([e8c6b9c](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/e8c6b9c3d30afea3eade7ffa45954c17190aa41c))
+
 # [0.8.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.7.0...v0.8.0) (2021-02-24)
 
 ### Bug Fixes
