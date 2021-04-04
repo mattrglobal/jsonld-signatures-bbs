@@ -33,7 +33,17 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     });
 
     this.proof = {
-      "@context": "https://w3id.org/security/v3-unstable",
+      "@context": [
+        {
+          sec: "https://w3id.org/security#",
+          proof: {
+            "@id": "sec:proof",
+            "@type": "@id",
+            "@container": "@graph"
+          }
+        },
+        "https://w3id.org/security/bbs/v1"
+      ],
       type: "BbsBlsSignatureProof2020"
     };
     this.mappedDerivedProofType =
