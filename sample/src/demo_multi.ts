@@ -24,7 +24,6 @@ import inputDocument from "./data/inputDocument.json";
 import keyPairOptions from "./data/keyPair.json";
 import exampleControllerDoc from "./data/controllerDocument.json";
 import bbsContext from "./data/bbs.json";
-import securityV3 from "./data/securityv3.json";
 import revealDocument from "./data/deriveProofFrame.json";
 import citizenVocab from "./data/citizenVocab.json";
 
@@ -33,7 +32,6 @@ const documents: any = {
   "did:example:489398593#test": keyPairOptions,
   "did:example:489398593": exampleControllerDoc,
   "https://w3id.org/security/bbs/v1": bbsContext,
-  "https://w3id.org/security/v3-unstable": securityV3,
   "https://w3id.org/citizenship/v1": citizenVocab
 };
 

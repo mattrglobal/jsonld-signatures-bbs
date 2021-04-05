@@ -18,10 +18,10 @@
     bs58 "4.0.1"
     rfc4648 "1.4.0"
 
-"@mattrglobal/jsonld-signatures-bbs@0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/jsonld-signatures-bbs/-/jsonld-signatures-bbs-0.8.0.tgz#3451e862f0ddae17ee91dff8ed088a5fa1333e8c"
-  integrity sha512-ys4jYOKn8SZDPlkWd4K9I6vP4ujTi7m/B0rSVbWPcbi+FR4e4L5+0ufHuKQh8V3+hwGP2kly11yqhO+cpQ/YQQ==
+"@mattrglobal/jsonld-signatures-bbs@0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/jsonld-signatures-bbs/-/jsonld-signatures-bbs-0.9.0.tgz#428d3e51be3b7cdf0c72608f5133842d4aafc5e2"
+  integrity sha512-GSizMDxopMiFrEbdz/Mw4EzMeiLfz/JF9eU3C+697cFET3WLiVndWdKg13QA3tiPtLtnZWAj6ahPvnoKSg/kaQ==
   dependencies:
     "@mattrglobal/bbs-signatures" "0.5.0"
     "@mattrglobal/bls12381-key-pair" "0.5.0"
