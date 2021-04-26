@@ -6,6 +6,8 @@
   ],
   "type": ["VerifiableCredential", "UniversityDegreeCredential"],
   "@explicit": true,
+  "issuer": {},
+  "issuanceDate": {},
   "credentialSubject": {
     "@explicit": true,
     "degree": {
