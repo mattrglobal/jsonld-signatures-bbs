@@ -36,6 +36,9 @@ import testNestedVcDocument from "./data/test_nested_vc_document.json";
 import testSignedNestedVcDocument from "./data/test_signed_nested_vc_document.json";
 import testProofNestedVcDocument from "./data/test_proof_nested_vc_document.json";
 import testPartialProofNestedVcDocument from "./data/test_partial_proof_nested_vc_document.json";
+import testAnonymousVcDocument from "./data/test_anonymous_vc.json";
+import testRevealAnonymousVcDocument from "./data/test_anonymous_vc_reveal_document.json";
+import testNestedAnonymousVcDocument from "./data/test_nested_anonymous_vc_document.json";
 
 export {
   exampleBls12381KeyPair,
@@ -61,5 +64,8 @@ export {
   testSignedNestedVcDocument,
   testProofNestedVcDocument,
   testPartialProofNestedVcDocument,
-  customLoader
+  customLoader,
+  testAnonymousVcDocument,
+  testRevealAnonymousVcDocument,
+  testNestedAnonymousVcDocument
 };

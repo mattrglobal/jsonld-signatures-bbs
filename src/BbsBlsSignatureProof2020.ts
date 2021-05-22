@@ -126,19 +126,8 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     // Transform any blank node identifiers for the input
     // document statements into actual node identifiers
     // e.g _:c14n0 => urn:bnid:_:c14n0
-    const transformedInputDocumentStatements = documentStatements.map(
-      element => {
-        if (element.includes("_:c14n")) {
-          const prefixIndex = element.indexOf("_:c14n");
-          const spaceIndex = element.indexOf(" ", prefixIndex);
-          return element.replace(
-            element.substring(prefixIndex, spaceIndex),
-            `<urn:bnid:${element.substring(prefixIndex, spaceIndex)}>`
-          );
-        }
-
-        return element;
-      }
+    const transformedInputDocumentStatements = documentStatements.map(element =>
+      element.replace(/(_:c14n[0-9]+)/g, "<urn:bnid:$1>")
     );
 
     //Transform the resulting RDF statements back into JSON-LD
@@ -263,18 +252,9 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
       // Transform the blank node identifier placeholders for the document statements
       // back into actual blank node identifiers
-      const transformedDocumentStatements = documentStatements.map(element => {
-        const prefixString = "<urn:bnid:";
-        if (element.includes("<urn:bnid:_:c14n")) {
-          const prefixIndex = element.indexOf(prefixString);
-          const closingIndex = element.indexOf(">", prefixIndex);
-          return element.replace(
-            element.substring(prefixIndex, closingIndex + 1),
-            element.substring(prefixIndex + prefixString.length, closingIndex)
-          );
-        }
-        return element;
-      });
+      const transformedDocumentStatements = documentStatements.map(element =>
+        element.replace(/<urn:bnid:(_:c14n[0-9]+)>/g, "$1")
+      );
 
       // Combine all the statements to be verified
       const statementsToVerify: Uint8Array[] = proofStatements
