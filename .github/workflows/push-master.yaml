@@ -23,7 +23,8 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn build
-      - run: yarn test --coverage
+      - run: yarn test:node --coverage
+      - run: yarn test:wasm --coverage
       - run: git config user.name "Mattr CI"
       - run: git config user.email "npmjs_ci_mattr_public@mattr.global"
       - run: npm whoami
