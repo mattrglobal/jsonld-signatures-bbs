@@ -71,8 +71,8 @@
     "vc-js": "0.6.4"
   },
   "dependencies": {
-    "@mattrglobal/bbs-signatures": "0.5.1-unstable.ec016ef",
-    "@mattrglobal/bls12381-key-pair": "0.5.0",
+    "@mattrglobal/bbs-signatures": "0.5.1-unstable.1c33d3b",
+    "@mattrglobal/bls12381-key-pair": "0.5.1-unstable.6556d27",
     "@stablelib/random": "1.0.0",
     "bs58": "4.0.1",
     "jsonld": "3.1.0",
