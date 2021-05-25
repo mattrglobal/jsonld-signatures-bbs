@@ -28,8 +28,12 @@
   "files": [
     "lib"
   ],
+  "engines": {
+    "node": ">=11.0.0"
+  },
   "scripts": {
-    "test": "NODE_OPTIONS='--max-old-space-size=8192' jest",
+    "test:node": "BBS_SIGNATURES_MODE=\"NODE_JS_MODULE\" jest",
+    "test:wasm": "BBS_SIGNATURES_MODE=\"WASM\" jest",
     "build": "tsc --pretty",
     "clean": "rm -rf lib/",
     "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",
@@ -67,8 +71,8 @@
     "vc-js": "0.6.4"
   },
   "dependencies": {
-    "@mattrglobal/bbs-signatures": "0.5.0",
-    "@mattrglobal/bls12381-key-pair": "0.5.0",
+    "@mattrglobal/bbs-signatures": "0.6.0",
+    "@mattrglobal/bls12381-key-pair": "0.6.0",
     "@stablelib/random": "1.0.0",
     "bs58": "4.0.1",
     "jsonld": "3.1.0",

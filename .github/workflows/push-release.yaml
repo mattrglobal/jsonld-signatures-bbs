@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [11.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -23,7 +23,8 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn build
-      - run: yarn test
+      - run: yarn test:node
+      - run: yarn test:wasm
       - run: git config user.name "Mattr CI"
       - run: git config user.email "npmjs_ci_mattr_public@mattr.global"
       - run: npm whoami
