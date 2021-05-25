@@ -16,15 +16,18 @@ import { extendContextLoader } from "jsonld-signatures";
 import citizenVocab from "./contexts/citizen_vocab.json";
 import credentialContext from "./contexts/credential_vocab.json";
 import odrlContext from "./contexts/odrl.json";
-import bbsContext from "./contexts/v3_unstable.json";
+import securityV3 from "./contexts/v3_unstable.json";
+import bbsContext from "./contexts/bbs.json";
 import vcExampleContext from "./contexts/vc_example_vocab.json";
+import schemaOrg from "./contexts/schemaOrg.json";
 import exampleDidKey from "./data/did_example_489398593_test.json";
 import exampleDidDoc from "./data/did_example_489398593.json";
 import exampleDidb34Key from "./data/did_example_b34ca6cd37bbf23_test.json";
 import exampleDidb34Doc from "./data/did_example_b34ca6cd37bbf23.json";
 
 export const documents: any = {
-  "https://w3id.org/security/v3-unstable": bbsContext,
+  "https://w3id.org/security/v3-unstable": securityV3,
+  "https://www.w3id.org/security/v3-unstable": securityV3,
   "https://www.w3.org/2018/credentials/examples/v1": vcExampleContext,
   "https://www.w3.org/2018/credentials/v1": credentialContext,
   "https://www.w3.org/ns/odrl.jsonld": odrlContext,
@@ -32,7 +35,11 @@ export const documents: any = {
   "did:example:489398593": exampleDidDoc,
   "did:example:b34ca6cd37bbf23#test": exampleDidb34Key,
   "did:example:b34ca6cd37bbf23": exampleDidb34Doc,
-  "https://w3id.org/citizenship/v1": citizenVocab
+  "https://w3id.org/citizenship/v1": citizenVocab,
+  "https://w3id.org/security/bbs/v1": bbsContext,
+  "https://schema.org": schemaOrg,
+  "https://schema.org/": schemaOrg,
+  "http://schema.org/": schemaOrg
 };
 
 const customDocLoader = (url: string): any => {
@@ -46,7 +53,9 @@ const customDocLoader = (url: string): any => {
     };
   }
 
-  return jsonld.documentLoaders.node()(url);
+  throw new Error(
+    `Error attempted to load document remotely, please cache '${url}'`
+  );
 };
 
 export const customLoader = extendContextLoader(customDocLoader);
