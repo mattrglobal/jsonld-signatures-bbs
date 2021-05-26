@@ -18,7 +18,6 @@ import {
   deriveProof
 } from "@mattrglobal/jsonld-signatures-bbs";
 import { extendContextLoader, sign, verify, purposes } from "jsonld-signatures";
-import { documentLoaders } from "jsonld";
 
 import inputDocument from "./data/inputDocument.json";
 import keyPairOptions from "./data/keyPair.json";
@@ -26,13 +25,15 @@ import exampleControllerDoc from "./data/controllerDocument.json";
 import bbsContext from "./data/bbs.json";
 import revealDocument from "./data/deriveProofFrame.json";
 import citizenVocab from "./data/citizenVocab.json";
+import credentialContext from "./data/credentialsContext.json";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const documents: any = {
   "did:example:489398593#test": keyPairOptions,
   "did:example:489398593": exampleControllerDoc,
   "https://w3id.org/security/bbs/v1": bbsContext,
-  "https://w3id.org/citizenship/v1": citizenVocab
+  "https://w3id.org/citizenship/v1": citizenVocab,
+  "https://www.w3.org/2018/credentials/v1": credentialContext
 };
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -47,7 +48,12 @@ const customDocLoader = (url: string): any => {
     };
   }
 
-  return documentLoaders.node()(url);
+  console.log(
+    `Attempted to remote load context : '${url}', please cache instead`
+  );
+  throw new Error(
+    `Attempted to remote load context : '${url}', please cache instead`
+  );
 };
 
 //Extended document load that uses local contexts

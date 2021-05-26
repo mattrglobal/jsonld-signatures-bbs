@@ -11,6 +11,8 @@
  * limitations under the License.
  */
 
+// TODO need to fix this
+
 import {
   Bls12381G2KeyPair,
   BbsBlsSignature2020,
@@ -18,7 +20,6 @@ import {
   deriveProof
 } from "@mattrglobal/jsonld-signatures-bbs";
 import { extendContextLoader, sign, verify, purposes } from "jsonld-signatures";
-import { documentLoaders } from "jsonld";
 
 import inputDocument from "./data/inputDocument.json";
 import keyPairOptions from "./data/keyPair.json";
@@ -26,17 +27,19 @@ import exampleControllerDoc from "./data/controllerDocument.json";
 import bbsContext from "./data/bbs.json";
 import revealDocument from "./data/deriveProofFrame.json";
 import citizenVocab from "./data/citizenVocab.json";
+import credentialContext from "./data/credentialsContext.json";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-const documents: any = {
+const documents = {
   "did:example:489398593#test": keyPairOptions,
   "did:example:489398593": exampleControllerDoc,
   "https://w3id.org/security/bbs/v1": bbsContext,
-  "https://w3id.org/citizenship/v1": citizenVocab
+  "https://w3id.org/citizenship/v1": citizenVocab,
+  "https://www.w3.org/2018/credentials/v1": credentialContext
 };
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-const customDocLoader = (url: string): any => {
+const customDocLoader = url => {
   const context = documents[url];
 
   if (context) {
@@ -47,14 +50,19 @@ const customDocLoader = (url: string): any => {
     };
   }
 
-  return documentLoaders.node()(url);
+  console.log(
+    `Attempted to remote load context : '${url}', please cache instead`
+  );
+  throw new Error(
+    `Attempted to remote load context : '${url}', please cache instead`
+  );
 };
 
 //Extended document load that uses local contexts
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-const documentLoader: any = extendContextLoader(customDocLoader);
+const documentLoader = extendContextLoader(customDocLoader);
 
-const main = async (): Promise<void> => {
+const main = async () => {
   //Import the example key pair
   const keyPair = await new Bls12381G2KeyPair(keyPairOptions);
 
@@ -71,43 +79,34 @@ const main = async (): Promise<void> => {
   console.log("Input document with proof");
   console.log(JSON.stringify(signedDocument, null, 2));
 
-  const multiSignedDocument = await sign(signedDocument, {
-    suite: new BbsBlsSignature2020({ key: keyPair }),
-    purpose: new purposes.AssertionProofPurpose(),
-    documentLoader
-  });
-
-  console.log("Input document with multiple proofs");
-  console.log(JSON.stringify(multiSignedDocument, null, 2));
-
   //Verify the proof
-  const verified = await verify(multiSignedDocument, {
+  let verified = await verify(signedDocument, {
     suite: new BbsBlsSignature2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader
   });
 
-  console.log("Verify the signed proof");
+  console.log("Verification result");
   console.log(JSON.stringify(verified, null, 2));
 
   //Derive a proof
-  const derivedProof = await deriveProof(multiSignedDocument, revealDocument, {
+  const derivedProof = await deriveProof(signedDocument, revealDocument, {
     suite: new BbsBlsSignatureProof2020(),
     documentLoader
   });
 
-  console.log("Derived Proof Result");
   console.log(JSON.stringify(derivedProof, null, 2));
 
+  console.log("Verifying Derived Proof");
   //Verify the derived proof
-  const derivedProofVerified = await verify(derivedProof, {
+  verified = await verify(derivedProof, {
     suite: new BbsBlsSignatureProof2020(),
     purpose: new purposes.AssertionProofPurpose(),
     documentLoader
   });
 
-  console.log("Derived Proof Verification result");
-  console.log(JSON.stringify(derivedProofVerified, null, 2));
+  console.log("Verification result");
+  console.log(JSON.stringify(verified, null, 2));
 };
 
 main();
