@@ -13,7 +13,7 @@ To create a stable release follow the following steps
    newly created commit
 9. Push the release branch including the newly created tags `git push origin release --tags`
 10. Open a pull request for the release, once approvals have been sought, merge the pull request using rebase,
-    preserving the commit message as `chore(release): publish [skip ci]`
+    preserving the commit message as `chore(release): publish`
 11. Observe the triggering of the `/.github/workflows/release-master.yaml`
 
 **Note** It is important that rebase is used as the strategy for merging a release pull request as this preserves the created release tag.
@@ -27,7 +27,4 @@ An unstable release is triggered on every commit to master, where the `/.github/
 The releases have the following version syntax
 `<current package version + patch version>-unstable.<current git commit reference>`
 
-**Note** The `/.github/workflows/push-master.yaml` will skip if the commit message includes `[skip ci]`
-
-**Note** To skip the automatic release of a new unstable version append `[skip ci]` to the end of the commit message
-that is merged into master.
+**Note** The `/.github/workflows/push-master.yaml` will skip if the commit message includes `chore(release): publish`
