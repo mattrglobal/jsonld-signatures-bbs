@@ -1,3 +1,17 @@
+# [0.10.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.9.0...v0.10.0) (2021-05-26)
+
+### BREAKING CHANGES
+
+Support for NodeJS v10 has been deprecated due to it now being [EOL](https://nodejs.org/en/about/releases/)
+
+### Bug Fixes
+
+- change the way of converting blank node ids ([#129](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/129)) ([8e85b0f](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/8e85b0f1ddcee2d4a17f7dc8d4e5fff55c989df6)), closes [#128](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/128)
+
+### Features
+
+- bump bbs-signatures dependency ([#131](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/131)) ([0644298](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/06442984574d45f2fc87ceb5a34e353f03015688)), closes [#119](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/119) and [#102](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/119)
+
 # [0.9.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.8.0...v0.9.0) (2021-04-05)
 
 ### Features
