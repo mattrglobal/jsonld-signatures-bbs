@@ -28,9 +28,10 @@
   },
   "proof": {
     "type": "BbsBlsSignature2020",
-    "created": "2020-10-16T23:59:31Z",
+    "created": "2021-08-05T08:50:15Z",
+    "nonce": "M3HOXuv9zck+DTjSdOc5fPStTEaMH4Qdn2vOX2erkv4=",
     "proofPurpose": "assertionMethod",
-    "proofValue": "kAkloZSlK79ARnlx54tPqmQyy6G7/36xU/LZgrdVmCqqI9M0muKLxkaHNsgVDBBvYp85VT3uouLFSXPMr7Stjgq62+OCunba7bNdGfhM/FUsx9zpfRtw7jeE182CN1cZakOoSVsQz61c16zQikXM3w==",
+    "proofValue": "gg8e9ymaFOP6fTFRhbwSnISwiRTPnKyEwnp6ob7MvjDQvJKlArAfFqljpVTlcruQMKVg9X44OT7IyqxonIH7xLuNJjBkG7KYma9urLMBCo4x5JoTWPaG1p7URXapIpy1ng+avITVXJin9XQoxPxyNA==",
     "verificationMethod": "did:example:489398593#test"
   }
 }

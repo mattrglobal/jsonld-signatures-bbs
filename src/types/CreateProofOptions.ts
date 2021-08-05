@@ -36,4 +36,8 @@ export interface CreateProofOptions {
    * Indicates whether to compact the resulting proof
    */
   readonly compactProof: boolean;
+  /**
+   * Nonce to include in the derived proof
+   */
+  readonly nonce?: Uint8Array;
 }

@@ -66,14 +66,12 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    */
   async deriveProof(options: DeriveProofOptions): Promise<object> {
     const {
-      document,
-      proof,
       revealDocument,
       documentLoader,
       expansionMap,
       skipProofCompaction
     } = options;
-    let { nonce } = options;
+    let { nonce, document, proof } = options;
 
     // Validate that the input proof document has a proof compatible with this suite
     if (
@@ -109,6 +107,16 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     // ensure proof type is set
     derivedProof.type = this.type;
 
+    if (proof.nonce) {
+      // Add the nonce into the document from the proof
+      document = {
+        ...document,
+        nonce: proof.nonce
+      };
+
+      // The nonce is not signed via the proof block hence it must be deleted before verification
+      delete proof.nonce;
+    }
     // Get the input document statements
     const documentStatements = await suite.createVerifyDocumentData(document, {
       documentLoader,
@@ -136,12 +144,15 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     );
 
     // Frame the result to create the reveal document result
-    const revealDocumentResult = await jsonld.frame(
+    let revealDocumentResult = await jsonld.frame(
       compactInputProofDocument,
       revealDocument,
       { documentLoader }
     );
 
+    if (revealDocumentResult.nonce) {
+      delete revealDocumentResult.nonce;
+    }
     // Canonicalize the resulting reveal document
     const revealDocumentStatements = await suite.createVerifyDocumentData(
       revealDocumentResult,
@@ -180,7 +191,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     // Create a nonce if one is not supplied
     if (!nonce) {
-      nonce = await randomBytes(50);
+      nonce = await randomBytes(32);
     }
 
     // Set the nonce on the derived proof
@@ -232,8 +243,8 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    * @returns {Promise<{object}>} Resolves with the verification result.
    */
   async verifyProof(options: VerifyProofOptions): Promise<VerifyProofResult> {
-    const { document, documentLoader, expansionMap, purpose } = options;
-    const { proof } = options;
+    const { documentLoader, expansionMap, purpose, proof } = options;
+    let { document } = options;
 
     try {
       proof.type = this.mappedDerivedProofType;

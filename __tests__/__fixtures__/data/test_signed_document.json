@@ -8,9 +8,10 @@
   "email": "jane.doe@example.com",
   "proof": {
     "type": "BbsBlsSignature2020",
-    "created": "2020-10-30T04:34:10Z",
+    "created": "2021-08-05T08:49:23Z",
+    "nonce": "2BpJTgPdIqsVm61eVSqWjfzoG9qm+r02K/sffvpDLHg=",
     "proofPurpose": "assertionMethod",
-    "proofValue": "t+lSsiNnCYrVUzVsT1DoWMfZP5vHcXnrwo8kxSdsROv9+kTUjZWi5yEju4PZrHWwVPDP0AY2VYjDE5Y9QKYkxJ7PPg3CId2e/Wrk17Tjp31hEll7tBeMszRkTEUUb+gHSulYnYdN/Nvp/BWCekbuIg==",
+    "proofValue": "pYCZ4nL5QJfa5Mwd4gjz5Hcm9rfRN8/QZTUBKtVh6sruYo9u8rgSgzbng+jHjRygYUHlKfzccE4m7waZyoLEkBLFiK2g54Q2i+CdtYBgDdkUDsoULSBMcH1MwGHwdjfXpldFNFrHFx/IAvLVniyeMQ==",
     "verificationMethod": "did:example:489398593#test"
   }
 }

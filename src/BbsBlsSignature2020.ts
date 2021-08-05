@@ -25,6 +25,7 @@ import {
 } from "./types";
 import { w3cDate } from "./utilities";
 import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
+import { randomBytes } from "@stablelib/random";
 
 /**
  * A BBS+ signature suite for use with BLS12-381 key pairs
@@ -100,13 +101,8 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    * @returns {Promise<object>} Resolves with the created proof object.
    */
   async createProof(options: CreateProofOptions): Promise<object> {
-    const {
-      document,
-      purpose,
-      documentLoader,
-      expansionMap,
-      compactProof
-    } = options;
+    const { purpose, documentLoader, expansionMap, compactProof } = options;
+    let { nonce, document } = options;
 
     let proof;
     if (this.proof) {
@@ -154,6 +150,17 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       expansionMap
     });
 
+    // Create a nonce if one is not supplied
+    if (!nonce) {
+      nonce = await randomBytes(32);
+    }
+
+    // Add the nonce into the document that will be signed
+    document = {
+      ...document,
+      nonce: Buffer.from(nonce).toString("base64")
+    };
+
     // create data to sign
     const verifyData = (
       await this.createVerifyData({
@@ -164,6 +171,9 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
         compactProof
       })
     ).map(item => new Uint8Array(Buffer.from(item)));
+
+    // Set the nonce on the returned proof, it should however not be signed in the proof block
+    proof.nonce = Buffer.from(nonce).toString("base64");
 
     // sign data
     proof = await this.sign({
@@ -183,9 +193,21 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    * @returns {Promise<{object}>} Resolves with the verification result.
    */
   async verifyProof(options: VerifyProofOptions): Promise<object> {
-    const { proof, document, documentLoader, expansionMap, purpose } = options;
+    const { documentLoader, expansionMap, purpose } = options;
+    let { document, proof } = options;
 
     try {
+      // Add the nonce into the document that will be signed
+      if (proof.nonce) {
+        document = {
+          ...document,
+          nonce: proof.nonce
+        };
+
+        // The nonce is not signed via the proof block hence it must be deleted before verification
+        delete proof.nonce;
+      }
+
       // create data to verify
       const verifyData = (
         await this.createVerifyData({
