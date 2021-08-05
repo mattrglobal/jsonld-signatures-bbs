@@ -603,10 +603,10 @@
   optionalDependencies:
     "@mattrglobal/node-bbs-signatures" "0.12.0"
 
-"@mattrglobal/bls12381-key-pair@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.6.0.tgz#de183bad1fdb139d16a6211f35a4578c139c0156"
-  integrity sha512-7d1a8djPSPOs9Wsq2gIU3kp78dPC9u3yJQpWtHcRVjQHFK0tCx6LX2CgtfuY4k6KPmceb0wAVwCRBfZJJX8h5Q==
+"@mattrglobal/bls12381-key-pair@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.7.0.tgz#7c95b977516b659b6944c8cb9d944645ce8a891e"
+  integrity sha512-XArkaVgn71TW6SlwHEW9i6wBfgdjfZlbFQCuydbIXubWyBhBc/VJH92H62E5MXP/dfBZcBLn0CncNopcEBEpDw==
   dependencies:
     "@mattrglobal/bbs-signatures" "0.6.0"
     bs58 "4.0.1"

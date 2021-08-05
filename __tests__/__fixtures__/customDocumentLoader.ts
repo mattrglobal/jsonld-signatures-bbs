@@ -18,12 +18,15 @@ import credentialContext from "./contexts/credential_vocab.json";
 import odrlContext from "./contexts/odrl.json";
 import securityV3 from "./contexts/v3_unstable.json";
 import bbsContext from "./contexts/bbs.json";
+import jwsContext from "./contexts/jws.json";
 import vcExampleContext from "./contexts/vc_example_vocab.json";
 import schemaOrg from "./contexts/schemaOrg.json";
 import exampleDidKey from "./data/did_example_489398593_test.json";
 import exampleDidDoc from "./data/did_example_489398593.json";
 import exampleDidb34Key from "./data/did_example_b34ca6cd37bbf23_test.json";
 import exampleDidb34Doc from "./data/did_example_b34ca6cd37bbf23.json";
+import exampleDid826Key from "./data/did_example_82612387612873_test.json";
+import exampleDid826Doc from "./data/did_example_82612387612873.json";
 
 export const documents: any = {
   "https://w3id.org/security/v3-unstable": securityV3,
@@ -31,8 +34,11 @@ export const documents: any = {
   "https://www.w3.org/2018/credentials/examples/v1": vcExampleContext,
   "https://www.w3.org/2018/credentials/v1": credentialContext,
   "https://www.w3.org/ns/odrl.jsonld": odrlContext,
+  "https://w3id.org/security/suites/jws-2020/v1": jwsContext,
   "did:example:489398593#test": exampleDidKey,
   "did:example:489398593": exampleDidDoc,
+  "did:example:82612387612873#test": exampleDid826Key,
+  "did:example:82612387612873": exampleDid826Doc,
   "did:example:b34ca6cd37bbf23#test": exampleDidb34Key,
   "did:example:b34ca6cd37bbf23": exampleDidb34Doc,
   "https://w3id.org/citizenship/v1": citizenVocab,

@@ -22,7 +22,9 @@ import {
   testSignedDocumentEd25519,
   testNestedRevealDocument,
   testNestedRevealFullDocument,
-  testSignedNestedVcDocument
+  testSignedNestedVcDocument,
+  testSignedVcDocumentJwk,
+  testRevealVcDocumentJwk
 } from "./__fixtures__";
 
 import { BbsBlsSignatureProof2020, deriveProof } from "../src/index";
@@ -120,6 +122,32 @@ describe("BbsBlsSignatureProof2020", () => {
     expect(result).toBeDefined();
     expect(result.credentialSubject.degree.type).toBeDefined();
     expect(result.credentialSubject.degree.name).toBeDefined();
+  });
+
+  it("should derive proof and verify using jsonld-signatures library", async () => {
+    const derivedProof = await deriveProof(
+      testSignedVcDocumentJwk,
+      testRevealVcDocumentJwk,
+      {
+        suite: new BbsBlsSignatureProof2020(),
+        documentLoader: customLoader
+      }
+    );
+
+    // testing if derive result includes less fields
+    expect(
+      Object.keys(testSignedVcDocumentJwk.credentialSubject).length
+    ).toEqual(12);
+    expect(Object.keys(derivedProof.credentialSubject).length).toEqual(5);
+
+    // verifying proof is valid
+    const derivedProofVerified = await jsigs.verify(derivedProof, {
+      suite: new BbsBlsSignatureProof2020(),
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
+      documentLoader: customLoader
+    });
+
+    expect(derivedProofVerified.verified).toBeTruthy();
   });
 
   it("should derive proofs from a nested document with a nested frame with selectively revealed properties", async () => {

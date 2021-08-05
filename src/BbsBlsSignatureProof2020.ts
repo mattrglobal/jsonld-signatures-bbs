@@ -17,6 +17,7 @@ import { suites, SECURITY_CONTEXT_URL } from "jsonld-signatures";
 import { blsCreateProof, blsVerifyProof } from "@mattrglobal/bbs-signatures";
 import {
   DeriveProofOptions,
+  DidDocumentPublicKey,
   VerifyProofOptions,
   CreateVerifyDataOptions,
   CanonizeOptions
@@ -201,7 +202,9 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     });
 
     // Construct a key pair class from the returned verification method
-    const key = await this.LDKeyClass.from(verificationMethod);
+    const key = verificationMethod.publicKeyJwk
+      ? await this.LDKeyClass.fromJwk(verificationMethod)
+      : await this.LDKeyClass.from(verificationMethod);
 
     // Compute the proof
     const outputProof = await blsCreateProof({
@@ -269,7 +272,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         expansionMap
       });
 
-      const key = await this.LDKeyClass.from(verificationMethod);
+      // Construct a key pair class from the returned verification method
+      const key = verificationMethod.publicKeyJwk
+        ? await this.LDKeyClass.fromJwk(verificationMethod)
+        : await this.LDKeyClass.from(verificationMethod);
 
       // Verify the proof
       const verified = await blsVerifyProof({
@@ -386,7 +392,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    * @param documentLoader {function}
    * @param expansionMap {function}
    */
-  async getVerificationMethod({ proof, documentLoader }: any): Promise<object> {
+  async getVerificationMethod({
+    proof,
+    documentLoader
+  }: any): Promise<DidDocumentPublicKey> {
     let { verificationMethod } = proof;
 
     if (typeof verificationMethod === "object") {
@@ -401,7 +410,11 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     const result = await jsonld.frame(
       verificationMethod,
       {
-        "@context": SECURITY_CONTEXT_URL,
+        // adding jws-2020 context to allow publicKeyJwk
+        "@context": [
+          "https://w3id.org/security/v2",
+          "https://w3id.org/security/suites/jws-2020/v1"
+        ],
         "@embed": "@always",
         id: verificationMethod
       },

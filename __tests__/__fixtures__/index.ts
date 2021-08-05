@@ -27,7 +27,9 @@ import testPartialProofDocument from "./data/test_partial_proof_document.json";
 import testBadPartialProofDocument from "./data/test_bad_partial_proof_document.json";
 import testVcDocument from "./data/test_vc.json";
 import testSignedVcDocument from "./data/test_signed_vc.json";
+import testSignedVcDocumentJwk from "./data/test_signed_vc_jwk.json";
 import testRevealVcDocument from "./data/test_vc_reveal_document.json";
+import testRevealVcDocumentJwk from "./data/test_vc_reveal_document_jwk.json";
 import testPartialVcProof from "./data/test_partial_proof_vc_document.json";
 import testRevealAllDocument from "./data/test_reveal_all_document.json";
 import testNestedRevealDocument from "./data/test_nested_reveal_document.json";
@@ -45,6 +47,7 @@ export {
   exampleEd25519KeyPair,
   testDocument,
   testRevealDocument,
+  testRevealVcDocumentJwk,
   testSignedDocument,
   testSignedDocumentMultiProofs,
   testSignedDocumentMultiDifProofs,
@@ -54,6 +57,7 @@ export {
   testRevealAllDocument,
   testPartialVcProof,
   testSignedVcDocument,
+  testSignedVcDocumentJwk,
   testRevealVcDocument,
   testPartialProofDocument,
   testBadPartialProofDocument,

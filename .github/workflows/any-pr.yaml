@@ -8,14 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [11.x, 12.x, 13.x, 14.x, 15.x, 16.x]
+        node-version: [10.x, 11.x, 12.x, 13.x, 14.x, 15.x, 16.x]
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
-      - run: yarn build
-      - run: yarn test:node --coverage
-      - run: yarn test:wasm --coverage
+      - name: Run tests
+        run: |
+          yarn install --frozen-lockfile
+          yarn lint
+          yarn build
+          yarn test:node --coverage
+          yarn test:wasm --coverage
+        # skip node-version 10 but including on node-version list due to a github actions issue
+        if: matrix.node-version != '10.x'
