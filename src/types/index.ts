@@ -22,6 +22,7 @@ export { CreateVerifyDataOptions } from "./CreateVerifyDataOptions";
 export { VerifySignatureOptions } from "./VerifySignatureOptions";
 export { SuiteSignOptions } from "./SuiteSignOptions";
 export { DeriveProofOptions } from "./DeriveProofOptions";
+export { DidDocumentPublicKey } from "./DidDocumentPublicKey";
 export { GetProofsOptions } from "./GetProofsOptions";
 export { GetProofsResult } from "./GetProofsResult";
 export { GetTypeOptions } from "./GetTypeOptions";

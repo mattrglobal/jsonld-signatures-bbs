@@ -1,0 +1,14 @@
+{
+  "@context": [
+    "https://w3id.org/security/v2",
+    "https://w3id.org/security/suites/jws-2020/v1"
+  ],
+  "id": "did:example:82612387612873#test",
+  "type": "JsonWebKey2020",
+  "controller": "did:example:82612387612873",
+  "publicKeyJwk": {
+    "kty": "OKP",
+    "crv": "Bls12381G2",
+    "x": "h_rkcTKXXzRbOPr9UxSfegCbid2U_cVNXQUaKeGF7UhwrMJFP70uMH0VQ9-3-_2zDPAAjflsdeLkOXW3-ShktLxuPy8UlXSNgKNmkfb-rrj-FRwbs13pv_WsIf-eV66-"
+  }
+}
