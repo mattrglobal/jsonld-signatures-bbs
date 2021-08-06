@@ -1,3 +1,9 @@
+# [0.11.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.10.0...v0.11.0) (2021-08-06)
+
+### Features
+
+- allow the use of publicKeyJwk to derive and verify proof ([#145](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/145)) ([0cec1f1](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/0cec1f1b99792abfbfbfd0beca0f03f80008efd6))
+
 # [0.10.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.9.0...v0.10.0) (2021-05-26)
 
 ### BREAKING CHANGES
