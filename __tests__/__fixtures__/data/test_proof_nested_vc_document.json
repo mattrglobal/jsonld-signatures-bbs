@@ -2,7 +2,7 @@
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     "https://www.w3.org/2018/credentials/examples/v1",
-    "https://www.w3id.org/security/v3-unstable"
+    "https://w3id.org/security/suites/bls12381-2020/v1"
   ],
   "id": "https://example.gov/credentials/3732",
   "type": ["UniversityDegreeCredential", "VerifiableCredential"],

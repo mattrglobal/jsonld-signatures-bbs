@@ -1,5 +1,8 @@
 {
-  "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+  "@context": [
+    "http://schema.org/",
+    "https://w3id.org/security/suites/bls12381-2020/v1"
+  ],
   "id": "urn:bnid:_:c14n0",
   "type": "Person",
   "firstName": "Jane",

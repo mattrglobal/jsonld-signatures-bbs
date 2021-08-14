@@ -13,7 +13,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jsonld from "jsonld";
-import { suites, SECURITY_CONTEXT_URL } from "jsonld-signatures";
+import { suites } from "jsonld-signatures";
 import {
   SignatureSuiteOptions,
   CreateProofOptions,
@@ -25,6 +25,8 @@ import {
 } from "./types";
 import { w3cDate } from "./utilities";
 import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
+
+const contextUrl = "https://w3id.org/security/suites/bls12381-2020/v1";
 
 /**
  * A BBS+ signature suite for use with BLS12-381 key pairs
@@ -51,7 +53,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       throw new TypeError('"verificationMethod" must be a URL string.');
     }
     super({
-      type: "sec:BbsBlsSignature2020"
+      type: "BbsBlsSignature2020"
     });
 
     this.proof = {
@@ -64,7 +66,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
             "@container": "@graph"
           }
         },
-        "https://w3id.org/security/bbs/v1"
+        "https://w3id.org/security/suites/bls12381-2020/v1"
       ],
       type: "BbsBlsSignature2020"
     };
@@ -94,6 +96,21 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     this.useNativeCanonize = useNativeCanonize;
   }
 
+  ensureSuiteContext({ document }: any): undefined {
+    if (
+      document["@context"] === contextUrl ||
+      (Array.isArray(document["@context"]) &&
+        document["@context"].includes(contextUrl))
+    ) {
+      // document already includes the required context
+      return;
+    }
+    throw new TypeError(
+      `The document to be signed must contain this suite's @context, ` +
+        `"${contextUrl}".`
+    );
+  }
+
   /**
    * @param options {CreateProofOptions} options for creating the proof
    *
@@ -111,14 +128,14 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     let proof;
     if (this.proof) {
       // use proof JSON-LD document passed to API
-      proof = await jsonld.compact(this.proof, SECURITY_CONTEXT_URL, {
+      proof = await jsonld.compact(this.proof, contextUrl, {
         documentLoader,
         expansionMap,
         compactToRelative: false
       });
     } else {
       // create proof JSON-LD document
-      proof = { "@context": SECURITY_CONTEXT_URL };
+      proof = { "@context": contextUrl };
     }
 
     // ensure proof type is set
@@ -338,14 +355,14 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     const result = await jsonld.frame(
       verificationMethod,
       {
-        "@context": SECURITY_CONTEXT_URL,
+        "@context": contextUrl,
         "@embed": "@always",
         id: verificationMethod
       },
       {
         documentLoader,
         compactToRelative: false,
-        expandContext: SECURITY_CONTEXT_URL
+        expandContext: contextUrl
       }
     );
     if (!result) {

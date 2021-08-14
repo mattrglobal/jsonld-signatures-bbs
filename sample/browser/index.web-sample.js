@@ -33,7 +33,7 @@ import credentialContext from "./data/credentialsContext.json";
 const documents = {
   "did:example:489398593#test": keyPairOptions,
   "did:example:489398593": exampleControllerDoc,
-  "https://w3id.org/security/bbs/v1": bbsContext,
+  "https://w3id.org/security/suites/bls12381-2020/v1": bbsContext,
   "https://w3id.org/citizenship/v1": citizenVocab,
   "https://www.w3.org/2018/credentials/v1": credentialContext
 };

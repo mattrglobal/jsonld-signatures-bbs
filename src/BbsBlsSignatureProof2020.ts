@@ -13,7 +13,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jsonld from "jsonld";
-import { suites, SECURITY_CONTEXT_URL } from "jsonld-signatures";
+import { suites } from "jsonld-signatures";
 import { blsCreateProof, blsVerifyProof } from "@mattrglobal/bbs-signatures";
 import {
   DeriveProofOptions,
@@ -27,10 +27,12 @@ import { randomBytes } from "@stablelib/random";
 import { VerifyProofResult } from "./types/VerifyProofResult";
 import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
 
+const contextUrl = "https://w3id.org/security/suites/bls12381-2020/v1";
+
 export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
   constructor({ useNativeCanonize, key, LDKeyClass }: any = {}) {
     super({
-      type: "sec:BbsBlsSignatureProof2020"
+      type: "BbsBlsSignatureProof2020"
     });
 
     this.proof = {
@@ -43,7 +45,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
             "@container": "@graph"
           }
         },
-        "https://w3id.org/security/bbs/v1"
+        "https://w3id.org/security/suites/bls12381-2020/v1"
       ],
       type: "BbsBlsSignatureProof2020"
     };
@@ -56,6 +58,21 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     this.proofSignatureKey = "proofValue";
     this.key = key;
     this.useNativeCanonize = useNativeCanonize;
+  }
+
+  ensureSuiteContext({ document }: any): undefined {
+    if (
+      document["@context"] === contextUrl ||
+      (Array.isArray(document["@context"]) &&
+        document["@context"].includes(contextUrl))
+    ) {
+      // document already includes the required context
+      return;
+    }
+    throw new TypeError(
+      `The document to be signed must contain this suite's @context, ` +
+        `"${contextUrl}".`
+    );
   }
 
   /**
@@ -78,6 +95,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     // Validate that the input proof document has a proof compatible with this suite
     if (
+      !proof ||
       !BbsBlsSignatureProof2020.supportedDerivedProofType.includes(proof.type)
     ) {
       throw new TypeError(
@@ -97,14 +115,14 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     let derivedProof;
     if (this.proof) {
       // use proof JSON-LD document passed to API
-      derivedProof = await jsonld.compact(this.proof, SECURITY_CONTEXT_URL, {
+      derivedProof = await jsonld.compact(this.proof, contextUrl, {
         documentLoader,
         expansionMap,
         compactToRelative: false
       });
     } else {
       // create proof JSON-LD document
-      derivedProof = { "@context": SECURITY_CONTEXT_URL };
+      derivedProof = { "@context": contextUrl };
     }
 
     // ensure proof type is set
@@ -285,6 +303,8 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         nonce: new Uint8Array(Buffer.from(proof.nonce as string, "base64"))
       });
 
+      console.log(verified);
+
       // Ensure proof was performed for a valid purpose
       const { valid, error } = await purpose.validate(proof, {
         document,
@@ -293,6 +313,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         documentLoader,
         expansionMap
       });
+
       if (!valid) {
         throw error;
       }
@@ -412,7 +433,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       {
         // adding jws-2020 context to allow publicKeyJwk
         "@context": [
-          "https://w3id.org/security/v2",
+          contextUrl,
           "https://w3id.org/security/suites/jws-2020/v1"
         ],
         "@embed": "@always",
@@ -421,7 +442,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       {
         documentLoader,
         compactToRelative: false,
-        expandContext: SECURITY_CONTEXT_URL
+        expandContext: contextUrl
       }
     );
     if (!result) {

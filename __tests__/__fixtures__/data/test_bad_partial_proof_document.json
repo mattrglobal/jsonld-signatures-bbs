@@ -8,7 +8,7 @@
       "telephone": "schema:telephone",
       "email": "schema:email"
     },
-    "https://w3id.org/security/v3-unstable"
+    "https://w3id.org/security/suites/bls12381-2020/v1"
   ],
   "@type": "Person",
   "lastName": "Does",

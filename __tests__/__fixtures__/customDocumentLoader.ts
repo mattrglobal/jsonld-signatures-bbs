@@ -29,8 +29,8 @@ import exampleDid826Key from "./data/did_example_82612387612873_test.json";
 import exampleDid826Doc from "./data/did_example_82612387612873.json";
 
 export const documents: any = {
-  "https://w3id.org/security/v3-unstable": securityV3,
-  "https://www.w3id.org/security/v3-unstable": securityV3,
+  // "https://w3id.org/security/suites/bls12381-2020/v1": securityV3,
+  // "https://w3id.org/security/suites/bls12381-2020/v1": securityV3,
   "https://www.w3.org/2018/credentials/examples/v1": vcExampleContext,
   "https://www.w3.org/2018/credentials/v1": credentialContext,
   "https://www.w3.org/ns/odrl.jsonld": odrlContext,
@@ -42,7 +42,8 @@ export const documents: any = {
   "did:example:b34ca6cd37bbf23#test": exampleDidb34Key,
   "did:example:b34ca6cd37bbf23": exampleDidb34Doc,
   "https://w3id.org/citizenship/v1": citizenVocab,
-  "https://w3id.org/security/bbs/v1": bbsContext,
+  // "https://w3id.org/security/suites/bls12381-2020/v1": bbsContext,
+  "https://w3id.org/security/suites/bls12381-2020/v1": bbsContext,
   "https://schema.org": schemaOrg,
   "https://schema.org/": schemaOrg,
   "http://schema.org/": schemaOrg
@@ -58,6 +59,8 @@ const customDocLoader = (url: string): any => {
       documentUrl: url // this is the actual context URL after redirects
     };
   }
+
+  console.log(url);
 
   throw new Error(
     `Error attempted to load document remotely, please cache '${url}'`

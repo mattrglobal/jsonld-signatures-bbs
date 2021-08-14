@@ -8,9 +8,10 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { SECURITY_CONTEXT_URL } from "jsonld-signatures";
+// import { contextUrl } from "jsonld-signatures";
 import jsonld from "jsonld";
 import { GetProofsOptions, GetProofsResult, GetTypeOptions } from "./types";
+const contextUrl = "https://w3id.org/security/suites/bls12381-2020/v1";
 
 /**
  * The property identifying the linked data proof
@@ -31,24 +32,10 @@ const PROOF_PROPERTY = "proof";
 export const getProofs = async (
   options: GetProofsOptions
 ): Promise<GetProofsResult> => {
-  const {
-    proofType,
-    skipProofCompaction,
-    documentLoader,
-    expansionMap
-  } = options;
-  let { document } = options;
+  const { proofType } = options;
+  const { document } = options;
 
   let proofs;
-  if (!skipProofCompaction) {
-    // If we must compact the proof then we must first compact the input
-    // document to find the proof
-    document = await jsonld.compact(document, SECURITY_CONTEXT_URL, {
-      documentLoader,
-      expansionMap,
-      compactToRelative: false
-    });
-  }
 
   proofs = jsonld.getValues(document, PROOF_PROPERTY);
   delete document[PROOF_PROPERTY];
@@ -61,7 +48,7 @@ export const getProofs = async (
   }
 
   proofs = proofs.map((matchedProof: any) => ({
-    "@context": SECURITY_CONTEXT_URL,
+    "@context": contextUrl,
     ...matchedProof
   }));
 

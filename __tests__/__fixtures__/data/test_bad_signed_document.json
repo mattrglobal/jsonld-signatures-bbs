@@ -6,7 +6,7 @@
       "homepage": "schema:url",
       "image": "schema:image"
     },
-    "https://w3id.org/security/v3-unstable"
+    "https://w3id.org/security/suites/bls12381-2020/v1"
   ],
   "name": "John Doe",
   "homepage": "https://domain.com/profile",

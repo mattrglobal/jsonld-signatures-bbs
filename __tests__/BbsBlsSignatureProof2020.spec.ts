@@ -45,7 +45,7 @@ describe("BbsBlsSignatureProof2020", () => {
     });
 
     const { proofs, document } = await getProofs({
-      document: testSignedDocument,
+      document: JSON.parse(JSON.stringify(testSignedDocument)),
       proofType: BbsBlsSignatureProof2020.supportedDerivedProofType,
       documentLoader: customLoader
     });
@@ -81,7 +81,7 @@ describe("BbsBlsSignatureProof2020", () => {
     const suite = new BbsBlsSignatureProof2020();
 
     const input = {
-      ...testSignedDocument,
+      ...JSON.parse(JSON.stringify(testSignedDocument)),
       unsignedClaim: true
     };
 
@@ -192,7 +192,7 @@ describe("BbsBlsSignatureProof2020", () => {
     expect(result).toBeDefined();
   });
 
-  it("should verify derived proof", async () => {
+  it.only("should verify derived proof", async () => {
     const suite = new BbsBlsSignatureProof2020();
 
     const { proofs, document } = await getProofs({
