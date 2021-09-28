@@ -39,7 +39,9 @@ import testSignedNestedVcDocument from "./data/test_signed_nested_vc_document.js
 import testProofNestedVcDocument from "./data/test_proof_nested_vc_document.json";
 import testPartialProofNestedVcDocument from "./data/test_partial_proof_nested_vc_document.json";
 import testAnonymousVcDocument from "./data/test_anonymous_vc.json";
+import testAnonymousVcComplexDocument from "./data/test_anonymous_vc_complex.json";
 import testRevealAnonymousVcDocument from "./data/test_anonymous_vc_reveal_document.json";
+import testRevealAnonymousVcComplexDocument from "./data/test_anonymous_vc_complex_reveal_document.json";
 import testNestedAnonymousVcDocument from "./data/test_nested_anonymous_vc_document.json";
 
 export {
@@ -71,5 +73,7 @@ export {
   customLoader,
   testAnonymousVcDocument,
   testRevealAnonymousVcDocument,
-  testNestedAnonymousVcDocument
+  testNestedAnonymousVcDocument,
+  testAnonymousVcComplexDocument,
+  testRevealAnonymousVcComplexDocument,
 };

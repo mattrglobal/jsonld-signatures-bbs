@@ -1,0 +1,13 @@
+{
+  "credentialSubject": {
+    "batchNumber": {},
+    "type": ["VaccinationEvent"],
+    "@explicit": true
+  },
+  "type": ["VerifiableCredential", "VaccinationCertificate"],
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/bls12381-2020/v1",
+    "https://w3id.org/vaccination/v1"
+  ]
+}
