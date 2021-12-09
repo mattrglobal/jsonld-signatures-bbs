@@ -603,6 +603,15 @@
   optionalDependencies:
     "@mattrglobal/node-bbs-signatures" "0.12.0"
 
+"@mattrglobal/bbs-signatures@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.7.0.tgz#404a8e3bb56838250a86eaf5da7d046cd987bebe"
+  integrity sha512-bXWYv8e/92JYp/KZkfYCwd533xVSanA/2OrVC75N3ryx6mPRSQHH2PH5biRt21PO9oqmOcvschxVn9FApPuysA==
+  dependencies:
+    "@stablelib/random" "1.0.0"
+  optionalDependencies:
+    "@mattrglobal/node-bbs-signatures" "0.13.0"
+
 "@mattrglobal/bls12381-key-pair@0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@mattrglobal/bls12381-key-pair/-/bls12381-key-pair-0.7.0.tgz#7c95b977516b659b6944c8cb9d944645ce8a891e"
@@ -616,6 +625,14 @@
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.12.0.tgz#5159f54dd7930b04589b88bfff35fa1a62b9d36e"
   integrity sha512-ykkxezgCnET1iv2J4QSe0dFLlXknPvyAgi17WO9FJ7hRXTtZbCnUCyM4b3GWZKhiM7ZbnYX7rAuxfVwq+30dgA==
+  dependencies:
+    neon-cli "0.8.2"
+    node-pre-gyp "0.17.0"
+
+"@mattrglobal/node-bbs-signatures@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.13.0.tgz#3e431b915325d4b139706f8b26fd84b27c192a29"
+  integrity sha512-S2wOwDCQYxdjSEjVfcbP3bTq4ZMKeRw/wvBhWRff8CEwuH5u3Qiul+azwDGSesvve1DDceaEhXWiGkXeZTojfQ==
   dependencies:
     neon-cli "0.8.2"
     node-pre-gyp "0.17.0"
