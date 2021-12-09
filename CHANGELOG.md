@@ -1,3 +1,9 @@
+# [0.12.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.11.0...v0.12.0) (2021-12-09)
+
+### Features
+
+- bump bbs-signatures dependency ([a2e6fcb](https://github.com/mattrglobal/jsonld-signatures-bbs/pull/161/commits/a2e6fcbd05b66e928d6808fae908e107ab8780ad))
+
 # [0.11.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.10.0...v0.11.0) (2021-08-06)
 
 ### Features
