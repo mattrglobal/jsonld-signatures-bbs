@@ -1,3 +1,10 @@
+# [0.12.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.11.0...v0.12.0) (2021-12-10)
+
+### Features
+
+- update bls12381 dependency ([#163](https://github.com/mattrglobal/jsonld-signatures-bbs/pull/163)) ([303841d](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/303841d7c65e52edbbae80f538cfd907a003fad4))
+- update bbs-signatures dependency ([#161](https://github.com/mattrglobal/jsonld-signatures-bbs/pull/161)) ([a2e6fcb](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/7cbcb0dd1aa7a081401f563c932fd2b28ee10f64))
+
 # [0.11.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.10.0...v0.11.0) (2021-08-06)
 
 ### Features
