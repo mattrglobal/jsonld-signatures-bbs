@@ -1,17 +1,17 @@
-# [0.12.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.11.0...v0.12.0) (2021-12-10)
+# [0.12.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.11.0...0.12.0) (2021-12-10)
 
 ### Features
 
 - update bls12381 dependency ([#163](https://github.com/mattrglobal/jsonld-signatures-bbs/pull/163)) ([303841d](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/303841d7c65e52edbbae80f538cfd907a003fad4))
 - update bbs-signatures dependency ([#161](https://github.com/mattrglobal/jsonld-signatures-bbs/pull/161)) ([a2e6fcb](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/7cbcb0dd1aa7a081401f563c932fd2b28ee10f64))
 
-# [0.11.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.10.0...v0.11.0) (2021-08-06)
+# [0.11.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.10.0...0.11.0) (2021-08-06)
 
 ### Features
 
 - allow the use of publicKeyJwk to derive and verify proof ([#145](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/145)) ([0cec1f1](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/0cec1f1b99792abfbfbfd0beca0f03f80008efd6))
 
-# [0.10.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.9.0...v0.10.0) (2021-05-26)
+# [0.10.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.9.0...0.10.0) (2021-05-26)
 
 ### BREAKING CHANGES
 
@@ -25,13 +25,13 @@ Support for NodeJS v10 has been deprecated due to it now being [EOL](https://nod
 
 - bump bbs-signatures dependency ([#131](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/131)) ([0644298](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/06442984574d45f2fc87ceb5a34e353f03015688)), closes [#119](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/119) and [#102](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/119)
 
-# [0.9.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.8.0...v0.9.0) (2021-04-05)
+# [0.9.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.8.0...0.9.0) (2021-04-05)
 
 ### Features
 
 - use local context instead of security v3 ([#116](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/116)) ([e8c6b9c](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/e8c6b9c3d30afea3eade7ffa45954c17190aa41c))
 
-# [0.8.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.7.0...v0.8.0) (2021-02-24)
+# [0.8.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.7.0...0.8.0) (2021-02-24)
 
 ### Bug Fixes
 
@@ -40,7 +40,7 @@ Support for NodeJS v10 has been deprecated due to it now being [EOL](https://nod
 
 ### Features
 
-- **sample:** update to v0.7.0 release ([#80](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/80)) ([38747e6](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/38747e61c2b1a4bd763cdf995535dfc589c28b2d))
+- **sample:** update to 0.7.0 release ([#80](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/80)) ([38747e6](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/38747e61c2b1a4bd763cdf995535dfc589c28b2d))
 - add nonce parameter to deriveProof method ([#100](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/100)) ([8d414d9](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/8d414d97f99226194301c4bbf2d565cfedcaf43a))
 - adds support for providing a proofDocument with multiple proofs ([#82](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/82)) ([1bb9a17](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/1bb9a17254810a7eef3181cec0a2ad60a726246d)), closes [#79](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/79)
 - bump bbs-signatures package version ([#107](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/107)) ([edf78a7](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/edf78a77c05723175d2cc17ee8ff523e648a78dc))
@@ -52,7 +52,7 @@ Support for NodeJS v10 has been deprecated due to it now being [EOL](https://nod
 
 - The type IRI for BBS signatures now stems from the https://w3id.org/security namespace, meaning all future signing and verifications using the signature suite will now use that namespace rather than the placeholder namespace that was being used. Note - this means verifying signatures and proofs issued with older versions of this library will not work.
 
-# [0.7.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.6.0...v0.7.0) (2020-08-28)
+# [0.7.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.6.0...0.7.0) (2020-08-28)
 
 ### Bug Fixes
 
@@ -65,27 +65,27 @@ Support for NodeJS v10 has been deprecated due to it now being [EOL](https://nod
 - update to use bbs-signatures ([#73](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/73)) ([540ccec](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/540ccecbe6f755db7975615cdd23e6b88ee16b3f))
 - use bbs-signatures library ([#61](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/61)) ([dbbd4e5](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/dbbd4e569169781cd56dabc6d1290578cd773560))
 
-# [0.6.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.5.0...v0.6.0) (2020-05-26)
+# [0.6.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.5.0...0.6.0) (2020-05-26)
 
 ### Features
 
 - update bbs dependency ([20d6f62](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/20d6f622a5270704f3e5744c2790ce6042c37491))
 - update sample ([#49](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/49)) ([73fdf98](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/73fdf98a63a00702f71a9df87dff9f9bcf6fe22a))
 
-# [0.5.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.4.0...v0.5.0) (2020-05-09)
+# [0.5.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.4.0...0.5.0) (2020-05-09)
 
 ### Features
 
 - use from key pair method ([#47](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/47)) ([2998710](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/29987106344191819bac3073d913e39927183813))
 
-# [0.4.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.3.0...v0.4.0) (2020-05-04)
+# [0.4.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.3.0...0.4.0) (2020-05-04)
 
 ### Features
 
 - add simple sample ([#41](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/41)) ([8bb49ce](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/8bb49ce2e76bf9be432c8b538bd04b440ec65add))
 - update node-bbs-signatures version ([#44](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/44)) ([1a85b83](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/1a85b8326a6fca08184665672a44816cc4ff7bff))
 
-# [0.3.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.2.0...v0.3.0) (2020-04-30)
+# [0.3.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.2.0...0.3.0) (2020-04-30)
 
 ### Bug Fixes
 
@@ -95,7 +95,7 @@ Support for NodeJS v10 has been deprecated due to it now being [EOL](https://nod
 
 - add deriveProof api ([a1024f7](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/a1024f7001236a6e3a12e4c13e90e2f444f8047f))
 
-# [0.2.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v0.1.0...v0.2.0) (2020-04-28)
+# [0.2.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.1.0...0.2.0) (2020-04-28)
 
 ### Bug Fixes
 

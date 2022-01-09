@@ -43,7 +43,8 @@
     "publish:unstable": "./scripts/publish_unstable.sh",
     "publish:release": "./scripts/publish.sh",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
-    "version:release": "yarn version --minor --message \"chore(release): publish\""
+    "version:release": "yarn version --minor --message \"chore(release): publish\"",
+    "version:release:major": "yarn version --major --message \"chore(release): publish\""
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
