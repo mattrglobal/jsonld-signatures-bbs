@@ -113,7 +113,7 @@ export const deriveProof = async (
      * @included tag messes up the canonicalized bytes leading to a bad
      * signature that won't verify.
      **/
-    if (compactProof.proof["@included"]) {
+    if (compactProof.proof?.["@included"]) {
       compactProof.proof = compactProof.proof["@included"];
     }
 
