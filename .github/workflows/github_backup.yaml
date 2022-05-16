@@ -1,0 +1,33 @@
+name: Mirror repository to S3
+on:
+  push:
+    branches:
+      - master
+jobs:
+  BackupRepoToS3:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ap-southeast-2
+          role-to-assume: arn:aws:iam::817632051851:role/oidc-github-actions-mattrglobal-global
+          role-duration-seconds: 900
+          role-session-name: GithubActions
+
+      - name: Backing up this repo to AWS S3
+        uses: peter-evans/s3-backup@v1
+        env:
+          AWS_REGION: ${{ env.AWS_REGION }}
+          ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
+          MIRROR_TARGET: mattrglobal-github-backup/jsonld-signatures-bbs
+          SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ env.AWS_SESSION_TOKEN }}
+        with:
+          args: --overwrite --remove
