@@ -17,7 +17,7 @@ import {
   testSignedVcDocument,
   exampleBls12381KeyPair,
   exampleEd25519KeyPair,
-  testRevealVcDocument
+  testRevealVcDocument,
 } from "./__fixtures__";
 
 import vc from "vc-js";
@@ -27,7 +27,7 @@ import {
   BbsBlsSignature2020,
   Bls12381G2KeyPair,
   deriveProof,
-  BbsBlsSignatureProof2020
+  BbsBlsSignatureProof2020,
 } from "../src";
 
 const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
@@ -42,7 +42,7 @@ describe("vc-js integration", () => {
     const verifiableCredential = await vc.issue({
       credential: testVcDocument,
       documentLoader: customLoader,
-      suite: new BbsBlsSignature2020({ key })
+      suite: new BbsBlsSignature2020({ key }),
     });
 
     expect(verifiableCredential.proof).toBeDefined();
@@ -52,7 +52,7 @@ describe("vc-js integration", () => {
     const result = await vc.verifyCredential({
       credential: testSignedVcDocument,
       documentLoader: customLoader,
-      suite: new BbsBlsSignature2020()
+      suite: new BbsBlsSignature2020(),
     });
 
     expect(result.verified).toBe(true);
@@ -64,14 +64,14 @@ describe("vc-js integration", () => {
       testRevealVcDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
 
     const result = await vc.verifyCredential({
       credential: derivedProof,
       documentLoader: customLoader,
-      suite: new BbsBlsSignatureProof2020()
+      suite: new BbsBlsSignatureProof2020(),
     });
 
     expect(result.verified).toBe(true);
@@ -84,20 +84,20 @@ describe("vc-js integration", () => {
       testRevealVcDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
 
     const presentation = vc.createPresentation({
       verifiableCredential: derivedProof,
-      holder
+      holder,
     });
 
     const verifiablePresentation = await vc.signPresentation({
       presentation,
       suite: new jsigs.suites.Ed25519Signature2018({ key: ed25519Key }),
       challenge: "123",
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     expect(verifiablePresentation.proof).toBeDefined();
@@ -111,31 +111,31 @@ describe("vc-js integration", () => {
       testRevealVcDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
 
     const presentation = vc.createPresentation({
       verifiableCredential: derivedProof,
       holder,
-      id
+      id,
     });
 
     const verifiablePresentation = await vc.signPresentation({
       presentation,
       suite: new jsigs.suites.Ed25519Signature2018({ key: ed25519Key }),
       challenge: "123",
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await vc.verify({
       presentation: verifiablePresentation,
       suite: [
         new jsigs.suites.Ed25519Signature2018(),
-        new BbsBlsSignatureProof2020()
+        new BbsBlsSignatureProof2020(),
       ],
       challenge: "123",
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     expect(result.verified).toBe(true);

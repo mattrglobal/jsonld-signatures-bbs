@@ -14,7 +14,7 @@
 export enum JwkKty {
   OctetKeyPair = "OKP",
   EC = "EC",
-  RSA = "RSA"
+  RSA = "RSA",
 }
 
 export interface JwkEc {

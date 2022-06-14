@@ -31,12 +31,8 @@ const PROOF_PROPERTY = "proof";
 export const getProofs = async (
   options: GetProofsOptions
 ): Promise<GetProofsResult> => {
-  const {
-    proofType,
-    skipProofCompaction,
-    documentLoader,
-    expansionMap
-  } = options;
+  const { proofType, skipProofCompaction, documentLoader, expansionMap } =
+    options;
   let { document } = options;
 
   let proofs;
@@ -46,7 +42,7 @@ export const getProofs = async (
     document = await jsonld.compact(document, SECURITY_CONTEXT_URL, {
       documentLoader,
       expansionMap,
-      compactToRelative: false
+      compactToRelative: false,
     });
   }
 
@@ -62,12 +58,12 @@ export const getProofs = async (
 
   proofs = proofs.map((matchedProof: any) => ({
     "@context": SECURITY_CONTEXT_URL,
-    ...matchedProof
+    ...matchedProof,
   }));
 
   return {
     proofs,
-    document
+    document,
   };
 };
 
@@ -104,7 +100,7 @@ export const getTypeInfo = async (
 
   const compacted = await jsonld.compact({ "@type": "_:b0" }, context, {
     documentLoader,
-    expansionMap
+    expansionMap,
   });
 
   delete compacted["@context"];

@@ -24,7 +24,7 @@ import {
   testNestedRevealFullDocument,
   testSignedNestedVcDocument,
   testSignedVcDocumentJwk,
-  testRevealVcDocumentJwk
+  testRevealVcDocumentJwk,
 } from "./__fixtures__";
 
 import { BbsBlsSignatureProof2020, deriveProof } from "../src/index";
@@ -35,7 +35,7 @@ describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof", async () => {
     const result = await deriveProof(testSignedDocument, testRevealDocument, {
       suite: new BbsBlsSignatureProof2020(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
   });
@@ -43,7 +43,7 @@ describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof revealing all statements", async () => {
     const result = await deriveProof(testSignedDocument, testRevealDocument, {
       suite: new BbsBlsSignatureProof2020(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
   });
@@ -54,7 +54,7 @@ describe("BbsBlsSignatureProof2020", () => {
       testRevealVcDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
     expect(result).toBeDefined();
@@ -66,7 +66,7 @@ describe("BbsBlsSignatureProof2020", () => {
       testRevealDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
     expect(result).toBeDefined();
@@ -79,7 +79,7 @@ describe("BbsBlsSignatureProof2020", () => {
       testRevealDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
     expect(result).toBeDefined();
@@ -94,14 +94,14 @@ describe("BbsBlsSignatureProof2020", () => {
       testRevealDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
 
     const derivedProofVerified = await jsigs.verify(result, {
       suite: new BbsBlsSignatureProof2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     expect(result).toBeDefined();
@@ -115,7 +115,7 @@ describe("BbsBlsSignatureProof2020", () => {
       testNestedRevealFullDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
 
@@ -130,7 +130,7 @@ describe("BbsBlsSignatureProof2020", () => {
       testRevealVcDocumentJwk,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
 
@@ -144,7 +144,7 @@ describe("BbsBlsSignatureProof2020", () => {
     const derivedProofVerified = await jsigs.verify(derivedProof, {
       suite: new BbsBlsSignatureProof2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     expect(derivedProofVerified.verified).toBeTruthy();
@@ -156,7 +156,7 @@ describe("BbsBlsSignatureProof2020", () => {
       testNestedRevealDocument,
       {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       }
     );
 
@@ -171,7 +171,7 @@ describe("BbsBlsSignatureProof2020", () => {
         testRevealDocument,
         {
           suite: new BbsBlsSignatureProof2020(),
-          documentLoader: customLoader
+          documentLoader: customLoader,
         }
       )
     ).rejects.toThrowError("proofDocument should be an object not an array.");
@@ -181,7 +181,7 @@ describe("BbsBlsSignatureProof2020", () => {
     await expect(
       deriveProof(testSignedDocumentEd25519, testRevealDocument, {
         suite: new BbsBlsSignatureProof2020(),
-        documentLoader: customLoader
+        documentLoader: customLoader,
       })
     ).rejects.toThrowError(
       "There were not any proofs provided that can be used to derive a proof with this suite."

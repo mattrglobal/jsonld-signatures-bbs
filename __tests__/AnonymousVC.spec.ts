@@ -18,7 +18,7 @@ import {
   testRevealAnonymousVcDocument,
   testNestedRevealDocument,
   testNestedRevealFullDocument,
-  testNestedAnonymousVcDocument
+  testNestedAnonymousVcDocument,
 } from "./__fixtures__";
 
 import jsigs from "jsonld-signatures";
@@ -26,7 +26,7 @@ import {
   Bls12381G2KeyPair,
   BbsBlsSignatureProof2020,
   BbsBlsSignature2020,
-  deriveProof
+  deriveProof,
 } from "../src/index";
 import { getProofs } from "../src/utilities";
 
@@ -37,7 +37,7 @@ const signDeriveVerify = async (vc: any, reveal: any, subject: any) => {
   const signedVc = await jsigs.sign(vc, {
     suite: new BbsBlsSignature2020({ key }),
     purpose: new jsigs.purposes.AssertionProofPurpose(),
-    documentLoader: customLoader
+    documentLoader: customLoader,
   });
   expect(signedVc).toBeDefined();
 
@@ -45,14 +45,14 @@ const signDeriveVerify = async (vc: any, reveal: any, subject: any) => {
   const verifiedVc = await jsigs.verify(signedVc, {
     suite: new BbsBlsSignature2020(),
     purpose: new jsigs.purposes.AssertionProofPurpose(),
-    documentLoader: customLoader
+    documentLoader: customLoader,
   });
   expect(verifiedVc.verified).toBeTruthy();
 
   // Holder derives Proof
   const derivedProof = await deriveProof(signedVc, reveal, {
     suite: new BbsBlsSignatureProof2020(),
-    documentLoader: customLoader
+    documentLoader: customLoader,
   });
   expect(derivedProof.credentialSubject).toEqual(subject);
 
@@ -60,14 +60,14 @@ const signDeriveVerify = async (vc: any, reveal: any, subject: any) => {
   const { document, proofs } = await getProofs({
     document: derivedProof,
     proofType: BbsBlsSignatureProof2020.proofType,
-    documentLoader: customLoader
+    documentLoader: customLoader,
   });
   const suite = new BbsBlsSignatureProof2020();
   const result = await suite.verifyProof({
     document,
     proof: proofs[0],
     documentLoader: customLoader,
-    purpose: new jsigs.purposes.AssertionProofPurpose()
+    purpose: new jsigs.purposes.AssertionProofPurpose(),
   });
   expect(result.verified).toBeTruthy();
 };
@@ -80,7 +80,7 @@ describe("anonymous verifiable credentials with blank node identifiers", () => {
       {
         id: "urn:bnid:_:c14n1",
         type: ["Person", "PermanentResident"],
-        commuterClassification: "C1"
+        commuterClassification: "C1",
       }
     );
   });
@@ -94,8 +94,8 @@ describe("anonymous verifiable credentials with blank node identifiers", () => {
         degree: {
           id: "urn:bnid:_:c14n1",
           type: "BachelorDegree",
-          name: "Bachelor of Science and Arts"
-        }
+          name: "Bachelor of Science and Arts",
+        },
       }
     );
   });
@@ -110,9 +110,9 @@ describe("anonymous verifiable credentials with blank node identifiers", () => {
           id: "urn:bnid:_:c14n1",
           type: "BachelorDegree",
           name: "Bachelor of Science and Arts",
-          degreeType: "Underwater Basket Weaving"
+          degreeType: "Underwater Basket Weaving",
         },
-        college: "Contoso University"
+        college: "Contoso University",
       }
     );
   });

@@ -24,14 +24,14 @@ import {
   testPartialVcProof,
   testRevealAllDocument,
   testProofNestedVcDocument,
-  testPartialProofNestedVcDocument
+  testPartialProofNestedVcDocument,
 } from "./__fixtures__";
 
 import jsigs from "jsonld-signatures";
 import {
   Bls12381G2KeyPair,
   BbsBlsSignatureProof2020,
-  BbsBlsSignature2020
+  BbsBlsSignature2020,
 } from "../src/index";
 import { getProofs } from "../src/utilities";
 
@@ -41,20 +41,20 @@ describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof", async () => {
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
-      key
+      key,
     });
 
     const { proofs, document } = await getProofs({
       document: testSignedDocument,
       proofType: BbsBlsSignatureProof2020.supportedDerivedProofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     let result: any = await suite.deriveProof({
       document,
       proof: proofs[0],
       revealDocument: testRevealDocument,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
   });
@@ -65,14 +65,14 @@ describe("BbsBlsSignatureProof2020", () => {
     const { proofs, document } = await getProofs({
       document: testBadPartialProofDocument,
       proofType: BbsBlsSignatureProof2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await suite.verifyProof({
       document,
       proof: proofs[0],
       documentLoader: customLoader,
-      purpose: new jsigs.purposes.AssertionProofPurpose()
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
     });
     expect(result.verified).toBeFalsy();
   });
@@ -82,13 +82,13 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const input = {
       ...testSignedDocument,
-      unsignedClaim: true
+      unsignedClaim: true,
     };
 
     const { proofs, document } = await getProofs({
       document: input,
       proofType: BbsBlsSignature2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     await expect(
@@ -96,7 +96,7 @@ describe("BbsBlsSignatureProof2020", () => {
         document,
         proof: proofs[0],
         revealDocument: testRevealAllDocument,
-        documentLoader: customLoader
+        documentLoader: customLoader,
       })
     ).rejects.toThrowError("Failed to create proof");
   });
@@ -106,13 +106,13 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const input = {
       ...testSignedDocument,
-      email: "bad@example.com"
+      email: "bad@example.com",
     };
 
     const { proofs, document } = await getProofs({
       document: input,
       proofType: BbsBlsSignature2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     await expect(
@@ -120,7 +120,7 @@ describe("BbsBlsSignatureProof2020", () => {
         document,
         proof: proofs[0],
         revealDocument: testRevealAllDocument,
-        documentLoader: customLoader
+        documentLoader: customLoader,
       })
     ).rejects.toThrowError("Failed to create proof");
   });
@@ -130,13 +130,13 @@ describe("BbsBlsSignatureProof2020", () => {
 
     const input = {
       ...testSignedDocument,
-      email: undefined
+      email: undefined,
     };
 
     const { proofs, document } = await getProofs({
       document: input,
       proofType: BbsBlsSignature2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     await expect(
@@ -144,7 +144,7 @@ describe("BbsBlsSignatureProof2020", () => {
         document,
         proof: proofs[0],
         revealDocument: testRevealAllDocument,
-        documentLoader: customLoader
+        documentLoader: customLoader,
       })
     ).rejects.toThrowError("Failed to create proof");
   });
@@ -152,20 +152,20 @@ describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof revealing all statements", async () => {
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
-      key
+      key,
     });
 
     const { proofs, document } = await getProofs({
       document: testSignedDocument,
       proofType: BbsBlsSignatureProof2020.supportedDerivedProofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await suite.deriveProof({
       document,
       proof: proofs[0],
       revealDocument: testRevealAllDocument,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
   });
@@ -173,20 +173,20 @@ describe("BbsBlsSignatureProof2020", () => {
   it("should derive proof from vc", async () => {
     const suite = new BbsBlsSignatureProof2020({
       useNativeCanonize: false,
-      key
+      key,
     });
 
     const { proofs, document } = await getProofs({
       document: testSignedVcDocument,
       proofType: BbsBlsSignatureProof2020.supportedDerivedProofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await suite.deriveProof({
       document,
       proof: proofs[0],
       revealDocument: testRevealVcDocument,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
   });
@@ -197,14 +197,14 @@ describe("BbsBlsSignatureProof2020", () => {
     const { proofs, document } = await getProofs({
       document: testProofDocument,
       proofType: BbsBlsSignatureProof2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await suite.verifyProof({
       document,
       proof: proofs[0],
       documentLoader: customLoader,
-      purpose: new jsigs.purposes.AssertionProofPurpose()
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
     });
     expect(result.verified).toBeTruthy();
   });
@@ -215,14 +215,14 @@ describe("BbsBlsSignatureProof2020", () => {
     const { proofs, document } = await getProofs({
       document: testPartialProofDocument,
       proofType: BbsBlsSignatureProof2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await suite.verifyProof({
       document,
       proof: proofs[0],
       documentLoader: customLoader,
-      purpose: new jsigs.purposes.AssertionProofPurpose()
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
     });
     expect(result.verified).toBeTruthy();
   });
@@ -233,14 +233,14 @@ describe("BbsBlsSignatureProof2020", () => {
     const { proofs, document } = await getProofs({
       document: testProofNestedVcDocument,
       proofType: BbsBlsSignatureProof2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await suite.verifyProof({
       document,
       proof: proofs[0],
       documentLoader: customLoader,
-      purpose: new jsigs.purposes.AssertionProofPurpose()
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
     });
     expect(result.verified).toBeTruthy();
   });
@@ -251,14 +251,14 @@ describe("BbsBlsSignatureProof2020", () => {
     const { proofs, document } = await getProofs({
       document: testPartialProofNestedVcDocument,
       proofType: BbsBlsSignatureProof2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await suite.verifyProof({
       document,
       proof: proofs[0],
       documentLoader: customLoader,
-      purpose: new jsigs.purposes.AssertionProofPurpose()
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
     });
     expect(result.verified).toBeTruthy();
   });
@@ -269,14 +269,14 @@ describe("BbsBlsSignatureProof2020", () => {
     const { proofs, document } = await getProofs({
       document: testPartialVcProof,
       proofType: BbsBlsSignatureProof2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     const result = await suite.verifyProof({
       document,
       proof: proofs[0],
       documentLoader: customLoader,
-      purpose: new jsigs.purposes.AssertionProofPurpose()
+      purpose: new jsigs.purposes.AssertionProofPurpose(),
     });
     expect(result.verified).toBeTruthy();
   });

@@ -71,5 +71,5 @@ export {
   customLoader,
   testAnonymousVcDocument,
   testRevealAnonymousVcDocument,
-  testNestedAnonymousVcDocument
+  testNestedAnonymousVcDocument,
 };
