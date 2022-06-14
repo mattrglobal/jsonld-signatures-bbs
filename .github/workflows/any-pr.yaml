@@ -16,7 +16,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Run tests
         run: |
-          yarn install --frozen-lockfile
+          yarn install --frozen-lockfile --ignore-engines
           yarn lint
           yarn build
           yarn test:node --coverage
