@@ -129,10 +129,9 @@ describe("BbsBlsSignatureProof2020", () => {
     const suite = new BbsBlsSignatureProof2020();
 
     const input = {
-      ...testSignedDocument
+      ...testSignedDocument,
+      email: undefined
     };
-
-    delete input.email;
 
     const { proofs, document } = await getProofs({
       document: input,
