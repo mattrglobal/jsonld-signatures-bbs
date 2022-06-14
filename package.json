@@ -29,7 +29,7 @@
     "lib"
   ],
   "engines": {
-    "node": ">=11.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "test:node": "BBS_SIGNATURES_MODE=\"NODE_JS_MODULE\" jest",
