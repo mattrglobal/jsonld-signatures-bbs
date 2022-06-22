@@ -20,7 +20,7 @@ import {
   DidDocumentPublicKey,
   VerifyProofOptions,
   CreateVerifyDataOptions,
-  CanonizeOptions
+  CanonizeOptions,
 } from "./types";
 import { BbsBlsSignature2020 } from "./BbsBlsSignature2020";
 import { randomBytes } from "@stablelib/random";
@@ -30,7 +30,7 @@ import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
 export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
   constructor({ useNativeCanonize, key, LDKeyClass }: any = {}) {
     super({
-      type: "sec:BbsBlsSignatureProof2020"
+      type: "sec:BbsBlsSignatureProof2020",
     });
 
     this.proof = {
@@ -40,12 +40,12 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
           proof: {
             "@id": "sec:proof",
             "@type": "@id",
-            "@container": "@graph"
-          }
+            "@container": "@graph",
+          },
         },
-        "https://w3id.org/security/bbs/v1"
+        "https://w3id.org/security/bbs/v1",
       ],
-      type: "BbsBlsSignatureProof2020"
+      type: "BbsBlsSignatureProof2020",
     };
     this.mappedDerivedProofType =
       "https://w3id.org/security#BbsBlsSignature2020";
@@ -72,7 +72,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       revealDocument,
       documentLoader,
       expansionMap,
-      skipProofCompaction
+      skipProofCompaction,
     } = options;
     let { nonce } = options;
 
@@ -100,7 +100,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       derivedProof = await jsonld.compact(this.proof, SECURITY_CONTEXT_URL, {
         documentLoader,
         expansionMap,
-        compactToRelative: false
+        compactToRelative: false,
       });
     } else {
       // create proof JSON-LD document
@@ -114,21 +114,21 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     const documentStatements = await suite.createVerifyDocumentData(document, {
       documentLoader,
       expansionMap,
-      compactProof: !skipProofCompaction
+      compactProof: !skipProofCompaction,
     });
 
     // Get the proof statements
     const proofStatements = await suite.createVerifyProofData(proof, {
       documentLoader,
       expansionMap,
-      compactProof: !skipProofCompaction
+      compactProof: !skipProofCompaction,
     });
 
     // Transform any blank node identifiers for the input
     // document statements into actual node identifiers
     // e.g _:c14n0 => urn:bnid:_:c14n0
-    const transformedInputDocumentStatements = documentStatements.map(element =>
-      element.replace(/(_:c14n[0-9]+)/g, "<urn:bnid:$1>")
+    const transformedInputDocumentStatements = documentStatements.map(
+      (element) => element.replace(/(_:c14n[0-9]+)/g, "<urn:bnid:$1>")
     );
 
     //Transform the resulting RDF statements back into JSON-LD
@@ -148,7 +148,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       revealDocumentResult,
       {
         documentLoader,
-        expansionMap
+        expansionMap,
       }
     );
 
@@ -164,7 +164,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     //Reveal the statements indicated from the reveal document
     const documentRevealIndicies = revealDocumentStatements.map(
-      key =>
+      (key) =>
         transformedInputDocumentStatements.indexOf(key) +
         numberOfProofStatements
     );
@@ -191,14 +191,14 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     //were originally signed to generate the proof
     const allInputStatements: Uint8Array[] = proofStatements
       .concat(documentStatements)
-      .map(item => new Uint8Array(Buffer.from(item)));
+      .map((item) => new Uint8Array(Buffer.from(item)));
 
     // Fetch the verification method
     const verificationMethod = await this.getVerificationMethod({
       proof,
       document,
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
     // Construct a key pair class from the returned verification method
@@ -212,7 +212,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       publicKey: new Uint8Array(key.publicKeyBuffer),
       messages: allInputStatements,
       nonce: nonce,
-      revealed: revealIndicies
+      revealed: revealIndicies,
     });
 
     // Set the proof value on the derived proof
@@ -225,7 +225,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     return {
       document: { ...revealDocumentResult },
-      proof: derivedProof
+      proof: derivedProof,
     };
   }
 
@@ -244,32 +244,32 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       // Get the proof statements
       const proofStatements = await this.createVerifyProofData(proof, {
         documentLoader,
-        expansionMap
+        expansionMap,
       });
 
       // Get the document statements
       const documentStatements = await this.createVerifyProofData(document, {
         documentLoader,
-        expansionMap
+        expansionMap,
       });
 
       // Transform the blank node identifier placeholders for the document statements
       // back into actual blank node identifiers
-      const transformedDocumentStatements = documentStatements.map(element =>
+      const transformedDocumentStatements = documentStatements.map((element) =>
         element.replace(/<urn:bnid:(_:c14n[0-9]+)>/g, "$1")
       );
 
       // Combine all the statements to be verified
       const statementsToVerify: Uint8Array[] = proofStatements
         .concat(transformedDocumentStatements)
-        .map(item => new Uint8Array(Buffer.from(item)));
+        .map((item) => new Uint8Array(Buffer.from(item)));
 
       // Fetch the verification method
       const verificationMethod = await this.getVerificationMethod({
         proof,
         document,
         documentLoader,
-        expansionMap
+        expansionMap,
       });
 
       // Construct a key pair class from the returned verification method
@@ -282,7 +282,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         proof: new Uint8Array(Buffer.from(proof.proofValue, "base64")),
         publicKey: new Uint8Array(key.publicKeyBuffer),
         messages: statementsToVerify,
-        nonce: new Uint8Array(Buffer.from(proof.nonce as string, "base64"))
+        nonce: new Uint8Array(Buffer.from(proof.nonce as string, "base64")),
       });
 
       // Ensure proof was performed for a valid purpose
@@ -291,7 +291,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         suite: this,
         verificationMethod,
         documentLoader,
-        expansionMap
+        expansionMap,
       });
       if (!valid) {
         throw error;
@@ -311,7 +311,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
       documentLoader,
       expansionMap,
       skipExpansion,
-      useNative: this.useNativeCanonize
+      useNative: this.useNativeCanonize,
     });
   }
 
@@ -325,7 +325,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
     return this.canonize(proof, {
       documentLoader,
       expansionMap,
-      skipExpansion: false
+      skipExpansion: false,
     });
   }
 
@@ -339,11 +339,11 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
     const proofStatements = await this.createVerifyProofData(proof, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
     const documentStatements = await this.createVerifyDocumentData(document, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
     // concatenate c14n proof options and c14n document
@@ -362,10 +362,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
   ): Promise<string[]> {
     const c14nProofOptions = await this.canonizeProof(proof, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
-    return c14nProofOptions.split("\n").filter(_ => _.length > 0);
+    return c14nProofOptions.split("\n").filter((_) => _.length > 0);
   }
 
   /**
@@ -380,10 +380,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
   ): Promise<string[]> {
     const c14nDocument = await this.canonize(document, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
-    return c14nDocument.split("\n").filter(_ => _.length > 0);
+    return c14nDocument.split("\n").filter((_) => _.length > 0);
   }
 
   /**
@@ -394,7 +394,7 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
    */
   async getVerificationMethod({
     proof,
-    documentLoader
+    documentLoader,
   }: any): Promise<DidDocumentPublicKey> {
     let { verificationMethod } = proof;
 
@@ -413,15 +413,15 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
         // adding jws-2020 context to allow publicKeyJwk
         "@context": [
           "https://w3id.org/security/v2",
-          "https://w3id.org/security/suites/jws-2020/v1"
+          "https://w3id.org/security/suites/jws-2020/v1",
         ],
         "@embed": "@always",
-        id: verificationMethod
+        id: verificationMethod,
       },
       {
         documentLoader,
         compactToRelative: false,
-        expandContext: SECURITY_CONTEXT_URL
+        expandContext: SECURITY_CONTEXT_URL,
       }
     );
     if (!result) {
@@ -439,12 +439,12 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
   static proofType = [
     "BbsBlsSignatureProof2020",
     "sec:BbsBlsSignatureProof2020",
-    "https://w3id.org/security#BbsBlsSignatureProof2020"
+    "https://w3id.org/security#BbsBlsSignatureProof2020",
   ];
 
   static supportedDerivedProofType = [
     "BbsBlsSignature2020",
     "sec:BbsBlsSignature2020",
-    "https://w3id.org/security#BbsBlsSignature2020"
+    "https://w3id.org/security#BbsBlsSignature2020",
   ];
 }

@@ -45,7 +45,7 @@ export const documents: any = {
   "https://w3id.org/security/bbs/v1": bbsContext,
   "https://schema.org": schemaOrg,
   "https://schema.org/": schemaOrg,
-  "http://schema.org/": schemaOrg
+  "http://schema.org/": schemaOrg,
 };
 
 const customDocLoader = (url: string): any => {
@@ -55,7 +55,7 @@ const customDocLoader = (url: string): any => {
     return {
       contextUrl: null, // this is for a context via a link header
       document: context, // this is the actual document that was loaded
-      documentUrl: url // this is the actual context URL after redirects
+      documentUrl: url, // this is the actual context URL after redirects
     };
   }
 

@@ -15,7 +15,7 @@ import {
   customLoader,
   testSignedDocumentMultiDifProofs,
   testDocument,
-  testSignedDocumentEd25519
+  testSignedDocumentEd25519,
 } from "./__fixtures__";
 
 import { getProofs } from "../src/utilities";
@@ -25,7 +25,7 @@ describe("getProofs", () => {
   it("should get all proofs from document", async () => {
     const result = await getProofs({
       document: testSignedDocumentMultiDifProofs,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
     expect(result.proofs).toBeDefined();
@@ -37,7 +37,7 @@ describe("getProofs", () => {
     const result = await getProofs({
       document: testSignedDocumentMultiDifProofs,
       proofType: BbsBlsSignature2020.proofType,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
     expect(result.proofs).toBeDefined();
@@ -48,7 +48,7 @@ describe("getProofs", () => {
   it("should return empty proof array when no proofs found", async () => {
     const result = await getProofs({
       document: testDocument,
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
     expect(result.proofs).toBeDefined();
@@ -61,7 +61,7 @@ describe("getProofs", () => {
       document: testSignedDocumentEd25519,
       proofType:
         "https://w3c-ccg.github.io/ldp-bbs2020/context/v1#BbsBlsSignature2020",
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(result).toBeDefined();
     expect(result.proofs).toBeDefined();

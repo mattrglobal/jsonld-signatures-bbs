@@ -21,7 +21,7 @@ import {
   CreateVerifyDataOptions,
   VerifyProofOptions,
   VerifySignatureOptions,
-  SuiteSignOptions
+  SuiteSignOptions,
 } from "./types";
 import { w3cDate } from "./utilities";
 import { Bls12381G2KeyPair } from "@mattrglobal/bls12381-key-pair";
@@ -41,7 +41,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       key,
       date,
       useNativeCanonize,
-      LDKeyClass
+      LDKeyClass,
     } = options;
     // validate common options
     if (
@@ -51,7 +51,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       throw new TypeError('"verificationMethod" must be a URL string.');
     }
     super({
-      type: "sec:BbsBlsSignature2020"
+      type: "sec:BbsBlsSignature2020",
     });
 
     this.proof = {
@@ -61,12 +61,12 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
           proof: {
             "@id": "sec:proof",
             "@type": "@id",
-            "@container": "@graph"
-          }
+            "@container": "@graph",
+          },
         },
-        "https://w3id.org/security/bbs/v1"
+        "https://w3id.org/security/bbs/v1",
       ],
-      type: "BbsBlsSignature2020"
+      type: "BbsBlsSignature2020",
     };
 
     this.LDKeyClass = LDKeyClass ?? Bls12381G2KeyPair;
@@ -100,13 +100,8 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
    * @returns {Promise<object>} Resolves with the created proof object.
    */
   async createProof(options: CreateProofOptions): Promise<object> {
-    const {
-      document,
-      purpose,
-      documentLoader,
-      expansionMap,
-      compactProof
-    } = options;
+    const { document, purpose, documentLoader, expansionMap, compactProof } =
+      options;
 
     let proof;
     if (this.proof) {
@@ -114,7 +109,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       proof = await jsonld.compact(this.proof, SECURITY_CONTEXT_URL, {
         documentLoader,
         expansionMap,
-        compactToRelative: false
+        compactToRelative: false,
       });
     } else {
       // create proof JSON-LD document
@@ -151,7 +146,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       document,
       suite: this,
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
     // create data to sign
@@ -161,9 +156,9 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
         proof,
         documentLoader,
         expansionMap,
-        compactProof
+        compactProof,
       })
-    ).map(item => new Uint8Array(Buffer.from(item)));
+    ).map((item) => new Uint8Array(Buffer.from(item)));
 
     // sign data
     proof = await this.sign({
@@ -171,7 +166,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       document,
       proof,
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
     return proof;
@@ -193,16 +188,16 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
           proof,
           documentLoader,
           expansionMap,
-          compactProof: false
+          compactProof: false,
         })
-      ).map(item => new Uint8Array(Buffer.from(item)));
+      ).map((item) => new Uint8Array(Buffer.from(item)));
 
       // fetch verification method
       const verificationMethod = await this.getVerificationMethod({
         proof,
         document,
         documentLoader,
-        expansionMap
+        expansionMap,
       });
 
       // verify signature on data
@@ -212,7 +207,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
         document,
         proof,
         documentLoader,
-        expansionMap
+        expansionMap,
       });
       if (!verified) {
         throw new Error("Invalid signature.");
@@ -224,7 +219,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
         suite: this,
         verificationMethod,
         documentLoader,
-        expansionMap
+        expansionMap,
       });
       if (!valid) {
         throw error;
@@ -244,7 +239,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       documentLoader,
       expansionMap,
       skipExpansion,
-      useNative: this.useNativeCanonize
+      useNative: this.useNativeCanonize,
     });
   }
 
@@ -255,7 +250,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     return this.canonize(proof, {
       documentLoader,
       expansionMap,
-      skipExpansion: false
+      skipExpansion: false,
     });
   }
 
@@ -269,11 +264,11 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
 
     const proofStatements = await this.createVerifyProofData(proof, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
     const documentStatements = await this.createVerifyDocumentData(document, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
     // concatenate c14n proof options and c14n document
@@ -292,10 +287,10 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
   ): Promise<string[]> {
     const c14nProofOptions = await this.canonizeProof(proof, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
-    return c14nProofOptions.split("\n").filter(_ => _.length > 0);
+    return c14nProofOptions.split("\n").filter((_) => _.length > 0);
   }
 
   /**
@@ -310,10 +305,10 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
   ): Promise<string[]> {
     const c14nDocument = await this.canonize(document, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
-    return c14nDocument.split("\n").filter(_ => _.length > 0);
+    return c14nDocument.split("\n").filter((_) => _.length > 0);
   }
 
   /**
@@ -340,12 +335,12 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       {
         "@context": SECURITY_CONTEXT_URL,
         "@embed": "@always",
-        id: verificationMethod
+        id: verificationMethod,
       },
       {
         documentLoader,
         compactToRelative: false,
-        expandContext: SECURITY_CONTEXT_URL
+        expandContext: SECURITY_CONTEXT_URL,
       }
     );
     if (!result) {
@@ -375,7 +370,7 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     }
 
     const proofValue: Uint8Array = await this.signer.sign({
-      data: verifyData
+      data: verifyData,
     });
 
     proof[this.proofSignatureKey] = Buffer.from(proofValue).toString("base64");
@@ -401,13 +396,13 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
       data: verifyData,
       signature: new Uint8Array(
         Buffer.from(proof[this.proofSignatureKey] as string, "base64")
-      )
+      ),
     });
   }
 
   static proofType = [
     "BbsBlsSignature2020",
     "sec:BbsBlsSignature2020",
-    "https://w3id.org/security#BbsBlsSignature2020"
+    "https://w3id.org/security#BbsBlsSignature2020",
   ];
 }

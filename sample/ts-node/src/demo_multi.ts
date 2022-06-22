@@ -15,7 +15,7 @@ import {
   Bls12381G2KeyPair,
   BbsBlsSignature2020,
   BbsBlsSignatureProof2020,
-  deriveProof
+  deriveProof,
 } from "@mattrglobal/jsonld-signatures-bbs";
 import { extendContextLoader, sign, verify, purposes } from "jsonld-signatures";
 
@@ -33,7 +33,7 @@ const documents: any = {
   "did:example:489398593": exampleControllerDoc,
   "https://w3id.org/security/bbs/v1": bbsContext,
   "https://w3id.org/citizenship/v1": citizenVocab,
-  "https://www.w3.org/2018/credentials/v1": credentialContext
+  "https://www.w3.org/2018/credentials/v1": credentialContext,
 };
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -44,7 +44,7 @@ const customDocLoader = (url: string): any => {
     return {
       contextUrl: null, // this is for a context via a link header
       document: context, // this is the actual document that was loaded
-      documentUrl: url // this is the actual context URL after redirects
+      documentUrl: url, // this is the actual context URL after redirects
     };
   }
 
@@ -71,7 +71,7 @@ const main = async (): Promise<void> => {
   const signedDocument = await sign(inputDocument, {
     suite: new BbsBlsSignature2020({ key: keyPair }),
     purpose: new purposes.AssertionProofPurpose(),
-    documentLoader
+    documentLoader,
   });
 
   console.log("Input document with proof");
@@ -80,7 +80,7 @@ const main = async (): Promise<void> => {
   const multiSignedDocument = await sign(signedDocument, {
     suite: new BbsBlsSignature2020({ key: keyPair }),
     purpose: new purposes.AssertionProofPurpose(),
-    documentLoader
+    documentLoader,
   });
 
   console.log("Input document with multiple proofs");
@@ -90,7 +90,7 @@ const main = async (): Promise<void> => {
   const verified = await verify(multiSignedDocument, {
     suite: new BbsBlsSignature2020(),
     purpose: new purposes.AssertionProofPurpose(),
-    documentLoader
+    documentLoader,
   });
 
   console.log("Verify the signed proof");
@@ -99,7 +99,7 @@ const main = async (): Promise<void> => {
   //Derive a proof
   const derivedProof = await deriveProof(multiSignedDocument, revealDocument, {
     suite: new BbsBlsSignatureProof2020(),
-    documentLoader
+    documentLoader,
   });
 
   console.log("Derived Proof Result");
@@ -109,7 +109,7 @@ const main = async (): Promise<void> => {
   const derivedProofVerified = await verify(derivedProof, {
     suite: new BbsBlsSignatureProof2020(),
     purpose: new purposes.AssertionProofPurpose(),
-    documentLoader
+    documentLoader,
   });
 
   console.log("Derived Proof Verification result");

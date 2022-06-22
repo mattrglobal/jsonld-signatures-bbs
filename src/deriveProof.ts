@@ -42,7 +42,7 @@ export const deriveProof = async (
     document: proofDocument,
     proofType: suite.supportedDeriveProofType,
     documentLoader,
-    expansionMap
+    expansionMap,
   });
 
   if (proofs.length === 0) {
@@ -58,7 +58,7 @@ export const deriveProof = async (
     revealDocument,
     documentLoader,
     expansionMap,
-    nonce
+    nonce,
   });
 
   if (proofs.length > 1) {
@@ -75,7 +75,7 @@ export const deriveProof = async (
         proof,
         revealDocument,
         documentLoader,
-        expansionMap
+        expansionMap,
       });
       derivedProof.proof.push(additionalDerivedProofValue.proof);
     }
@@ -85,14 +85,14 @@ export const deriveProof = async (
     /* eslint-disable prefer-const */
     let expandedProof: any = {
       [SECURITY_PROOF_URL]: {
-        "@graph": derivedProof.proof
-      }
+        "@graph": derivedProof.proof,
+      },
     };
 
     // account for type-scoped `proof` definition by getting document types
     const { types, alias } = await getTypeInfo(derivedProof.document, {
       documentLoader,
-      expansionMap
+      expansionMap,
     });
 
     expandedProof["@type"] = types;
@@ -102,7 +102,7 @@ export const deriveProof = async (
     const compactProof = await jsonld.compact(expandedProof, ctx, {
       documentLoader,
       expansionMap,
-      compactToRelative: false
+      compactToRelative: false,
     });
 
     delete compactProof[alias];

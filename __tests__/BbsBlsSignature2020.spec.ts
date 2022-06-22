@@ -18,7 +18,7 @@ import {
   testBadSignedDocument,
   customLoader,
   testVcDocument,
-  testSignedVcDocument
+  testSignedVcDocument,
 } from "./__fixtures__";
 
 import jsigs from "jsonld-signatures";
@@ -32,7 +32,7 @@ describe("BbsBlsSignature2020", () => {
     const signed = await jsigs.sign(testDocument, {
       suite: new BbsBlsSignature2020({ key }),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(signed).toBeDefined();
   });
@@ -41,7 +41,7 @@ describe("BbsBlsSignature2020", () => {
     const verificationResult = await jsigs.verify(testSignedDocument, {
       suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
 
     expect(verificationResult).toBeDefined();
@@ -52,7 +52,7 @@ describe("BbsBlsSignature2020", () => {
     const verificationResult = await jsigs.verify(testBadSignedDocument, {
       suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeFalsy();
@@ -61,13 +61,13 @@ describe("BbsBlsSignature2020", () => {
   it("should not verify with additional unsigned information with jsigs", async () => {
     const modfiedDocument = {
       ...testSignedDocument,
-      unsignedClaim: "oops"
+      unsignedClaim: "oops",
     };
 
     const verificationResult = await jsigs.verify(modfiedDocument, {
       suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeFalsy();
@@ -76,13 +76,13 @@ describe("BbsBlsSignature2020", () => {
   it("should not verify with modified statement", async () => {
     const modfiedDocument = {
       ...testSignedDocument,
-      email: "someOtherEmail@example.com"
+      email: "someOtherEmail@example.com",
     };
 
     const verificationResult = await jsigs.verify(modfiedDocument, {
       suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeFalsy();
@@ -92,7 +92,7 @@ describe("BbsBlsSignature2020", () => {
     const signed = await jsigs.sign(testVcDocument, {
       suite: new BbsBlsSignature2020({ key }),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(signed).toBeDefined();
   });
@@ -101,7 +101,7 @@ describe("BbsBlsSignature2020", () => {
     const verificationResult = await jsigs.verify(testSignedVcDocument, {
       suite: new BbsBlsSignature2020(),
       purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader
+      documentLoader: customLoader,
     });
     expect(verificationResult).toBeDefined();
     expect(verificationResult.verified).toBeTruthy();
