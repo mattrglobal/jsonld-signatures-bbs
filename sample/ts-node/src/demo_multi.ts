@@ -26,6 +26,7 @@ import bbsContext from "./data/bbs.json";
 import revealDocument from "./data/deriveProofFrame.json";
 import citizenVocab from "./data/citizenVocab.json";
 import credentialContext from "./data/credentialsContext.json";
+import suiteContext from "./data/suiteContext.json";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 const documents: any = {
@@ -34,6 +35,7 @@ const documents: any = {
   "https://w3id.org/security/bbs/v1": bbsContext,
   "https://w3id.org/citizenship/v1": citizenVocab,
   "https://www.w3.org/2018/credentials/v1": credentialContext,
+  "https://w3id.org/security/suites/jws-2020/v1": suiteContext,
 };
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
