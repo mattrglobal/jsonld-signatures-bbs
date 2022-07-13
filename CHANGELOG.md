@@ -1,3 +1,13 @@
+# [1.1.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.12.0...1.1.0) (2022-07-13)
+
+### Bug Fixes
+
+- check for existence of proof object ([#174](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/174)) ([eefaddf](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/eefaddf7f273564db368fdf11ee2acfd793bd9ec))
+
+### Features
+
+- adding github actions to backup repository to s3 ([#184](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/184)) ([014b969](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/014b969a7d004f7669f2fabf71cbdab7b7c670bf))
+
 ## [1.0.1](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/1.0.0...1.0.1) (2022-01-13)
 
 # [1.0.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.12.0...1.0.0) (2022-01-09)
