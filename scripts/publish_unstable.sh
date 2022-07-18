@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# This script handles the publishing of the current 
+# Fail if any command in script fails
+set -e
+
+# This script handles the publishing of the current
 # commits as an npm based unstable package
 
-# Example if the current package.json version reads 0.1.0 
+# Example if the current package.json version reads 0.1.0
 # then the unstable release of 0.1.1-unstable.(current git commit reference)
 
 # Add dev dependencies to current path
@@ -23,5 +26,3 @@ yarn publish --no-git-tag-version --new-version $new_unstable_version --tag unst
 
 # Reset changes to the package.json
 git checkout -- package.json
-    
-    

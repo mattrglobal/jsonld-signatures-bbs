@@ -10,15 +10,12 @@ jobs:
     name: Build, test, and publish unstable release
     if: "! contains(github.event.head_commit.message, 'chore(release): publish')"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16.x
           registry-url: "https://registry.npmjs.org"
       - run: yarn install --frozen-lockfile
       - run: yarn lint
@@ -26,7 +23,7 @@ jobs:
       - run: yarn test:node --coverage
       - run: yarn test:wasm --coverage
       - run: git config user.name "Mattr CI"
-      - run: git config user.email "npmjs_ci_mattr_public@mattr.global"
+      - run: git config user.email "ci@mattr.global"
       - run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
