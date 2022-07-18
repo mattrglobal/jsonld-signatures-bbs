@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# This script handles the publishing of the current 
+# Fail if any command in script fails
+set -e
+
+# This script handles the publishing of the current
 # commits as an npm based package
 
-# Example if the current package.json version reads 0.1.0 
+# Example if the current package.json version reads 0.1.0
 # then the release will be tagged with 0.1.0
 
 # Add dev dependencies to current path
