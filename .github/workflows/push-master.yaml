@@ -31,6 +31,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}
       - name: Report Coverage
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@29386c70ef20e286228c72b668a06fd0e8399192 # pin@1.5.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
