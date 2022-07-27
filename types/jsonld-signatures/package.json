@@ -1,0 +1,5 @@
+{
+  "name": "@types/jsonld-signatures",
+  "typings": "index.d.ts",
+  "dependencies": {}
+}
