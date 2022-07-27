@@ -11,7 +11,6 @@
  * limitations under the License.
  */
 
-import jsonld from "jsonld";
 import { extendContextLoader } from "jsonld-signatures";
 import citizenVocab from "./contexts/citizen_vocab.json";
 import credentialContext from "./contexts/credential_vocab.json";

@@ -1,0 +1,5 @@
+{
+  "name": "@types/vc-js",
+  "typings": "index.d.ts",
+  "dependencies": {}
+}

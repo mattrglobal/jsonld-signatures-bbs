@@ -12,7 +12,13 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "outDir": "./lib",
-    "types": ["jest", "node", "./__tests__"]
+    "types": ["jest", "node"],
+    "paths": {
+      "jsonld-signatures": ["./types/jsonld-signatures"],
+      "jsonld": ["./types/jsonld"],
+      "crypto-ld": ["./types/crypto-ld"],
+      "vc-js": ["./types/vc-js"]
+    }
   },
   "include": ["./src"]
 }
