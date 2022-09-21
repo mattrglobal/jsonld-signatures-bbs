@@ -27,7 +27,7 @@ export interface VerifySignatureOptions {
   /**
    * Verification method to verify the signature against
    */
-  readonly verificationMethod: string;
+  readonly verificationMethod: any;
   /**
    * Proof to verify
    */
