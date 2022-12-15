@@ -3534,15 +3534,15 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jsonld-signatures@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/jsonld-signatures/-/jsonld-signatures-5.0.1.tgz#0678f0fb06c31cab0f0fa2acd97b8f70f6abae04"
-  integrity sha512-O+cCcuGXj5HnzMZOAvZgTalkGHwYeAueuIPxA4nBVerpxQVwyAZkC6WCWzGV3TyCDTIypboh8y9VTkJdlMFdOg==
+jsonld-signatures@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/jsonld-signatures/-/jsonld-signatures-7.0.0.tgz#4b2021422c16d25aa8a561d1806bd68a6130afa1"
+  integrity sha512-J/nA+llcYYjErPHG9WFpXvR82TOg5fbHk/7rXbx4Ts854DPReaKAAd0hAZ+s5/P2WIIAZPIHCqA+iz1QrOqeiQ==
   dependencies:
     base64url "^3.0.1"
     crypto-ld "^3.7.0"
-    jsonld "^2.0.2"
-    node-forge "^0.9.1"
+    jsonld "^4.0.1"
+    node-forge "^0.10.0"
     security-context "^4.0.0"
     serialize-error "^5.0.0"
 
@@ -3558,18 +3558,17 @@ jsonld-signatures@^5.0.0:
     security-context "^4.0.0"
     serialize-error "^5.0.0"
 
-jsonld@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/jsonld/-/jsonld-3.1.0.tgz#826a7a598942a3969d41301388c51b812a73c6d0"
-  integrity sha512-9x/AbUsXMMZBPxGy98Y8qMz7CU3WCq1n0KcNfR1P4RZml5oZiEQM+53/VtStOHUTUyC6fX9Sml5olUOZRARTZw==
+jsonld@4.0.1, jsonld@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/jsonld/-/jsonld-4.0.1.tgz#b8d464ae94bf00b54a219a99782cb488c49842d5"
+  integrity sha512-ltEqMQB37ZxZnsgmI+9rqHYkz1M6PqUykuS1t2aQNuH1oiLrUDYz5nyVkHQDgjFd7CFKTIWeLiNhwdwFrH5o5A==
   dependencies:
     canonicalize "^1.0.1"
     lru-cache "^5.1.1"
     object.fromentries "^2.0.2"
-    rdf-canonize "^1.0.2"
+    rdf-canonize "^2.0.1"
     request "^2.88.0"
     semver "^6.3.0"
-    xmldom "0.1.19"
 
 jsonld@^2.0.2:
   version "2.0.2"
@@ -3955,7 +3954,7 @@ node-fetch@^2.6.7:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-forge@1.3.0, node-forge@^0.10.0, node-forge@^0.9.1, node-forge@~0.10.0, node-forge@~0.9.0:
+node-forge@1.3.0, node-forge@^0.10.0, node-forge@~0.10.0, node-forge@~0.9.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-1.3.0.tgz#37a874ea723855f37db091e6c186e5b67a01d4b2"
   integrity sha512-08ARB91bUi6zNKzVmaj3QO7cr397uiDT2nJ63cHjyNtCTWIgvS47j3eT0WfzUwS9+6Z5YshRaoasFkXCKrIYbA==
@@ -4453,6 +4452,14 @@ rdf-canonize@^1.0.2:
     node-forge "^0.10.0"
     semver "^6.3.0"
 
+rdf-canonize@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rdf-canonize/-/rdf-canonize-2.0.1.tgz#12c9b8b41570cd669d9b152c9e679063478ba194"
+  integrity sha512-/GVELjrfW8G/wS4QfDZ5Kq68cS1belVNJqZlcwiErerexeBUsgOINCROnP7UumWIBNdeCwTVLE9NVXMnRYK0lA==
+  dependencies:
+    semver "^6.3.0"
+    setimmediate "^1.0.5"
+
 react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
@@ -4733,6 +4740,11 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
   integrity sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==
+
+setimmediate@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
+  integrity sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==
 
 shebang-command@^1.2.0:
   version "1.2.0"
