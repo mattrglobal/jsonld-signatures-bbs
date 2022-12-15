@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/1.0.1...1.1.1) (2022-12-15)
+
+### Bug Fixes
+
+- allow jwk key in signature suite ([#200](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/200)) ([0612e6b](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/0612e6b8ec7e5bb2610c1c47822d0f483aafbd0d))
+- check for existence of proof object ([#174](https://github.com/mattrglobal/jsonld-signatures-bbs/issues/174)) ([eefaddf](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/eefaddf7f273564db368fdf11ee2acfd793bd9ec))
+
 # [1.1.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/0.12.0...1.1.0) (2022-07-13)
 
 ### Bug Fixes
