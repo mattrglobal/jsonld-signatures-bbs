@@ -10,6 +10,5 @@ module.exports = {
   testEnvironment: "node",
   testTimeout: 15000,
   verbose: true,
-  name: pack.name,
-  displayName: pack.name
+  displayName: pack.name,
 };
