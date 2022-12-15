@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@mattrglobal/jsonld-signatures-bbs": "link:../../",
-    "jsonld-signatures": "5.0.1"
+    "jsonld-signatures": "7.0.0"
   },
   "resolutions": {
     "webpack/**/glob-parent": "5.1.2",
