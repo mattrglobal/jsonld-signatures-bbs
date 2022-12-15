@@ -333,7 +333,10 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     const result = await jsonld.frame(
       verificationMethod,
       {
-        "@context": SECURITY_CONTEXT_URL,
+        "@context": [
+          "https://w3id.org/security/v2",
+          "https://w3id.org/security/suites/jws-2020/v1",
+        ],
         "@embed": "@always",
         id: verificationMethod,
       },
@@ -388,7 +391,9 @@ export class BbsBlsSignature2020 extends suites.LinkedDataProof {
     let { verifier } = this;
 
     if (!verifier) {
-      const key = await this.LDKeyClass.from(verificationMethod);
+      const key = verificationMethod.publicKeyJwk
+        ? await this.LDKeyClass.fromJwk(verificationMethod)
+        : await this.LDKeyClass.from(verificationMethod);
       verifier = key.verifier(key, this.alg, this.type);
     }
 
