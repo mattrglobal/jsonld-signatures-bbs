@@ -15,9 +15,7 @@
     "types": ["jest", "node"],
     "paths": {
       "jsonld-signatures": ["./types/jsonld-signatures"],
-      "jsonld": ["./types/jsonld"],
-      "crypto-ld": ["./types/crypto-ld"],
-      "vc-js": ["./types/vc-js"]
+      "jsonld": ["./types/jsonld"]
     }
   },
   "include": ["./src"]
