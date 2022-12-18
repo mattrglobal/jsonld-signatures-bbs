@@ -1,0 +1,53 @@
+{
+  "caseName": "partially revealed JSON-LD Document proof",
+  "unsignedDocument": {
+    "@context": ["https://schema.org", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person",
+    "firstName": "Jane",
+    "lastName": "Does",
+    "jobTitle": "Professor",
+    "telephone": "(425) 123-4567",
+    "email": "jane.doe@example.com"
+  },
+  "signedDocument": {
+    "@context": ["https://schema.org", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person",
+    "firstName": "Jane",
+    "lastName": "Does",
+    "jobTitle": "Professor",
+    "telephone": "(425) 123-4567",
+    "email": "jane.doe@example.com",
+    "proof": {
+      "type": "BbsBlsSignature2020",
+      "created": "2022-12-18T20:37:08Z",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "jIuAQXhoXOPbwota5fDe837JVzP+zqMQ/k4EtddW4aoqXbCMD8sQRIrr7apV5eLbFANuSgDVtmfz3SY0svbek2LgcQk4w4PLZ2hPA3/eQ7824fUuB1TgcTCLLWEdczsOPUlYkFjysMoSWTLsEzVxgA==",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "revealDocument": {
+    "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person",
+    "@explicit": true,
+    "firstName": {},
+    "lastName": {}
+  },
+  "derivedProof": {
+    "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+    "id": "urn:bnid:_:c14n0",
+    "type": "Person",
+    "firstName": "Jane",
+    "lastName": "Does",
+    "proof": {
+      "type": "BbsBlsSignatureProof2020",
+      "created": "2022-12-18T20:37:08Z",
+      "nonce": "WtcGxJN5VxuQ78e8hoLIV/4i/j7Pc52a2A1qFVOpanuysN/BjCSmCRbGY/uUURxH4NM=",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "AAoCr7YC1/Qyg24U7If5vL2MEY8FjSCFt3vhchd3UJ4+P43rCtVGSFrnolmWsOmaBNZaU6AWgZCjGhRilcnI28ny2rjQKf8nvvDB3jfswVTYIvk5G9J+Mw+pIHVBtVb7YJGb9ZMz6JtnWhTh1u0ZOVHHsISy3gXfuRXYWz7Ax5ebgrPpwQViEDMneU28cWyQTdHyawAAAHSKShzzuiYxLzFgJm5tmvWH6JakKSJ8EaL5sCq/P3JGHBF9iH6GKPwy9GH6cZL3h0MAAAACZ1g1cc/CLIDSviireH/cz80QTH6uDUX0vYncd7U7l+hQ9KV0MyqJSmGhG+Bszhahn05kuC4tmXUb45isFkVsPqcBfLbaqf+ZqShdWLdlR/v6i5u0YZLgj76bezxqpkRB+upqsXwBI3FSQ2hTsHd7eQAAAAUkWtlckJLNIHcTMi5jyePb9NWZ8pTdaIQmzYVwCV0slysKyhrcrx9tXuAb7WpylykPxOyrnUNB16kQxZBfgcDDVUTVxwbuiZG+uQMoO8X2rP+rab9IR1wOR1zHN11ZuGU32F/tmidwHEmOPz0rbRJ6sDXlK8lSdUbpMB+WZIPx/xrxtSieW10lg8+9D9KHsP4cUmjEHUALUn5EgLQe1MxQ",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "result": {
+    "valid": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "caseName": "Person document with extra unsigned information",
+  "signedDocument": {
+    "@context": ["https://schema.org", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person",
+    "firstName": "Jane",
+    "lastName": "Does",
+    "jobTitle": "Professor",
+    "telephone": "(425) 123-4567",
+    "email": "jane.doe@example.com",
+    "proof": {
+      "type": "BbsBlsSignature2020",
+      "created": "2022-12-18T20:37:07Z",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "hA+5OYuZJvDhtl6M1aSKfcVZ+NKBvFFWiI/Zk6rfLhln/w0a8jVyAKYPrYL1ouBXZNyThEjrfLjOrHh+MMZIp3uOMCqtGjNa/7V8Z7SNNwNiEQ0q/FL6vn2UDRHtxUQ0WX8/aVIx+eGkSb1Ew9fhzA==",
+      "verificationMethod": "did:example:489398593#test"
+    },
+    "unsignedValue": true
+  },
+  "result": {
+    "valid": false,
+    "reason": "extra unsigned information"
+  }
+}

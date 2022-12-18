@@ -1,0 +1,23 @@
+{
+  "caseName": "Person document with modified information",
+  "signedDocument": {
+    "@context": ["https://schema.org", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person",
+    "firstName": "John",
+    "lastName": "Does",
+    "jobTitle": "Professor",
+    "telephone": "(425) 123-4567",
+    "email": "jane.doe@example.com",
+    "proof": {
+      "type": "BbsBlsSignature2020",
+      "created": "2022-12-18T20:37:07Z",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "g5Kwa15tDUjYNZYwTcJ4DhsfxKUOZVO1Qs0UjmalJdK+X53a+kOrOuvV5qEPMnmrH592jVwmzjDt5eUQSmzkH7kxiOn6fIG5+O7yCWO/Sk5ZCLjNv1jf6GrRZMN3y/r09wzZDc+MiOt/BrHYBfLAaA==",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "result": {
+    "valid": false,
+    "reason": "modified information"
+  }
+}

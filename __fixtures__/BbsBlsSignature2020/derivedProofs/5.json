@@ -1,0 +1,56 @@
+{
+  "caseName": "Person document with extra unsigned information",
+  "signedDocument": {
+    "@context": ["https://schema.org", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person",
+    "firstName": "Jane",
+    "lastName": "Does",
+    "jobTitle": "Professor",
+    "telephone": "(425) 123-4567",
+    "email": "jane.doe@example.com",
+    "proof": {
+      "type": "BbsBlsSignature2020",
+      "created": "2022-12-18T20:37:07Z",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "jSLBFLhifAcD/P0wiw6UsMo/8X78251x8LXqG2BR1o1t500Dymk/T1Zzwv+ItyjoPYAbFJnE+Bjo6fmH0VzGoL0rrIoNucv7KUG/hyLdGExqx4u8MGw9HnsMkOcp8//zV8iktXxBYbDP40ENvYCKNQ==",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "revealDocument": {
+    "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person"
+  },
+  "derivedProof": {
+    "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+    "id": "urn:bnid:_:c14n0",
+    "type": "Person",
+    "email": "jane.doe@example.com",
+    "firstName": "Jane",
+    "jobTitle": "Professor",
+    "lastName": "Does",
+    "telephone": "(425) 123-4567",
+    "proof": [
+      {
+        "type": "BbsBlsSignatureProof2020",
+        "created": "2022-12-18T20:37:07Z",
+        "nonce": "+rJT5x3y7GSeNhf0VQ5R7OQSD/0JTfYsC2ub4vCpCCav22bNf9Xj/nbH/Mi5U42LR1Q=",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "AAoD/4+Irf8dw8SD2hGAHJBRcnGI2xWCZEvNwZbxnGru+rJZp1byr7kGncdSkoJ+bvPR9IlfVa12P8rgowqb4tBJ8ISlV6ien7MtHsjHAHbuUlbX+Lao0EnZ6cbI2OlTm9HyjZCUxyCCIpI1bZTV46fh3rFe75anVCALk9kxn4VrbkaWALzEljc8alg9c331wiAJcAAAAHSw0n/zOJytAZEtH49MTPmqqKK11qqTFl9SC4FKGQ22WeTQKwA3OdAZ1g0sxRavZe4AAAACCCIba70aAMGWDenTDpv4QCBt20n5t3l/zXQOJ3n2UK0F5+oKGUQxnLAbQXoBEd9LMZC0spZDw1r9cn/YinU1RKGNrS4/32mPGQr6xZOcE1tpMKiMkwN3kCbv62jrUBk7ptdoDFe3fDsYGZZo+DbfxQAAAAJF5/P2fmvzE5TA3NTjeIpYOmm5jRrjJvP3MTq9pQpCMD18GNw/1X/pmVJAr7CpgDIkexq1xUJjrG69MPJj26lb",
+        "verificationMethod": "did:example:489398593#test"
+      },
+      {
+        "type": "BbsBlsSignatureProof2020",
+        "created": "2022-12-18T20:37:08Z",
+        "nonce": "xX0CtIOXj8qDowM7Eww+BydfakG0BNMsZoXDEMyirjrGzrKSg2XZDZzV7s669CCoO7E=",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "AAoD/5k260Ta7Y6bL1OwA0R5N+Zo3gbLsaUCHy2fciUTaBtbWysHajQizUwE3YdSk0amk6lLF0xxz4PUk49obzfL88B40ex86F9a4Scd7L+UmQMIpf6Ufp0O8Q8CbczvpCAYZq0CUm9wXPCMyXR+XwN3hV4bniJq9PG/OW+IxGWcRlV0UVDOLxSEs+eu0W2mUToWBgAAAHSZHiQq6XNwWjlFFLRoqMbmKaoKUyP5yU1OeZWjcjG+/aUZeLM/U/Er5Hw02SpA1EEAAAACGRG2PJincwii3JkX/OheP8XiU1hkISYKhaPZTAJdKR5eWQLvPHrBx2PAh1/QQst4BR2X6/n4jK6RstaUbsrApq972i/OHdNp+8lXrWiEdxhQ8ujvqC/RlEyIio9MQXZz5JKz/yJxGgTqHqjC2GYW4gAAAAI6h/uQ2gN9//pRFJlSnb9jMlnCSSHpPLYutxzbchA8CgXZyo/mSKmz4DLdde+BB9xo2EfgimJJxrcXi2VGgZ1Z",
+        "verificationMethod": "did:example:489398593#test"
+      }
+    ],
+    "unsignedValue": true
+  },
+  "result": {
+    "valid": false,
+    "reason": "extra unsigned information"
+  }
+}
