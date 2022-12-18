@@ -1,3 +1,7 @@
+## [1.1.2](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v1.1.1...v1.1.2) (2022-12-18)
+
+Removes the dependency on 'xmldom' to address reported CVE's with that library.
+
 ## [1.1.1](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/1.0.1...1.1.1) (2022-12-15)
 
 ### Bug Fixes
