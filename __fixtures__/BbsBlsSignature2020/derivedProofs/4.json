@@ -1,0 +1,118 @@
+{
+  "caseName": "partially revealed JSON-LD Verifiable Credential proof",
+  "unsignedDocument": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/citizenship/v1",
+      "https://w3id.org/security/v3-unstable"
+    ],
+    "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
+    "type": ["VerifiableCredential", "PermanentResidentCard"],
+    "issuer": "did:example:489398593",
+    "identifier": "83627465",
+    "name": "Permanent Resident Card",
+    "description": "Government of Example Permanent Resident Card.",
+    "issuanceDate": "2019-12-03T12:19:52Z",
+    "expirationDate": "2029-12-03T12:19:52Z",
+    "credentialSubject": {
+      "id": "did:example:b34ca6cd37bbf23",
+      "type": ["PermanentResident", "Person"],
+      "givenName": "JOHN",
+      "familyName": "SMITH",
+      "gender": "Male",
+      "image": "data:image/png;base64,iVBORw0KGgokJggg==",
+      "residentSince": "2015-01-01",
+      "lprCategory": "C09",
+      "lprNumber": "999-999-999",
+      "commuterClassification": "C1",
+      "birthCountry": "Bahamas",
+      "birthDate": "1958-07-17"
+    }
+  },
+  "signedDocument": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/citizenship/v1",
+      "https://w3id.org/security/v3-unstable"
+    ],
+    "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
+    "type": ["VerifiableCredential", "PermanentResidentCard"],
+    "issuer": "did:example:489398593",
+    "identifier": "83627465",
+    "name": "Permanent Resident Card",
+    "description": "Government of Example Permanent Resident Card.",
+    "issuanceDate": "2019-12-03T12:19:52Z",
+    "expirationDate": "2029-12-03T12:19:52Z",
+    "credentialSubject": {
+      "id": "did:example:b34ca6cd37bbf23",
+      "type": ["PermanentResident", "Person"],
+      "givenName": "JOHN",
+      "familyName": "SMITH",
+      "gender": "Male",
+      "image": "data:image/png;base64,iVBORw0KGgokJggg==",
+      "residentSince": "2015-01-01",
+      "lprCategory": "C09",
+      "lprNumber": "999-999-999",
+      "commuterClassification": "C1",
+      "birthCountry": "Bahamas",
+      "birthDate": "1958-07-17"
+    },
+    "proof": {
+      "type": "BbsBlsSignature2020",
+      "created": "2022-12-18T20:37:08Z",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "gBHBe7tYeXGHcmu19zJxx/pFzjRbXn6kY7P7x9WnmYkUllALvhTPfvg/DFWTw14NV+5HzzlA2ZWNSTX0isVh+9TkRjkJBb1y6qbqlvf7BkMpQEkNZ5T+d8W+HZUj2Tr6JT9jVB/Z8uALIXKiBwLp8w==",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "revealDocument": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/citizenship/v1",
+      "https://w3id.org/security/v3-unstable"
+    ],
+    "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
+    "type": ["VerifiableCredential", "PermanentResidentCard"],
+    "credentialSubject": {
+      "id": "did:example:b34ca6cd37bbf23",
+      "type": ["PermanentResident", "Person"],
+      "@explicit": true,
+      "givenName": {},
+      "familyName": {},
+      "gender": {}
+    }
+  },
+  "derivedProof": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/citizenship/v1",
+      "https://w3id.org/security/v3-unstable"
+    ],
+    "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
+    "type": ["PermanentResidentCard", "VerifiableCredential"],
+    "description": "Government of Example Permanent Resident Card.",
+    "identifier": "83627465",
+    "name": "Permanent Resident Card",
+    "credentialSubject": {
+      "id": "did:example:b34ca6cd37bbf23",
+      "type": ["Person", "PermanentResident"],
+      "familyName": "SMITH",
+      "gender": "Male",
+      "givenName": "JOHN"
+    },
+    "expirationDate": "2029-12-03T12:19:52Z",
+    "issuanceDate": "2019-12-03T12:19:52Z",
+    "issuer": "did:example:489398593",
+    "proof": {
+      "type": "BbsBlsSignatureProof2020",
+      "created": "2022-12-18T20:37:08Z",
+      "nonce": "CwFTn0HSuVPsnKgi53X/HhFSw+FBR459mjqfNLRhz4OsYgH6aylw+eg8V2KxVy9IEfI=",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "ABkB/wbvhxBdIlgt3JmvBp1uA+RgOuBALlyGNluwda3bMJFfiZ7fWLYKqFd/Qo+svb4RoNCogi2dC+F2DBW2iqXYdM/CvmI+Zx2knTPzHeZjE27pJkEO8vmieunVzptWEnGDBr4dlxNGgUWAHaUeZkMZ7RnB5uOkN5lL+kcnVeQoT8YkoZ0T6uqpY46SLL/4VqZOzDWcAAAAdJROnhr9Ul9M1qDL3aIlVhR457wAIRnl2GjqSsZY49oPtsRd9GzZciE3CcUQn9ckiQAAAAIN2zLalfp7scjsaCBuyClVVw7+j1mKW8+XCDtU+r98fz5GwPyPMu5LQ1FK+USQ9QrZmfIq8JFl2cdIEQAdrz5sqyY6IuSJ+1kUFmdWuwQjOpTiQsKugF7wbgD4Ve8PKrW+pXeqVWmT+JDtSTyFZ/q2AAAACXJ8XXaB24fNkFLmpFeNPfjwCbgZ1CS/8H2GuR65dt7MXwhbV4fXhYnfuwm+6abRK7pSkghvi+ALGm/6Gxqh4WdTWmjyNAeTHEqSrOnCMr1bGgkdgrAPR3M3AcfhMBWClk3t7VeouAGM5IhB9+LgsWSg7IJecl5U9w7N0dXm+jvVUrX8CuGDIugQXi5UElyQ842MeqpfHNCbfPsNQFL5OWwRGaU+XiR4aMMEENkqdStyYH+bjo6ZiDfvW1l5AoRdpE6+2ONhDhvfUnCQzgqoHYuGm39U6/3B5PdieYPbj6U/M/G1c9laa3V9IM4Q8xv0wu25k4WpyEGg75jbLISEv59HaneChqv0uoD2x1+DKnagLWOoWDbi985fdHUhAGBLGQ==",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "result": {
+    "valid": true
+  }
+}

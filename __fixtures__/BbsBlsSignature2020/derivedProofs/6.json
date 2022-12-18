@@ -1,0 +1,64 @@
+{
+  "caseName": "Person document with modified information",
+  "signedDocument": {
+    "@context": ["https://schema.org", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person",
+    "firstName": "Jane",
+    "lastName": "Does",
+    "jobTitle": "Professor",
+    "telephone": "(425) 123-4567",
+    "email": "jane.doe@example.com",
+    "proof": [
+      {
+        "type": "BbsBlsSignature2020",
+        "created": "2022-12-18T20:37:07Z",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "jSLBFLhifAcD/P0wiw6UsMo/8X78251x8LXqG2BR1o1t500Dymk/T1Zzwv+ItyjoPYAbFJnE+Bjo6fmH0VzGoL0rrIoNucv7KUG/hyLdGExqx4u8MGw9HnsMkOcp8//zV8iktXxBYbDP40ENvYCKNQ==",
+        "verificationMethod": "did:example:489398593#test"
+      },
+      {
+        "type": "BbsBlsSignature2020",
+        "created": "2022-12-18T20:37:08Z",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "kP/UOsh0QKq/gQKl7jFUKWZ714oG+eAcSlOQr6HK2VmWKRcQ+pQZlJSuXIyv7S/8BnJI+PaAvplVG4PqeBbeSPsRlVntstjh1a1nHgovi8MmFckhlQTE9VXNksHgjFF9uceDo2jHPxXrEtzJlwuR7A==",
+        "verificationMethod": "did:example:489398593#test"
+      }
+    ]
+  },
+  "revealDocument": {
+    "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person"
+  },
+  "derivedProof": {
+    "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+    "id": "urn:bnid:_:c14n0",
+    "type": "Person",
+    "email": "jane.doe@example.com",
+    "firstName": "John",
+    "jobTitle": "Professor",
+    "lastName": "Does",
+    "telephone": "(425) 123-4567",
+    "proof": [
+      {
+        "type": "BbsBlsSignatureProof2020",
+        "created": "2022-12-18T20:37:07Z",
+        "nonce": "vY4Kxtvfsr03YEtztUlEc3bI80vfGmgMOJgwARx1MqJnTCuIUoG2/3xUxBqibyAeAnk=",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "AAoD/4wJ2K9JNwNdiIP+L/mqfEljPsuT1M6FxvAcn73cMBx+RI7s1pN2Az7Ucxw2MiKgbZdH/nUSvitROJHT7LiEdnrp0zIbWjIiyumjILV24cFrTnGF9/5WusMDFefXVLf65KI6+qJMWTE8Bog5J197eH//qx/3evVLJ7rYRVsFtnt+EGOK3w0GkPQQXolBLIrJEwAAAHS4s7HQtc12CpvQ0YclhfthcQRYPsNsjEJ5nFYzwRFpNmiNL/ki/EsCrGSb3tbs9KkAAAACXmSLQ2+bifXm/q0P93Q4eKeBmY+MUKMzDG9ps3Y8napYk5c6oOdRxvGj9RN0tEDorisRro1zzkRIxCqveH8WRrdnggrkKwhJJNEUW/nSRSwW/7sOOd0/JiUqnYkEsPJsFoGO9nosrl0QoZ7LQrYk7wAAAAIS+9PRPuTZQJQqyFiD7w9vppXgGFRRIVTphlRRZBYVTxFlc2wKiVxqRsTMS0tVIgEgiDqonvDSwyvheYUGzEDG",
+        "verificationMethod": "did:example:489398593#test"
+      },
+      {
+        "type": "BbsBlsSignatureProof2020",
+        "created": "2022-12-18T20:37:08Z",
+        "nonce": "cVOgnl1yoy1XfNK66BzSHkOhTX7JeFlHWf9bvsR29V0lclqEdJaqOkbmM24cqyaRN1Q=",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "AAoD/6UoBHVxpE5+aHvSN4rYMWOu/oo9NmOMxwDTr90DSNdBT+Cp1AluYE7MnL7XZ2/pHrj8Q7n3R0Yq8i0wofBeS22KRPJ3ipSL5UqCpo0M8fJNw01/3kpj6liRZ/H9hawz9ZJ66PnKkJR4tm7I2TDkIbFBlHfsTkgdNlpfH5hTjVCWz5SAU5B9zCOjkU1IjaPJmAAAAHSoqTfarp36fYF0En9WUL5G0akNDznktCpWZ28bWbxMBoQAK/Skxq2INDg8DPLCC/4AAAACbwavIWC5veUG+siDt+ZgAnYY6W+XX2ASn5bGhLTMVjVNZ7KbMRQrmzcDiYjePi1yqMQE3K+NNSt+oHI1WMD39qHe351sNsZ2pZ6aDmfSSzjX7U547RV2k/w723XYIyx1Mc4u/x+f6Pfu45OIb3Wt+gAAAAIyl3G7itToy0C8h1L39CffLiNHFlRKsuvlnbBY1Lta/Rn4tXIxgiY9rBG2xAyHTh8wvIeF02zKaRCyc17aW9/t",
+        "verificationMethod": "did:example:489398593#test"
+      }
+    ]
+  },
+  "result": {
+    "valid": false,
+    "reason": "modified information"
+  }
+}

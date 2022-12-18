@@ -11,99 +11,39 @@
  * limitations under the License.
  */
 
-import {
-  exampleBls12381KeyPair,
-  testDocument,
-  testSignedDocument,
-  testBadSignedDocument,
-  customLoader,
-  testVcDocument,
-  testSignedVcDocument,
-} from "./__fixtures__";
+import { BbsBlsSignature2020Fixtures } from "../__fixtures__";
 
 import jsigs from "jsonld-signatures";
 
-import { Bls12381G2KeyPair, BbsBlsSignature2020 } from "../src/index";
+import { Bls12381G2KeyPair, BbsBlsSignature2020 } from "../src";
+import { customLoader } from "../tooling/documentLoader";
 
-const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+const key = new Bls12381G2KeyPair(BbsBlsSignature2020Fixtures.keyPair);
 
-describe("BbsBlsSignature2020", () => {
-  it("should sign with jsigs", async () => {
-    const signed = await jsigs.sign(testDocument, {
-      suite: new BbsBlsSignature2020({ key }),
-      purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
+BbsBlsSignature2020Fixtures.documents.forEach((item: any) => {
+  describe("BbsBlsSignature2020", () => {
+    it(`should sign ${item.value.caseName}`, async () => {
+      const signed = await jsigs.sign(item.value.document, {
+        suite: new BbsBlsSignature2020({ key }),
+        purpose: new jsigs.purposes.AssertionProofPurpose(),
+        documentLoader: customLoader,
+      });
+      expect(signed).toBeDefined();
     });
-    expect(signed).toBeDefined();
   });
+});
 
-  it("should verify with jsigs", async () => {
-    const verificationResult = await jsigs.verify(testSignedDocument, {
-      suite: new BbsBlsSignature2020(),
-      purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
+BbsBlsSignature2020Fixtures.proofs.forEach((item: any) => {
+  describe("BbsBlsSignature2020", () => {
+    it(`should return expected verification result for case "${item.value.caseName}"`, async () => {
+      const verificationResult = await jsigs.verify(item.value.signedDocument, {
+        suite: new BbsBlsSignature2020(),
+        purpose: new jsigs.purposes.AssertionProofPurpose(),
+        documentLoader: customLoader,
+      });
+
+      expect(verificationResult).toBeDefined();
+      expect(verificationResult.verified).toEqual(item.value.result.valid);
     });
-
-    expect(verificationResult).toBeDefined();
-    expect(verificationResult.verified).toBeTruthy();
-  });
-
-  it("should not verify bad sig with jsigs", async () => {
-    const verificationResult = await jsigs.verify(testBadSignedDocument, {
-      suite: new BbsBlsSignature2020(),
-      purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-    });
-    expect(verificationResult).toBeDefined();
-    expect(verificationResult.verified).toBeFalsy();
-  });
-
-  it("should not verify with additional unsigned information with jsigs", async () => {
-    const modfiedDocument = {
-      ...testSignedDocument,
-      unsignedClaim: "oops",
-    };
-
-    const verificationResult = await jsigs.verify(modfiedDocument, {
-      suite: new BbsBlsSignature2020(),
-      purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-    });
-    expect(verificationResult).toBeDefined();
-    expect(verificationResult.verified).toBeFalsy();
-  });
-
-  it("should not verify with modified statement", async () => {
-    const modfiedDocument = {
-      ...testSignedDocument,
-      email: "someOtherEmail@example.com",
-    };
-
-    const verificationResult = await jsigs.verify(modfiedDocument, {
-      suite: new BbsBlsSignature2020(),
-      purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-    });
-    expect(verificationResult).toBeDefined();
-    expect(verificationResult.verified).toBeFalsy();
-  });
-
-  it("should sign verifiable credential with jsigs", async () => {
-    const signed = await jsigs.sign(testVcDocument, {
-      suite: new BbsBlsSignature2020({ key }),
-      purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-    });
-    expect(signed).toBeDefined();
-  });
-
-  it("should verify verifiable credential with jsigs", async () => {
-    const verificationResult = await jsigs.verify(testSignedVcDocument, {
-      suite: new BbsBlsSignature2020(),
-      purpose: new jsigs.purposes.AssertionProofPurpose(),
-      documentLoader: customLoader,
-    });
-    expect(verificationResult).toBeDefined();
-    expect(verificationResult.verified).toBeTruthy();
   });
 });

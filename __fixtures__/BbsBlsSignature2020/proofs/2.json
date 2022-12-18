@@ -1,0 +1,42 @@
+{
+  "caseName": "PRC VC",
+  "signedDocument": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/citizenship/v1",
+      "https://w3id.org/security/v3-unstable"
+    ],
+    "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
+    "type": ["VerifiableCredential", "PermanentResidentCard"],
+    "issuer": "did:example:489398593",
+    "identifier": "83627465",
+    "name": "Permanent Resident Card",
+    "description": "Government of Example Permanent Resident Card.",
+    "issuanceDate": "2019-12-03T12:19:52Z",
+    "expirationDate": "2029-12-03T12:19:52Z",
+    "credentialSubject": {
+      "id": "did:example:b34ca6cd37bbf23",
+      "type": ["PermanentResident", "Person"],
+      "givenName": "JOHN",
+      "familyName": "SMITH",
+      "gender": "Male",
+      "image": "data:image/png;base64,iVBORw0KGgokJggg==",
+      "residentSince": "2015-01-01",
+      "lprCategory": "C09",
+      "lprNumber": "999-999-999",
+      "commuterClassification": "C1",
+      "birthCountry": "Bahamas",
+      "birthDate": "1958-07-17"
+    },
+    "proof": {
+      "type": "BbsBlsSignature2020",
+      "created": "2022-12-18T20:37:07Z",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "l8jhUp8VXpdDbbirOIp/QNChZLwfCuA+U6VQTSLHkKwvZu3JqN0dH3s4riRdsBkcRN1rIGc3yNs16chKv1Zc5s1eycGKPw1972Em5mbmTXgixf/ClXLcr0EP2s5MPHHxK09aGZq2TdR3zEebWEWMcA==",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "result": {
+    "valid": true
+  }
+}

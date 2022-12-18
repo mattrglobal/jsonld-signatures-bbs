@@ -1,0 +1,86 @@
+{
+  "caseName": "fully revealed JSON-LD Verifiable Credential proof",
+  "unsignedDocument": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/citizenship/v1",
+      "https://w3id.org/security/v3-unstable"
+    ],
+    "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
+    "type": ["VerifiableCredential", "PermanentResidentCard"],
+    "issuer": "did:example:489398593",
+    "identifier": "83627465",
+    "name": "Permanent Resident Card",
+    "description": "Government of Example Permanent Resident Card.",
+    "issuanceDate": "2019-12-03T12:19:52Z",
+    "expirationDate": "2029-12-03T12:19:52Z",
+    "credentialSubject": {
+      "id": "did:example:b34ca6cd37bbf23",
+      "type": ["PermanentResident", "Person"],
+      "givenName": "JOHN",
+      "familyName": "SMITH",
+      "gender": "Male",
+      "image": "data:image/png;base64,iVBORw0KGgokJggg==",
+      "residentSince": "2015-01-01",
+      "lprCategory": "C09",
+      "lprNumber": "999-999-999",
+      "commuterClassification": "C1",
+      "birthCountry": "Bahamas",
+      "birthDate": "1958-07-17"
+    }
+  },
+  "signedDocument": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/citizenship/v1",
+      "https://w3id.org/security/v3-unstable"
+    ],
+    "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
+    "type": ["VerifiableCredential", "PermanentResidentCard"],
+    "issuer": "did:example:489398593",
+    "identifier": "83627465",
+    "name": "Permanent Resident Card",
+    "description": "Government of Example Permanent Resident Card.",
+    "issuanceDate": "2019-12-03T12:19:52Z",
+    "expirationDate": "2029-12-03T12:19:52Z",
+    "credentialSubject": {
+      "id": "did:example:b34ca6cd37bbf23",
+      "type": ["PermanentResident", "Person"],
+      "givenName": "JOHN",
+      "familyName": "SMITH",
+      "gender": "Male",
+      "image": "data:image/png;base64,iVBORw0KGgokJggg==",
+      "residentSince": "2015-01-01",
+      "lprCategory": "C09",
+      "lprNumber": "999-999-999",
+      "commuterClassification": "C1",
+      "birthCountry": "Bahamas",
+      "birthDate": "1958-07-17"
+    },
+    "proof": {
+      "type": "BbsBlsSignature2020",
+      "created": "2022-12-18T20:37:08Z",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "sIMcSfH660xRpB1JbvdBrTuIgTZ2S3EBI4okDBfLOja2G7iwtaW0EyxhbBZAakTzPsR3OQqMFjnqlnmRGUgB3eBCWCZ7qFyL8y0hm1MZuBVmI8+VWQhLktOs//C3KXJbhm0IL+GA2OiTig3/6Ph6rQ==",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "revealDocument": {
+    "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+    "type": ["VerifiableCredential", "PermanentResidentCard"]
+  },
+  "derivedProof": {
+    "@context": ["http://schema.org/", "https://w3id.org/security/v3-unstable"],
+    "proof": {
+      "type": "BbsBlsSignatureProof2020",
+      "created": "2022-12-18T20:37:08Z",
+      "nonce": "//eFOFkWqgN2DvsHd/Ma7Jdh8NbA7AA9QodXX8VBb6vJW30mldbJ6eQapKhNzY5sGz0=",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "ABkAAAAPpbHsf8c7HNEwae/o42j11J3sHzdaWwbVvZcXTC7xOqqFLYpkHwOFGRANxE6pSlTVkZF3rOhtUUHAPoFaQ83aIe7m8h3L6pnNyoUxOFSH/p0nUu0onGBTLqHVArxgvutFhMT0jXfBm9X9vwL1nMqO5/GxRLiwGb1EXvvfj27Gww1gUKDF87TE3xiOz4yruz9SAAAAdLWOTmrXfwF8zaKjAOSH7jDv6bVM+MMuZi6BWne+M+Qvgdqj/ppIWuWCTxnO3x9UDwAAAAIX3UxcwCEapr9dbAH1CYB1CsaQcKRb6dKksaOTMksv5j9gZJUKFkWx5nBW1wHL7bk5/6wS1/IFUeaZkcIuGUGRt2AS/2pdc2Px9yfJYD7WHUcYPA4X2sW4GzKKnFepPCzLSo0HFvJIwn7ZD4JnQ5sfAAAAF0WqtDA+/NvG8sVleMDQPauCChw2r+LnVoEDY7fAVzYgERGAZ/vIBL0eqGHKbYf/b8Y6Bz6+C7WWh+oX6gvT3nVwbHoyBg1m06NdwE2/kLRsg41Qz8hJn8exhKo318AWhwVfajmOF4iy2VkSW7aUjaowhrOQAeopWSQe54KJhH7BGst1gqakvS8aStnM1j1QfM/oD2H54BhcnfEM6HIts7pzW7/9tIm1+OlgihKCjSZVtPyd87Mb9+M1HpUUzGBNxzyjnFRB/yO1yx0fHlB1dSmHa2uA/dD5/NZXS6Ny6Oi1QWYLVQRBjFbFXW2O5kf+5jmxzPK0X7VBt6tfpv4kn+Je4Gzxuoj5NBhehpkTp3IuOZNi9QJEU3ce6AbCiPFR9EhGhmZm6BvEkLqNkJkQfdy/UahBY6zUux7PsH5uFPTNLXpswPtYGAOLSpwed7TQsKfyVgw4VRqi58iUwPy2sZQfuyXybdEsAx/1a2N5X/DHhDAdcS7NwOUEvaQnvinU6Dow6L78nSm5XOo+uSm2NBtWToUf+Cx7hJydm4qI9+r0UBd7dygiYBsLIjOdCGrsQr1oUzilQd9+xjRDTCnKNxE0JRqWkzP1FjJXH2UJvdoSZ5vpYOGei7gxtzQY9syj5CKp+ZIE09sy4YudIBth7mK13rKxCXtzPb17SF125nF0POTObm3XQDcKT3xyRqYge10vG4M/8UIfx/yD2e4aHf9SbRPvUSYHD/P48vz3hwEax5g5Ia1Bs3v1vPhi/8vzRU7l3sMI+Wgi+g2ABmiEy4rOJAUtVXTWX5//HCeWxWhoPyns89wuDf6h4vjR6M5zjYU1P/OwvtAwAfy+W1xxrs1CpHrHUgkkJSQUTHavxg1kbSYTJgfOwm00zaxiNYpOvSfWV0vwL+3BgG1V8p6hvif0QD4/Uq1CWEVL2EqqEwtvOeBgt15vt3Q+mHgwKy1Bprnwa4n042UL4M/dqKr5kTg=",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "result": {
+    "valid": true
+  }
+}

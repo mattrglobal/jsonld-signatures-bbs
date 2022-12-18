@@ -1,0 +1,22 @@
+{
+  "caseName": "Person document",
+  "signedDocument": {
+    "@context": ["https://schema.org", "https://w3id.org/security/v3-unstable"],
+    "@type": "Person",
+    "firstName": "Jane",
+    "lastName": "Does",
+    "jobTitle": "Professor",
+    "telephone": "(425) 123-4567",
+    "email": "jane.doe@example.com",
+    "proof": {
+      "type": "BbsBlsSignature2020",
+      "created": "2022-12-18T20:37:07Z",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "kZ7hvrwDYnpTG2VS27AQourL4kCZfmZt/hfzO3AryER8d1pvBKxsUkZkIyk8iBD+EXGYGpbLddS91JppdZymb+NrRtjKwd95I4Fjdpn6HVcrvTEeqDBKDJgSg/2mEYNHer3eHjR59JZ9yEtmkvcTrg==",
+      "verificationMethod": "did:example:489398593#test"
+    }
+  },
+  "result": {
+    "valid": true
+  }
+}
