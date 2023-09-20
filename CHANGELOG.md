@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v1.1.2...v1.2.0) (2023-09-20)
+
+### Features
+
+- node 18 support ([cc1217a](https://github.com/mattrglobal/jsonld-signatures-bbs/commit/cc1217a91f9d253239b7e025cb3742ff3b2b23e6))
+
 ## [1.1.2](https://github.com/mattrglobal/jsonld-signatures-bbs/compare/v1.1.1...v1.1.2) (2022-12-18)
 
 Removes the dependency on 'xmldom' to address reported CVE's with that library.
