@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "@mattrglobal/bbs-signatures": "1.2.0",
-    "@mattrglobal/bls12381-key-pair": "1.0.0",
+    "@mattrglobal/bls12381-key-pair": "1.1.0",
     "@stablelib/random": "1.0.0",
     "bs58": "4.0.1",
     "jsonld": "4.0.1",
