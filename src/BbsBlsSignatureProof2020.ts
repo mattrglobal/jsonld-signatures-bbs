@@ -299,7 +299,10 @@ export class BbsBlsSignatureProof2020 extends suites.LinkedDataProof {
 
       return verified;
     } catch (error) {
-      return { verified: false, error };
+      return {
+        verified: false,
+        error: typeof error == "string" ? error : error?.toString(),
+      };
     }
   }
 
